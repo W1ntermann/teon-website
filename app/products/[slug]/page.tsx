@@ -5,35 +5,7 @@ import { useParams } from "next/navigation";
 import { ChevronRight, Download, Mail, Phone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProductBySlug } from "@/translations/productData";
-
-function MachineryDetailSVG({ type }: { type: string }) {
-  const mainGray = "#4C5154";
-  const darkGray = "#3a3f42";
-  const lightGray = "#6e7377";
-  const midGray = "#9e9e9e";
-  const silver = "#bdbdbd";
-
-  if (type === "dissolver") return (
-    <svg viewBox="0 0 300 320" width="100%" height="100%" style={{ maxWidth: "280px", width: "100%", height: "auto" }}>
-      <rect x="40" y="80" width="220" height="170" rx="6" fill={mainGray}/><rect x="70" y="50" width="160" height="40" rx="5" fill={darkGray}/><rect x="130" y="15" width="40" height="45" fill={midGray}/><rect x="118" y="10" width="64" height="12" rx="3" fill={silver}/><ellipse cx="150" cy="255" rx="70" ry="18" fill={darkGray} opacity="0.5"/><rect x="110" y="230" width="80" height="40" rx="2" fill={silver}/><rect x="55" y="95" width="190" height="10" rx="2" fill={lightGray} opacity="0.4"/><circle cx="150" cy="165" r="45" fill={lightGray} opacity="0.85"/><circle cx="150" cy="165" r="30" fill={mainGray}/><text x="150" y="172" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold" fontFamily="Arial">KD</text><rect x="90" y="260" width="20" height="50" rx="2" fill={darkGray}/><rect x="190" y="260" width="20" height="50" rx="2" fill={darkGray}/><rect x="60" y="305" width="180" height="10" rx="2" fill={darkGray}/>
-    </svg>
-  );
-  if (type === "basket") return (
-    <svg viewBox="0 0 300 320" width="100%" height="100%" style={{ maxWidth: "280px", width: "100%", height: "auto" }}>
-      <rect x="50" y="70" width="200" height="150" rx="6" fill={mainGray}/><rect x="80" y="40" width="140" height="38" rx="5" fill={darkGray}/><rect x="130" y="12" width="40" height="35" fill={midGray}/><rect x="80" y="220" width="140" height="70" rx="2" fill={darkGray}/><ellipse cx="150" cy="220" rx="60" ry="12" fill={darkGray} opacity="0.6"/><circle cx="150" cy="145" r="40" fill={lightGray} opacity="0.85"/><path d="M 120 130 L 120 165 Q 150 180 180 165 L 180 130 Z" fill={mainGray} opacity="0.7"/><text x="150" y="152" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="Arial">KB</text><rect x="85" y="260" width="130" height="8" rx="2" fill={silver} opacity="0.5"/><rect x="85" y="275" width="130" height="8" rx="2" fill={silver} opacity="0.5"/>
-    </svg>
-  );
-  if (type === "butterfly") return (
-    <svg viewBox="0 0 300 320" width="100%" height="100%" style={{ maxWidth: "280px", width: "100%", height: "auto" }}>
-      <rect x="45" y="75" width="210" height="155" rx="6" fill={mainGray}/><rect x="75" y="48" width="150" height="35" rx="5" fill={darkGray}/><rect x="130" y="15" width="40" height="40" fill={midGray}/><rect x="45" y="230" width="210" height="65" rx="2" fill={darkGray}/><ellipse cx="150" cy="230" rx="75" ry="14" fill={darkGray} opacity="0.7"/><path d="M 100 150 Q 120 120 150 130 Q 180 120 200 150 Q 180 180 150 170 Q 120 180 100 150 Z" fill={lightGray} opacity="0.9"/><circle cx="150" cy="150" r="12" fill={darkGray}/><text x="150" y="155" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="Arial">DBF</text>
-    </svg>
-  );
-  return (
-    <svg viewBox="0 0 300 320" width="100%" height="100%" style={{ maxWidth: "280px", width: "100%", height: "auto" }}>
-      <rect x="30" y="85" width="240" height="130" rx="6" fill={mainGray}/><rect x="60" y="58" width="180" height="35" rx="5" fill={darkGray}/><rect x="130" y="20" width="40" height="45" fill={midGray}/><rect x="30" y="215" width="240" height="55" rx="2" fill={darkGray}/><rect x="40" y="100" width="220" height="100" rx="3" fill={lightGray} opacity="0.6"/><rect x="55" y="115" width="40" height="70" rx="2" fill={mainGray}/><rect x="130" y="115" width="40" height="70" rx="2" fill={mainGray}/><rect x="205" y="115" width="40" height="70" rx="2" fill={mainGray}/><text x="150" y="158" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" fontFamily="Arial">KC</text><rect x="30" y="268" width="240" height="12" rx="2" fill={silver} opacity="0.4"/>
-    </svg>
-  );
-}
+import { ProductSlider } from "@/components/ProductSlider";
 
 export default function ProductDetail() {
   const params = useParams<{ slug: string }>();
@@ -89,9 +61,9 @@ export default function ProductDetail() {
       <div className="mx-auto max-w-[1200px] px-4 py-8 sm:py-10 md:py-10">
         <div className="mb-10 grid grid-cols-1 gap-8 lg:mb-12 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-12 xl:gap-[50px]">
           <div className="w-full">
-            <div className="relative flex h-auto min-h-[220px] w-full items-center justify-center border border-[#d0d0d0] bg-[#e8e8e8] p-6 sm:h-[280px] lg:p-[30px]">
-              <div className="flex w-full max-w-[280px] items-center justify-center"><MachineryDetailSVG type={product.svgType} /></div>
-              <div style={{ position: "absolute", top: "12px", left: "12px", backgroundColor: THEON_GRAY, border: "2px solid #fff", borderRadius: "50%", width: "44px", height: "44px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div className="relative overflow-hidden border border-[#d0d0d0] bg-[#e8e8e8]">
+              <ProductSlider photos={product.photos} productName={product.name} />
+              <div style={{ position: "absolute", top: "12px", left: "12px", zIndex: 10, backgroundColor: THEON_GRAY, border: "2px solid #fff", borderRadius: "50%", width: "44px", height: "44px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <span style={{ color: "#fff", fontSize: "8px", fontWeight: "bold", letterSpacing: "0.5px" }}>KREI</span>
               </div>
             </div>

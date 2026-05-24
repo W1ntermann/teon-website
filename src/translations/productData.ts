@@ -13,6 +13,26 @@ export interface ProductData {
   technicalSpecs: { label: string; value: string }[];
   models: { name: string; power: string; volume: string }[];
   svgType: string;
+  photos: string[];
+}
+
+const photoColors: Record<string, { bg: string; text: string }> = {
+  dissolver: { bg: "2d3235", text: "fff" },
+  basket: { bg: "3d4245", text: "fff" },
+  butterfly: { bg: "2a2f32", text: "fff" },
+  continuous: { bg: "1f2427", text: "fff" },
+};
+
+function makePhotos(type: string, name: string): string[] {
+  const colors = photoColors[type] || { bg: "4C5154", text: "fff" };
+  const encoded = encodeURIComponent(name);
+  return [
+    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+1&font=montserrat`,
+    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+2&font=montserrat`,
+    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+3&font=montserrat`,
+    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+4&font=montserrat`,
+    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+5&font=montserrat`,
+  ];
 }
 
 const products: Record<Language, ProductData[]> = {
@@ -64,6 +84,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KD 500", power: "37 кВт", volume: "до 5000 л" },
       ],
       svgType: "dissolver",
+      photos: makePhotos("dissolver", "KREI DISSOLVER"),
     },
     {
       id: "basket-mill",
@@ -106,6 +127,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KB 30", power: "11 кВт", volume: "до 300 л" },
       ],
       svgType: "basket",
+      photos: makePhotos("basket", "KREI BASKET-MILL"),
     },
     {
       id: "dissolver-butterfly",
@@ -149,6 +171,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KBF 200", power: "37 кВт", volume: "до 2000 л" },
       ],
       svgType: "butterfly",
+      photos: makePhotos("butterfly", "KREI BUTTERFLY"),
     },
     {
       id: "continuous-mill",
@@ -191,6 +214,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KC 200", power: "200 кВт", volume: "до 10 000 л/год" },
       ],
       svgType: "continuous",
+      photos: makePhotos("continuous", "KREI CONTINUOUS"),
     },
   ],
 
@@ -242,6 +266,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KD 500", power: "37 kW", volume: "up to 5,000 l" },
       ],
       svgType: "dissolver",
+      photos: makePhotos("dissolver", "KREI DISSOLVER"),
     },
     {
       id: "basket-mill",
@@ -284,6 +309,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KB 30", power: "11 kW", volume: "up to 300 l" },
       ],
       svgType: "basket",
+      photos: makePhotos("basket", "KREI BASKET-MILL"),
     },
     {
       id: "dissolver-butterfly",
@@ -327,6 +353,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KBF 200", power: "37 kW", volume: "up to 2,000 l" },
       ],
       svgType: "butterfly",
+      photos: makePhotos("butterfly", "KREI BUTTERFLY"),
     },
     {
       id: "continuous-mill",
@@ -369,6 +396,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KC 200", power: "200 kW", volume: "up to 10,000 l/h" },
       ],
       svgType: "continuous",
+      photos: makePhotos("continuous", "KREI CONTINUOUS"),
     },
   ],
 
@@ -420,6 +448,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KD 500", power: "37 kW", volume: "do 5000 l" },
       ],
       svgType: "dissolver",
+      photos: makePhotos("dissolver", "KREI DISSOLVER"),
     },
     {
       id: "basket-mill",
@@ -462,6 +491,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KB 30", power: "11 kW", volume: "do 300 l" },
       ],
       svgType: "basket",
+      photos: makePhotos("basket", "KREI BASKET-MILL"),
     },
     {
       id: "dissolver-butterfly",
@@ -505,6 +535,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KBF 200", power: "37 kW", volume: "do 2000 l" },
       ],
       svgType: "butterfly",
+      photos: makePhotos("butterfly", "KREI BUTTERFLY"),
     },
     {
       id: "continuous-mill",
@@ -547,6 +578,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KC 200", power: "200 kW", volume: "do 10 000 l/h" },
       ],
       svgType: "continuous",
+      photos: makePhotos("continuous", "KREI CONTINUOUS"),
     },
   ],
 };
