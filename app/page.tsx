@@ -8,6 +8,7 @@ import { getProducts } from "@/translations/productData";
 import { QuickLinksSection } from "@/components/QuickLinks";
 import { ProcessHighlight } from "@/components/ProcessHighlight";
 import { ProductsShowcase } from "@/components/ProductsShowcase";
+import { WhyTeon } from "@/components/WhyTeon";
 import { cn } from "@/lib/utils";
 import hero1 from "@/assets/hero1.jpg";
 import hero2 from "@/assets/hero2.jpg";
@@ -31,11 +32,6 @@ const showsData: Record<string, { date: string; name: string; city: string; hall
   pl: [{ date: "22-26 kwi 2024", name: "Hannover Messe", city: "Hanower", hall: "Hala 6, B12" }, { date: "05-08 cze 2024", name: "ECS", city: "Norymberga", hall: "Hala 9, C24" }, { date: "10-14 wrz 2024", name: "ACHEMA", city: "Frankfurt", hall: "Hala 4.2, A08" }],
 };
 
-const whyData: Record<string, { icon: string; titleKey: string; descKey: string }[]> = {
-  uk: [{ icon: "🏭", titleKey: "why.since", descKey: "why.since.desc" }, { icon: "🔧", titleKey: "why.quality", descKey: "why.quality.desc" }, { icon: "🌍", titleKey: "why.worldwide", descKey: "why.worldwide.desc" }, { icon: "⚙️", titleKey: "why.innovation", descKey: "why.innovation.desc" }],
-  en: [{ icon: "🏭", titleKey: "why.since", descKey: "why.since.desc" }, { icon: "🔧", titleKey: "why.quality", descKey: "why.quality.desc" }, { icon: "🌍", titleKey: "why.worldwide", descKey: "why.worldwide.desc" }, { icon: "⚙️", titleKey: "why.innovation", descKey: "why.innovation.desc" }],
-  pl: [{ icon: "🏭", titleKey: "why.since", descKey: "why.since.desc" }, { icon: "🔧", titleKey: "why.quality", descKey: "why.quality.desc" }, { icon: "🌍", titleKey: "why.worldwide", descKey: "why.worldwide.desc" }, { icon: "⚙️", titleKey: "why.innovation", descKey: "why.innovation.desc" }],
-};
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -43,7 +39,6 @@ export default function Home() {
   const products = getProducts(lang);
   const news = newsData[lang];
   const shows = showsData[lang];
-  const why = whyData[lang];
 
   useEffect(() => {
     const timer = setInterval(() => { setCurrentSlide((prev) => (prev + 1) % heroSlides.length); }, 5000);
@@ -150,20 +145,8 @@ export default function Home() {
       {/* Products Showcase */}
       <ProductsShowcase />
 
-      <div className="bg-[#4C5154] px-4 py-10 text-white sm:py-12 md:py-[50px]">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="mb-8 text-center text-lg font-bold tracking-wide sm:text-xl md:mb-[30px] md:text-[22px]">{t("why.title")}</h2>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[30px]">
-            {why.map((item) => (
-              <div key={item.titleKey} style={{ textAlign: "center" }}>
-                <div style={{ fontSize: "34px", marginBottom: "12px" }}>{item.icon}</div>
-                <h3 style={{ fontSize: "15px", fontWeight: "bold", marginBottom: "8px", color: "#fff" }}>{t(item.titleKey)}</h3>
-                <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.82)", lineHeight: "1.6", margin: 0 }}>{t(item.descKey)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Why Teon */}
+      <WhyTeon />
 
       <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-[50px]">
         <div className="mb-5 flex flex-col gap-3 sm:mb-[22px] sm:flex-row sm:items-center sm:justify-between">
