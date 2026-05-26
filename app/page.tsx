@@ -57,17 +57,17 @@ export default function Home() {
           {heroSlides.map((_, i) => (<button type="button" key={i} onClick={() => setCurrentSlide(i)} className="flex min-h-9 min-w-9 items-center justify-center p-0" aria-label={`Slide ${i + 1}`}><span className={cn("block h-2.5 w-2.5 rounded-full border border-white/80 transition-colors md:h-[10px] md:w-[10px]", i === currentSlide ? "bg-white" : "bg-white/30")} /></button>))}
         </div>
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-fr">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 auto-rows-fr">
             {products.map((product, idx) => (
               <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-2.5 bg-[rgba(76,81,84,0.82)] px-3 py-3.5 no-underline hover:bg-[rgba(76,81,84,0.92)] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4 md:gap-3.5 md:px-5 md:py-4", idx % 2 === 0 && "border-r border-white/10", idx < 2 && "border-b border-white/10 md:border-b-0", idx < 3 && "md:border-r md:border-white/10", idx === products.length - 1 && idx % 2 === 1 && "md:border-r-0")}>
                 <div className="flex shrink-0 items-center justify-center">
-                  <div className={cn("flex items-center justify-center rounded-full border-2 border-white bg-[#4C5154] h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 transition-transform group-hover:scale-105")}>
-                    <span className={cn("font-bold text-white text-[6px] sm:text-[7px] md:text-[8px]")}>KREI</span>
+                  <div className={cn("flex items-center justify-center rounded-full border-2 border-white bg-[#4C5154] h-9 w-9 sm:h-9 sm:w-9 md:h-10 md:w-10 transition-transform group-hover:scale-105")}>
+                    <span className={cn("font-bold text-white text-[7px] sm:text-[7px] md:text-[8px]")}>KREI</span>
                   </div>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className={cn("font-bold tracking-widest text-white text-[6px] sm:text-[7px] md:text-[8px] uppercase")}>KREI</div>
-                  <div className={cn("font-bold leading-tight text-white text-[9px] sm:text-[10px] md:text-[11px] line-clamp-2")}>{product.name.replace("KREI ", "")}</div>
+                  <div className={cn("font-bold leading-tight text-white text-[10px] sm:text-[10px] md:text-[11px] line-clamp-2")}>{product.name.replace("KREI ", "")}</div>
                 </div>
               </Link>
             ))}

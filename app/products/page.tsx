@@ -41,7 +41,7 @@ export default function Products() {
         />
         <div className="relative mx-auto max-w-[1200px] px-4 py-10 sm:py-14 md:py-16">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-[13px] text-white/50">
+          <div className="flex flex-wrap items-center gap-2 text-[13px] text-white/50">
             <Link
               href="/"
               className="text-white/50 no-underline transition-colors hover:text-white/80"
@@ -68,7 +68,7 @@ export default function Products() {
 
       {/* Category Filter Bar */}
       <div className="sticky top-0 z-20 border-b border-[#e5e5e5] bg-white/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-[1200px] items-center gap-1 px-4 py-3">
+        <div className="mx-auto flex max-w-[1200px] items-center gap-1 overflow-x-auto px-4 py-3 scrollbar-hide">
           <SlidersHorizontal size={14} className="mr-2 shrink-0 text-[#4C5154]/50" />
           <button
             onClick={() => setActiveCategory(null)}

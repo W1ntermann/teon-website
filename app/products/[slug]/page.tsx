@@ -119,7 +119,7 @@ export default function ProductDetail() {
 
       {/* Product Nav Tabs */}
       <div className="border-b border-[#e0e0e0] bg-white">
-        <div className="mx-auto flex max-w-[1200px] gap-0 overflow-x-auto px-4 [-webkit-overflow-scrolling:touch]">
+        <div className="mx-auto flex max-w-[1200px] gap-0 overflow-x-auto px-4 [-webkit-overflow-scrolling:touch] scrollbar-hide">
           {allProducts.map((s, i) => (
             <Link
               key={s}

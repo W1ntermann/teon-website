@@ -126,3 +126,12 @@
 .carousel-dot.active {
   background: #fff;
 }
+
+/* Hide scrollbar for horizontal scrolling containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
