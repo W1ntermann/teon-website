@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "Теон",
   description:
     "Високоякісні машини для диспергування, змішування та подрібнення для лакофарбової та хімічної промисловості",
-  icons: [{ rel: "icon", url: "/favicon.svg", type: "image/svg+xml" }],
+  icons: [{ rel: "icon", url: "/teon-logo.png", type: "image/png" }],
 };
 
 export default function RootLayout({

@@ -6,6 +6,8 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts } from "@/translations/productData";
 import { QuickLinksSection } from "@/components/QuickLinks";
+import { ProcessHighlight } from "@/components/ProcessHighlight";
+import { ProductsShowcase } from "@/components/ProductsShowcase";
 import { cn } from "@/lib/utils";
 import hero1 from "@/assets/hero1.jpg";
 import hero2 from "@/assets/hero2.jpg";
@@ -16,21 +18,6 @@ const heroSlides = [
   { id: 2, image: hero2.src, overlay: "rgba(0,0,0,0.45)" },
   { id: 3, image: hero3.src, overlay: "rgba(0,0,0,0.45)" },
 ];
-
-function MachineryIllustration({ type }: { type: string }) {
-  const mainGray = "#4C5154";
-  const darkGray = "#3a3f42";
-  const lightGray = "#6e7377";
-  const midGray = "#9e9e9e";
-  return (
-    <svg viewBox="0 0 200 200" width="100%" height="150" className="max-w-[120px] sm:max-w-[150px]">
-      {type === "dissolver" && (<><rect x="30" y="50" width="140" height="110" rx="4" fill={mainGray}/><rect x="50" y="30" width="100" height="26" rx="4" fill={darkGray}/><rect x="90" y="10" width="20" height="26" fill={midGray}/><circle cx="100" cy="110" r="30" fill={lightGray} opacity="0.85"/><circle cx="100" cy="110" r="18" fill={mainGray}/><text x="100" y="116" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold" fontFamily="Arial">KD</text></>)}
-      {type === "basket" && (<><rect x="40" y="45" width="120" height="105" rx="4" fill={mainGray}/><rect x="60" y="22" width="80" height="28" rx="4" fill={darkGray}/><rect x="85" y="5" width="30" height="24" fill={midGray}/><rect x="55" y="150" width="90" height="35" rx="2" fill={darkGray}/><circle cx="100" cy="98" r="28" fill={lightGray} opacity="0.85"/><text x="100" y="104" textAnchor="middle" fill="white" fontSize="11" fontWeight="bold" fontFamily="Arial">KB</text></>)}
-      {type === "butterfly" && (<><rect x="35" y="55" width="130" height="100" rx="4" fill={mainGray}/><rect x="55" y="32" width="90" height="28" rx="4" fill={darkGray}/><rect x="88" y="10" width="24" height="28" fill={midGray}/><rect x="50" y="155" width="100" height="30" rx="2" fill={darkGray}/><path d="M 75 100 Q 100 80 125 100 Q 100 120 75 100 Z" fill={lightGray} opacity="0.9"/></>)}
-      {type === "continuous" && (<><rect x="22" y="60" width="156" height="90" rx="4" fill={mainGray}/><rect x="42" y="38" width="116" height="27" rx="4" fill={darkGray}/><rect x="90" y="15" width="20" height="28" fill={midGray}/><rect x="22" y="150" width="156" height="30" rx="2" fill={darkGray}/><rect x="32" y="72" width="136" height="60" rx="2" fill={lightGray} opacity="0.55"/><text x="100" y="106" textAnchor="middle" fill="white" fontSize="11" fontWeight="bold" fontFamily="Arial">KC</text></>)}
-    </svg>
-  );
-}
 
 const newsData: Record<string, { date: string; title: string; text: string }[]> = {
   uk: [{ date: "15.04.2024", title: "Теон на виставці Hannover Messe 2024", text: "Відвідайте наш стенд на найбільшій промисловій виставці світу." }, { date: "01.03.2024", title: "Нова версія KREI DISSOLVER-Butterfly", text: "Представляємо оновлену серію диссольверів." }, { date: "10.02.2024", title: "Розширення сервісного відділу", text: "Наша команда фахівців готова надати швидкий сервіс." }],
@@ -64,7 +51,6 @@ export default function Home() {
   }, []);
 
   const slide = heroSlides[currentSlide];
-  const productIcons = ["dissolver", "basket", "butterfly", "continuous"];
 
   return (
     <div className="min-h-screen font-sans bg-white text-black">
@@ -94,53 +80,75 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-white px-4 py-7 text-center">
-        <div className="mx-auto max-w-[900px]">
-          <h2 className="mb-2 text-lg font-bold tracking-wide text-[#4C5154] sm:text-xl md:text-2xl md:tracking-[2px]">{t("hero.tagline1")}</h2>
-          <p className="m-0 text-xs font-bold tracking-wide text-[#000] sm:text-sm md:tracking-[1px]">{t("hero.tagline2")}</p>
-        </div>
-      </div>
+      {/* Process + About Section */}
+      <ProcessHighlight />
 
-      <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-[50px]">
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-12 xl:gap-[50px]">
-          <div>
-            <h3 style={{ color: "#4C5154", fontSize: "20px", marginBottom: "20px", fontWeight: "bold" }}>{t("about.title")}</h3>
-            <p style={{ color: "#000", fontSize: "14px", lineHeight: "1.8", marginBottom: "14px" }}>{t("about.text1")}</p>
-            <p style={{ color: "#000", fontSize: "14px", lineHeight: "1.8", marginBottom: "20px" }}>{t("about.text2")}</p>
-            <div style={{ border: "2px solid #4C5154", padding: "12px 16px", display: "inline-block", fontSize: "12px", color: "#4C5154", fontWeight: "bold" }}>
-              <div style={{ fontSize: "10px", color: "#666", marginBottom: "4px" }}>Wirtschafts Woche</div>
-              <div>Zum 3. Mai</div>
+      <div className="bg-[#fafafa] border-b border-[#e5e5e5]">
+        <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-14">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-12 xl:gap-14">
+            {/* Text Column */}
+            <div>
+              <span className="mb-3 inline-block text-[10px] font-bold uppercase tracking-[4px] text-[#4C5154]/50">
+                {t("about.title")}
+              </span>
+              <p className="text-[14px] leading-[1.9] text-[#333] sm:text-[15px]">
+                {t("about.text1")}
+              </p>
+              <p className="mt-4 text-[14px] leading-[1.9] text-[#333] sm:text-[15px]">
+                {t("about.text2")}
+              </p>
+
+              {/* Stats row */}
+              <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+                <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center">
+                  <div className="text-xl font-bold tracking-tight text-[#4C5154] sm:text-2xl">1889</div>
+                  <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#888]">
+                    {lang === "uk" ? "Засновано" : lang === "pl" ? "Założona" : "Founded"}
+                  </div>
+                </div>
+                <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center">
+                  <div className="text-xl font-bold tracking-tight text-[#4C5154] sm:text-2xl">130+</div>
+                  <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#888]">
+                    {lang === "uk" ? "Років досвіду" : lang === "pl" ? "Lat doświadczenia" : "Years experience"}
+                  </div>
+                </div>
+                <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center col-span-2 sm:col-span-1">
+                  <div className="text-xl font-bold tracking-tight text-[#4C5154] sm:text-2xl">50+</div>
+                  <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#888]">
+                    {lang === "uk" ? "Країн" : lang === "pl" ? "Krajów" : "Countries"}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="relative min-h-[220px] overflow-hidden sm:min-h-[260px] lg:min-h-[280px]" style={{ background: "linear-gradient(135deg, #d5d5d5 0%, #bebebe 100%)" }}>
-            <svg viewBox="0 0 640 280" width="100%" height="100%" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
-              <rect width="640" height="280" fill="#c8c8c8"/><rect x="0" y="140" width="640" height="140" fill="#a0a0a0"/><rect x="60" y="90" width="180" height="80" fill="#d5d5d5"/><rect x="80" y="75" width="140" height="20" fill="#b8b8b8"/><rect x="250" y="100" width="100" height="70" fill="#cccccc"/><rect x="355" y="105" width="80" height="65" fill="#d0d0d0"/><rect x="60" y="170" width="300" height="40" fill="#999"/>{[0,30,60,90,300,330,360,420,450,480,510,540].map((x, i) => (<ellipse key={i} cx={x + 20} cy="158" rx="12" ry="10" fill="#888"/>))}<rect x="0" y="212" width="640" height="6" fill="#aaa"/>
-            </svg>
-            <div style={{ position: "absolute", bottom: "8px", right: "8px", background: "rgba(76,81,84,0.8)", color: "#fff", padding: "4px 8px", fontSize: "10px" }}>Теон — Hüllhorst</div>
+
+            {/* Image Column */}
+            <div className="relative overflow-hidden rounded-sm bg-[#e8e8e8] min-h-[240px] sm:min-h-[300px] lg:min-h-[340px]">
+              <svg viewBox="0 0 640 340" width="100%" height="100%" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
+                <rect width="640" height="340" fill="#c8c8c8" />
+                <rect x="0" y="160" width="640" height="180" fill="#a0a0a0" />
+                <rect x="60" y="100" width="220" height="90" rx="2" fill="#d5d5d5" />
+                <rect x="80" y="82" width="180" height="24" rx="3" fill="#b0b0b0" />
+                <rect x="290" y="110" width="130" height="80" rx="2" fill="#cccccc" />
+                <rect x="430" y="115" width="100" height="75" rx="2" fill="#d0d0d0" />
+                <rect x="60" y="190" width="360" height="50" rx="2" fill="#999" />
+                {[0, 40, 80, 120, 360, 400, 440, 520, 560, 600].map((x, i) => (
+                  <ellipse key={i} cx={x + 25} cy="178" rx="14" ry="10" fill="#888" />
+                ))}
+                <rect x="0" y="242" width="640" height="4" fill="#aaa" />
+              </svg>
+              {/* Overlay badge */}
+              <div className="absolute bottom-3 right-3 bg-[rgba(76,81,84,0.85)] text-white px-3 py-1.5 text-[10px] font-semibold tracking-wider rounded-sm">
+                {lang === "uk" ? "Теон — Hüllhorst" : lang === "pl" ? "Teon — Hüllhorst" : "Teon — Hüllhorst"}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <QuickLinksSection />
 
-      <div className="bg-[#f5f5f5] px-4 py-10 sm:py-12 md:py-[50px]">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="mb-7 text-center text-lg font-bold tracking-wide text-[#4C5154] sm:text-xl md:text-[22px]">{t("products.title")}</h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-[18px] lg:grid-cols-4">
-            {products.map((product, idx) => (
-              <Link key={product.id} href={`/products/${product.slug}`} className="block cursor-pointer border border-[#d0d0d0] border-t-[3px] border-t-[#4C5154] bg-white px-4 py-5 text-center no-underline transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(76,81,84,0.14)] sm:px-4 sm:py-5">
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: "14px" }}><MachineryIllustration type={productIcons[idx]} /></div>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", marginBottom: "10px" }}>
-                  <div style={{ width: "26px", height: "26px", borderRadius: "50%", border: "2px solid #4C5154", backgroundColor: "#4C5154", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}><span style={{ color: "#fff", fontSize: "6px", fontWeight: "bold" }}>KREI</span></div>
-                  <h3 style={{ color: "#4C5154", fontSize: "11px", fontWeight: "bold", letterSpacing: "0.5px", margin: 0 }}>{product.name}</h3>
-                </div>
-                <p style={{ color: "#000", fontSize: "12px", lineHeight: "1.5", margin: "0 0 14px" }}>{product.description}</p>
-                <span style={{ color: "#4C5154", fontSize: "12px", fontWeight: "bold", display: "inline-flex", alignItems: "center", gap: "4px", borderBottom: "1px solid #4C5154", paddingBottom: "2px" }}>{t("products.more")} <ArrowRight size={12} /></span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Products Showcase */}
+      <ProductsShowcase />
 
       <div className="bg-[#4C5154] px-4 py-10 text-white sm:py-12 md:py-[50px]">
         <div className="mx-auto max-w-[1200px]">

@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, Search, X } from "lucide-react";
 import { useLanguage, type Language } from "@/context/LanguageContext";
-import logoImage from "@/assets/Logo-ChemTech.png";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +20,16 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const { lang, setLang, t } = useLanguage();
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleSearch = useCallback((e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = searchQuery.trim();
+    if (!trimmed) return;
+    router.push(`/search?q=${encodeURIComponent(trimmed)}`);
+    setSearchQuery("");
+    setSearchOpen(false);
+  }, [searchQuery, router]);
 
   const navItems = [
     { labelKey: "nav.company", href: "/company" },
@@ -87,17 +96,14 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="sticky top-0 z-40 border-b-2 border-[#4C5154] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)]">
+      <div className="sticky top-0 z-40 border-b-2 border-[#3a3f42] bg-[#4C5154] shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
         <div className="mx-auto flex min-h-[72px] max-w-[1200px] items-center justify-between gap-2 px-4 py-2 md:py-0">
           <Link href="/" className="flex min-w-0 shrink items-center no-underline">
-            <div>
-              <div className="text-base font-bold leading-tight tracking-wide text-[#4C5154] md:text-[21px]">
-                ТЕОН
-              </div>
-              <div className="text-[8px] font-semibold tracking-[2px] text-[#4C5154] md:text-[9.5px] md:tracking-[3.5px]">
-                MACHINES & ENGINEERING
-              </div>
-            </div>
+            <img
+              src="/teon-logo.png"
+              alt="TEON"
+              className="h-10 w-auto object-contain md:h-12 lg:h-14 brightness-0 invert"
+            />
           </Link>
 
           <nav className="hidden h-[72px] items-stretch md:flex">
@@ -110,8 +116,8 @@ export default function Header() {
                   className={cn(
                     "box-border flex items-center border-b-[3px] px-4 pb-0 pt-0.5 text-[13px] font-bold tracking-wide no-underline transition-colors",
                     isActive
-                      ? "border-[#4C5154] text-[#4C5154]"
-                      : "border-transparent text-[#000] hover:border-[#4C5154] hover:text-[#4C5154]"
+                      ? "border-white text-white"
+                      : "border-transparent text-white/80 hover:border-white/50 hover:text-white"
                   )}
                 >
                   {t(item.labelKey)}
@@ -122,7 +128,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setSearchOpen((o) => !o)}
-              className="flex min-h-11 min-w-11 items-center justify-center border-0 bg-transparent px-3 text-[#000] hover:text-[#4C5154]"
+              className="flex min-h-11 min-w-11 items-center justify-center border-0 bg-transparent px-3 text-white/80 hover:text-white"
               aria-expanded={searchOpen}
               aria-label={searchOpen ? t("search.close") : t("search.open")}
             >
@@ -131,15 +137,10 @@ export default function Header() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-0.5 md:gap-1">
-            <img
-              src={logoImage as unknown as string}
-              alt=""
-              className="hidden h-12 w-auto object-contain md:block lg:h-[68px]"
-            />
             <button
               type="button"
               onClick={() => setSearchOpen((o) => !o)}
-              className="flex min-h-11 min-w-11 items-center justify-center rounded border-0 bg-transparent text-[#000] hover:text-[#4C5154] md:hidden"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded border-0 bg-transparent text-white/80 hover:text-white md:hidden"
               aria-expanded={searchOpen}
               aria-label={searchOpen ? t("search.close") : t("search.open")}
             >
@@ -147,7 +148,7 @@ export default function Header() {
             </button>
             <button
               type="button"
-              className="flex min-h-11 min-w-11 items-center justify-center rounded border-0 bg-transparent text-[#4C5154] hover:bg-[#f5f5f5] md:hidden"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded border-0 bg-transparent text-white/80 hover:bg-white/10 md:hidden"
               onClick={() => setMenuOpen(true)}
               aria-expanded={menuOpen}
               aria-controls="mobile-navigation"
@@ -193,7 +194,7 @@ export default function Header() {
         </Sheet>
 
         {searchOpen && (
-          <div className="border-t border-[#ddd] bg-[#fafafa] px-4 py-3">
+          <form onSubmit={handleSearch} className="border-t border-[#ddd] bg-[#fafafa] px-4 py-3">
             <div className="mx-auto max-w-[1200px]">
               <div className="flex items-center border border-[#4C5154] bg-white">
                 <input
@@ -213,7 +214,7 @@ export default function Header() {
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         )}
       </div>
     </header>
