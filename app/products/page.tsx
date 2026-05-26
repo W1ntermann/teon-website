@@ -2,10 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts } from "@/translations/productData";
 import { ProductSlider } from "@/components/ProductSlider";
-import { ChevronRight, ArrowRight, Check, ArrowUpRight, SlidersHorizontal } from "lucide-react";
+import {
+  ChevronRight,
+  ArrowRight,
+  Check,
+  ArrowUpRight,
+  SlidersHorizontal,
+  Maximize2,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Products() {
@@ -20,21 +28,32 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-[#fafafa] font-sans" style={{ fontFamily: "Arial, sans-serif" }}>
-      {/* Header */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#3a3f42] via-[#4C5154] to-[#3a3f42]">
-        <div className="absolute inset-0 opacity-[0.03]"
+      {/* Hero Header */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#2d3235] via-[#3a3f42] to-[#4C5154]">
+        {/* Background pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: "radial-gradient(circle at 20% 80%, #fff 1px, transparent 1px), radial-gradient(circle at 80% 20%, #fff 1px, transparent 1px)",
+            backgroundImage:
+              "radial-gradient(circle at 20% 80%, #fff 1px, transparent 1px), radial-gradient(circle at 80% 20%, #fff 1px, transparent 1px)",
             backgroundSize: "60px 60px, 40px 40px",
           }}
         />
         <div className="relative mx-auto max-w-[1200px] px-4 py-10 sm:py-14 md:py-16">
+          {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-[13px] text-white/50">
-            <Link href="/" className="text-white/50 no-underline transition-colors hover:text-white/80">{t("breadcrumb.home")}</Link>
+            <Link
+              href="/"
+              className="text-white/50 no-underline transition-colors hover:text-white/80"
+            >
+              {t("breadcrumb.home")}
+            </Link>
             <ChevronRight size={12} />
             <span className="text-white/90">{t("breadcrumb.products")}</span>
           </div>
-          <h1 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl lg:text-[38px]">
+
+          {/* Title & Subtitle */}
+          <h1 className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl lg:text-[38px]">
             {t("products.page.title")}
           </h1>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/60 sm:text-base">
@@ -83,27 +102,40 @@ export default function Products() {
       <div className="mx-auto max-w-[1200px] px-4 py-8 sm:py-10 md:py-12">
         {filtered.length === 0 ? (
           <div className="py-20 text-center">
-            <p className="text-[#999] text-sm">{t("products.no_products") || "No products found"}</p>
+            <p className="text-[#999] text-sm">
+              {t("products.no_products") || "No products found"}
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-6 md:gap-8">
             {filtered.map((product, idx) => (
-              <article
+              <motion.article
                 key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.08, duration: 0.4 }}
                 className="group relative overflow-hidden rounded-2xl border border-[#e5e5e5] bg-white transition-all duration-300 hover:border-[#4C5154]/30 hover:shadow-xl hover:shadow-[#4C5154]/5"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] xl:grid-cols-[minmax(0,380px)_1fr]">
+                <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,340px)_1fr] xl:grid-cols-[minmax(0,420px)_1fr]">
                   {/* Image Area */}
-                  <div className="relative overflow-hidden bg-[#e8e8e8] lg:min-h-[320px]">
-                    <ProductSlider photos={product.photos} productName={product.name} className="h-full" />
+                  <div className="relative overflow-hidden bg-[#e8e8e8] lg:min-h-[340px]">
+                    <ProductSlider
+                      photos={product.photos}
+                      productName={product.name}
+                      className="h-full"
+                      aspectRatio="square"
+                    />
+
                     {/* Brand Badge */}
                     <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-lg bg-white/90 px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
                       <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#4C5154]">
                         <span className="text-[7px] font-bold text-white">K</span>
                       </div>
-                      <span className="text-[10px] font-bold tracking-[2px] text-[#4C5154]">KREI</span>
+                      <span className="text-[10px] font-bold tracking-[2px] text-[#4C5154]">
+                        KREI
+                      </span>
                     </div>
-                    {/* Category floating tag */}
+                    {/* Category tag */}
                     <div className="absolute right-3 top-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
                       {product.category}
                     </div>
@@ -139,9 +171,15 @@ export default function Products() {
                         {product.features.slice(0, 6).map((feature) => (
                           <div key={feature} className="flex items-start gap-2">
                             <div className="mt-[3px] flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#4C5154]/10">
-                              <Check size={10} className="text-[#4C5154]" strokeWidth={3} />
+                              <Check
+                                size={10}
+                                className="text-[#4C5154]"
+                                strokeWidth={3}
+                              />
                             </div>
-                            <span className="text-[12px] text-[#666] sm:text-[13px]">{feature}</span>
+                            <span className="text-[12px] text-[#666] sm:text-[13px]">
+                              {feature}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -166,7 +204,7 @@ export default function Products() {
                     </div>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         )}
@@ -175,7 +213,7 @@ export default function Products() {
       {/* CTA Banner */}
       <div className="border-t border-[#e5e5e5] bg-white">
         <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-14">
-          <div className="flex flex-col items-center gap-6 rounded-2xl bg-gradient-to-br from-[#3a3f42] to-[#4C5154] p-6 text-center sm:p-10 md:flex-row md:justify-between md:text-left md:px-10 md:py-10">
+          <div className="flex flex-col items-center gap-6 rounded-2xl bg-gradient-to-br from-[#2d3235] via-[#3a3f42] to-[#4C5154] p-6 text-center sm:p-10 md:flex-row md:justify-between md:text-left md:px-10 md:py-10">
             <div>
               <h3 className="text-lg font-bold text-white sm:text-xl md:text-[22px]">
                 {lang === "uk"
