@@ -56,8 +56,8 @@ export default function Header() {
   return (
     <header>
       <div className="border-b border-[#ccc] bg-[#ffffff]">
-        <div className="mx-auto flex max-w-[1200px] flex-col gap-2 px-4 py-1.5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap items-center gap-1">
+        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-1.5 px-4 py-1.5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center justify-center gap-1 sm:justify-start">
             {languages.map((language) => (
               <button
                 key={language.code}
@@ -78,12 +78,12 @@ export default function Header() {
             ))}
           </div>
 
-          <nav className="flex flex-wrap items-center justify-end gap-y-1 sm:justify-end">
+          <nav className="flex flex-wrap items-center justify-center gap-y-0.5 sm:justify-end">
             {topItems.map((item, idx) => (
               <span key={item.labelKey} className="flex items-center">
                 <a
                   href={item.href}
-                  className="px-2 py-1 text-xs text-[#000] no-underline transition-colors hover:text-[#1E3A5F]"
+                  className="px-1.5 py-1 text-[11px] text-[#000] no-underline transition-colors hover:text-[#1E3A5F] sm:px-2 sm:text-xs"
                 >
                   {t(item.labelKey)}
                 </a>

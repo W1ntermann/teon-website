@@ -81,7 +81,7 @@ export default function Home() {
       <div className="md:hidden">
         <div className="grid grid-cols-1 xs:grid-cols-2 auto-rows-fr">
           {products.map((product, idx) => (
-            <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-2.5 bg-[rgba(30,58,95,0.82)] px-3 py-3.5 no-underline hover:bg-[rgba(30,58,95,0.92)] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4", idx % 2 === 0 && "border-r border-white/10", idx < 2 && "border-b border-white/10")}>
+              <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-2.5 bg-[#1E3A5F] px-3 py-3.5 no-underline hover:bg-[#152B47] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4", idx % 2 === 0 && "border-r border-white/10", idx < 2 && "border-b border-white/10")}>
               <div className="flex shrink-0 items-center justify-center">
                 <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-9 w-9 sm:h-9 sm:w-9 transition-transform group-hover:scale-105">
                   <span className="font-bold text-white text-[7px] sm:text-[7px]">KREI</span>
