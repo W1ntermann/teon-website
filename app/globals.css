@@ -22,38 +22,38 @@
 
   --background: 0 0% 100%;
   --foreground: 0 0% 0%;
-  --border: 210 5% 80%;
+  --border: 211 20% 85%;
   --card: 0 0% 100%;
   --card-foreground: 0 0% 0%;
-  --card-border: 210 5% 80%;
+  --card-border: 211 20% 85%;
   --sidebar: 0 0% 98%;
   --sidebar-foreground: 0 0% 0%;
-  --sidebar-border: 210 5% 80%;
-  --sidebar-primary: 210 4% 31%;
+  --sidebar-border: 211 20% 85%;
+  --sidebar-primary: 211 52% 25%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 210 4% 24%;
+  --sidebar-accent: 211 52% 19%;
   --sidebar-accent-foreground: 0 0% 100%;
-  --sidebar-ring: 210 4% 31%;
+  --sidebar-ring: 211 52% 25%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 0%;
-  --popover-border: 210 5% 80%;
-  --primary: 210 4% 31%;
+  --popover-border: 211 20% 85%;
+  --primary: 211 52% 25%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 210 4% 24%;
+  --secondary: 211 52% 19%;
   --secondary-foreground: 0 0% 100%;
-  --muted: 210 4% 24%;
+  --muted: 211 52% 19%;
   --muted-foreground: 0 0% 85%;
-  --accent: 210 4% 24%;
+  --accent: 211 52% 19%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --input: 210 5% 80%;
-  --ring: 210 4% 31%;
-  --chart-1: 210 4% 31%;
-  --chart-2: 210 4% 40%;
-  --chart-3: 210 4% 50%;
-  --chart-4: 210 4% 60%;
-  --chart-5: 210 4% 70%;
+  --input: 211 20% 85%;
+  --ring: 211 52% 25%;
+  --chart-1: 211 52% 25%;
+  --chart-2: 211 52% 35%;
+  --chart-3: 211 52% 45%;
+  --chart-4: 211 52% 55%;
+  --chart-5: 211 52% 65%;
 
   --app-font-sans: var(--font-inter), 'Arial', 'Helvetica', sans-serif;
   --app-font-heading: var(--font-ibm-plex-sans), 'Arial', 'Helvetica', sans-serif;
@@ -84,12 +84,12 @@
   }
 }
 
-.theon-gray {
-  background-color: #4C5154;
+.theon-blue {
+  background-color: #1E3A5F;
 }
 
-.theon-gray-text {
-  color: #4C5154;
+.theon-blue-text {
+  color: #1E3A5F;
 }
 
 .hero-slider {
@@ -98,12 +98,12 @@
 }
 
 .product-card-overlay {
-  background: rgba(76, 81, 84, 0.75);
+  background: rgba(30, 58, 95, 0.75);
   transition: background 0.3s ease;
 }
 
 .product-card-overlay:hover {
-  background: rgba(76, 81, 84, 0.9);
+  background: rgba(30, 58, 95, 0.9);
 }
 
 .nav-link {
@@ -111,7 +111,7 @@
 }
 
 .nav-link:hover {
-  color: #4C5154;
+  color: #1E3A5F;
 }
 
 .carousel-dot {

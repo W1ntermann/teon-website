@@ -69,8 +69,8 @@ export default function Header() {
                 className={cn(
                   "inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1",
                   lang === language.code
-                    ? "bg-[#4C5154] text-white border border-[#4C5154]"
-                    : "bg-transparent text-[#000] border border-transparent hover:bg-[#f5f5f5] hover:text-[#4C5154]"
+                    ? "bg-[#1E3A5F] text-white border border-[#1E3A5F]"
+                    : "bg-transparent text-[#000] border border-transparent hover:bg-[#f0f5fa] hover:text-[#1E3A5F]"
                 )}
               >
                 <span className={cn("text-xs tracking-wide", lang === language.code && "font-semibold")}>{language.code === "uk" ? "UA" : language.code.toUpperCase()}</span>
@@ -83,7 +83,7 @@ export default function Header() {
               <span key={item.labelKey} className="flex items-center">
                 <a
                   href={item.href}
-                  className="px-2 py-1 text-xs text-[#000] no-underline transition-colors hover:text-[#4C5154]"
+                  className="px-2 py-1 text-xs text-[#000] no-underline transition-colors hover:text-[#1E3A5F]"
                 >
                   {t(item.labelKey)}
                 </a>
@@ -96,7 +96,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="sticky top-0 z-40 border-b-2 border-[#3a3f42] bg-[#4C5154] shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
+      <div className="sticky top-0 z-40 border-b-2 border-[#152B47] bg-[#1E3A5F] shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
         <div className="mx-auto flex min-h-[72px] max-w-[1200px] items-center justify-between gap-2 px-4 py-2 md:py-0">
           <Link href="/" className="flex min-w-0 shrink items-center no-underline">
             <img
@@ -162,7 +162,7 @@ export default function Header() {
         <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
           <SheetContent side="right" className="w-[min(100%,380px)]" id="mobile-navigation">
             <SheetHeader className="text-left">
-              <SheetTitle className="text-[#4C5154]">{t("nav.menu")}</SheetTitle>
+              <SheetTitle className="text-[#1E3A5F]">{t("nav.menu")}</SheetTitle>
             </SheetHeader>
             <nav className="mt-6 flex flex-col gap-1" aria-label="Mobile">
               {navItems.map((item) => {
@@ -174,7 +174,7 @@ export default function Header() {
                     onClick={() => setMenuOpen(false)}
                     className={cn(
                       "rounded-md px-4 py-3 text-base font-bold no-underline transition-colors",
-                      isActive ? "bg-[#4C5154]/10 text-[#4C5154]" : "text-[#000] hover:bg-[#f5f5f5]"
+                      isActive ? "bg-[#1E3A5F]/10 text-[#1E3A5F]" : "text-[#000] hover:bg-[#f0f5fa]"
                     )}
                   >
                     {t(item.labelKey)}
@@ -196,7 +196,7 @@ export default function Header() {
         {searchOpen && (
           <form onSubmit={handleSearch} className="border-t border-[#ddd] bg-[#fafafa] px-4 py-3">
             <div className="mx-auto max-w-[1200px]">
-              <div className="flex items-center border border-[#4C5154] bg-white">
+              <div className="flex items-center border border-[#1E3A5F] bg-white">
                 <input
                   type="search"
                   placeholder={t("search.placeholder")}
@@ -207,7 +207,7 @@ export default function Header() {
                 />
                 <button
                   type="submit"
-                  className="flex min-h-11 min-w-11 shrink-0 items-center justify-center bg-[#4C5154] px-4 text-white"
+                  className="flex min-h-11 min-w-11 shrink-0 items-center justify-center bg-[#1E3A5F] px-4 text-white"
                   aria-label={t("search.submit")}
                 >
                   <Search size={18} />

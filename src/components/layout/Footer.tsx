@@ -7,7 +7,7 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-[#4C5154] text-white">
+    <footer className="bg-[#1E3A5F] text-white">
       <div className="mx-auto max-w-[1200px] px-4 py-10">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -84,7 +84,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="bg-[#3a3f42] px-4 py-3">
+      <div className="bg-[#152B47] px-4 py-3">
         <div className="mx-auto flex max-w-[1200px] flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-center text-xs text-white/65 sm:text-left">{t("footer.rights")}</div>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-end">

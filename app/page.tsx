@@ -59,9 +59,9 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 z-10">
           <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 auto-rows-fr">
             {products.map((product, idx) => (
-              <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-2.5 bg-[rgba(76,81,84,0.82)] px-3 py-3.5 no-underline hover:bg-[rgba(76,81,84,0.92)] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4 md:gap-3.5 md:px-5 md:py-4", idx % 2 === 0 && "border-r border-white/10", idx < 2 && "border-b border-white/10 md:border-b-0", idx < 3 && "md:border-r md:border-white/10", idx === products.length - 1 && idx % 2 === 1 && "md:border-r-0")}>
+              <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-2.5 bg-[rgba(30,58,95,0.82)] px-3 py-3.5 no-underline hover:bg-[rgba(30,58,95,0.92)] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4 md:gap-3.5 md:px-5 md:py-4", idx % 2 === 0 && "border-r border-white/10", idx < 2 && "border-b border-white/10 md:border-b-0", idx < 3 && "md:border-r md:border-white/10", idx === products.length - 1 && idx % 2 === 1 && "md:border-r-0")}>
                 <div className="flex shrink-0 items-center justify-center">
-                  <div className={cn("flex items-center justify-center rounded-full border-2 border-white bg-[#4C5154] h-9 w-9 sm:h-9 sm:w-9 md:h-10 md:w-10 transition-transform group-hover:scale-105")}>
+                  <div className={cn("flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-9 w-9 sm:h-9 sm:w-9 md:h-10 md:w-10 transition-transform group-hover:scale-105")}>
                     <span className={cn("font-bold text-white text-[7px] sm:text-[7px] md:text-[8px]")}>KREI</span>
                   </div>
                 </div>
@@ -83,7 +83,7 @@ export default function Home() {
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-12 xl:gap-14">
             {/* Text Column */}
             <div>
-              <span className="mb-3 inline-block text-[10px] font-bold uppercase tracking-[4px] text-[#4C5154]/50">
+              <span className="mb-3 inline-block text-[10px] font-bold uppercase tracking-[4px] text-[#1E3A5F]/50">
                 {t("about.title")}
               </span>
               <p className="text-[14px] leading-[1.9] text-[#333] sm:text-[15px]">
@@ -96,19 +96,19 @@ export default function Home() {
               {/* Stats row */}
               <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
                 <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center">
-                  <div className="text-xl font-bold tracking-tight text-[#4C5154] sm:text-2xl">1889</div>
+                  <div className="text-xl font-bold tracking-tight text-[#1E3A5F] sm:text-2xl">1889</div>
                   <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#888]">
                     {lang === "uk" ? "Засновано" : lang === "pl" ? "Założona" : "Founded"}
                   </div>
                 </div>
                 <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center">
-                  <div className="text-xl font-bold tracking-tight text-[#4C5154] sm:text-2xl">130+</div>
+                  <div className="text-xl font-bold tracking-tight text-[#1E3A5F] sm:text-2xl">130+</div>
                   <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#888]">
                     {lang === "uk" ? "Років досвіду" : lang === "pl" ? "Lat doświadczenia" : "Years experience"}
                   </div>
                 </div>
                 <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center col-span-2 sm:col-span-1">
-                  <div className="text-xl font-bold tracking-tight text-[#4C5154] sm:text-2xl">50+</div>
+                  <div className="text-xl font-bold tracking-tight text-[#1E3A5F] sm:text-2xl">50+</div>
                   <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#888]">
                     {lang === "uk" ? "Країн" : lang === "pl" ? "Krajów" : "Countries"}
                   </div>
@@ -132,7 +132,7 @@ export default function Home() {
                 <rect x="0" y="242" width="640" height="4" fill="#aaa" />
               </svg>
               {/* Overlay badge */}
-              <div className="absolute bottom-3 right-3 bg-[rgba(76,81,84,0.85)] text-white px-3 py-1.5 text-[10px] font-semibold tracking-wider rounded-sm">
+              <div className="absolute bottom-3 right-3 bg-[rgba(30,58,95,0.85)] text-white px-3 py-1.5 text-[10px] font-semibold tracking-wider rounded-sm">
                 {lang === "uk" ? "Теон — Hüllhorst" : lang === "pl" ? "Teon — Hüllhorst" : "Teon — Hüllhorst"}
               </div>
             </div>
@@ -150,18 +150,18 @@ export default function Home() {
 
       <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-[50px]">
         <div className="mb-5 flex flex-col gap-3 sm:mb-[22px] sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="m-0 text-lg font-bold tracking-wide text-[#4C5154] sm:text-xl md:text-[22px]">{t("news.title")}</h2>
-          <a href="#" className="flex w-fit shrink-0 items-center gap-1 text-sm font-bold text-[#4C5154] no-underline">{t("news.all")} <ArrowRight size={14} /></a>
+          <h2 className="m-0 text-lg font-bold tracking-wide text-[#1E3A5F] sm:text-xl md:text-[22px]">{t("news.title")}</h2>
+          <a href="#" className="flex w-fit shrink-0 items-center gap-1 text-sm font-bold text-[#1E3A5F] no-underline">{t("news.all")} <ArrowRight size={14} /></a>
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-[22px]">
           {news.map((item) => (
-            <div key={item.title} style={{ border: "1px solid #d0d0d0", padding: "20px", cursor: "pointer", borderTop: "3px solid #4C5154", transition: "box-shadow 0.2s" }}
+            <div key={item.title} style={{ border: "1px solid #d0d0d0", padding: "20px", cursor: "pointer", borderTop: "3px solid #1E3A5F", transition: "box-shadow 0.2s" }}
               onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 16px rgba(0,0,0,0.09)")}
               onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.boxShadow = "none")}>
               <div style={{ color: "#666", fontSize: "12px", marginBottom: "8px" }}>{item.date}</div>
-              <h3 style={{ color: "#4C5154", fontSize: "14px", fontWeight: "bold", marginBottom: "10px", lineHeight: "1.4" }}>{item.title}</h3>
+              <h3 style={{ color: "#1E3A5F", fontSize: "14px", fontWeight: "bold", marginBottom: "10px", lineHeight: "1.4" }}>{item.title}</h3>
               <p style={{ color: "#000", fontSize: "13px", lineHeight: "1.6", margin: "0 0 14px" }}>{item.text}</p>
-              <a href="#" style={{ color: "#4C5154", fontSize: "12px", textDecoration: "none", fontWeight: "bold", display: "inline-flex", alignItems: "center", gap: "4px" }}>{t("news.read_more")} <ArrowRight size={12} /></a>
+              <a href="#" style={{ color: "#1E3A5F", fontSize: "12px", textDecoration: "none", fontWeight: "bold", display: "inline-flex", alignItems: "center", gap: "4px" }}>{t("news.read_more")} <ArrowRight size={12} /></a>
             </div>
           ))}
         </div>
@@ -169,12 +169,12 @@ export default function Home() {
 
       <div className="bg-[#f5f5f5] px-4 py-8 sm:py-10 md:py-10 md:pb-11">
         <div className="mx-auto max-w-[1200px]">
-          <h2 className="mb-5 text-lg font-bold tracking-wide text-[#4C5154] sm:text-xl md:mb-[22px] md:text-[22px]">{t("exhibitions.title")}</h2>
+          <h2 className="mb-5 text-lg font-bold tracking-wide text-[#1E3A5F] sm:text-xl md:mb-[22px] md:text-[22px]">{t("exhibitions.title")}</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shows.map((show) => (
               <div key={show.name} style={{ backgroundColor: "#fff", border: "1px solid #d0d0d0", padding: "16px" }}>
-                <div style={{ color: "#4C5154", fontSize: "12px", fontWeight: "bold", marginBottom: "6px" }}>{show.date}</div>
-                <div style={{ color: "#4C5154", fontSize: "14px", fontWeight: "bold", marginBottom: "4px" }}>{show.name}</div>
+                <div style={{ color: "#1E3A5F", fontSize: "12px", fontWeight: "bold", marginBottom: "6px" }}>{show.date}</div>
+                <div style={{ color: "#1E3A5F", fontSize: "14px", fontWeight: "bold", marginBottom: "4px" }}>{show.name}</div>
                 <div style={{ color: "#000", fontSize: "12px" }}>{show.city}</div>
                 <div style={{ color: "#666", fontSize: "11px", marginTop: "4px" }}>{show.hall}</div>
               </div>

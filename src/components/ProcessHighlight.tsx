@@ -5,7 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 function DispersingIcon() {
   return (
-    <svg viewBox="0 0 80 80" width="48" height="48" className="text-[#4C5154]">
+    <svg viewBox="0 0 80 80" width="48" height="48" className="text-[#1E3A5F]">
       <circle cx="40" cy="40" r="36" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.3" />
       <circle cx="40" cy="40" r="28" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.5" />
       <circle cx="40" cy="40" r="16" fill="currentColor" opacity="0.15" />
@@ -30,7 +30,7 @@ function DispersingIcon() {
 
 function MixingIcon() {
   return (
-    <svg viewBox="0 0 80 80" width="48" height="48" className="text-[#4C5154]">
+    <svg viewBox="0 0 80 80" width="48" height="48" className="text-[#1E3A5F]">
       {/* vessel */}
       <path d="M20 70 L24 18 L56 18 L60 70 Z" fill="none" stroke="currentColor" strokeWidth="2" />
       {/* shaft */}
@@ -48,7 +48,7 @@ function MixingIcon() {
 
 function GrindingIcon() {
   return (
-    <svg viewBox="0 0 80 80" width="48" height="48" className="text-[#4C5154]">
+    <svg viewBox="0 0 80 80" width="48" height="48" className="text-[#1E3A5F]">
       {/* outer ring */}
       <circle cx="40" cy="40" r="34" fill="none" stroke="currentColor" strokeWidth="2" />
       {/* inner ring */}
@@ -86,7 +86,7 @@ export function ProcessHighlight() {
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #4C5154 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle at 1px 1px, #1E3A5F 1px, transparent 1px)`,
           backgroundSize: "40px 40px",
         }}
       />
@@ -94,10 +94,10 @@ export function ProcessHighlight() {
       <div className="relative mx-auto max-w-[1200px] px-4">
         {/* Section Header */}
         <div className="mb-10 text-center md:mb-14">
-          <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[4px] text-[#4C5154]/50">
+          <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[4px] text-[#1E3A5F]/50">
             KREI
           </span>
-          <h2 className="text-xl font-bold tracking-[3px] text-[#4C5154] sm:text-2xl md:text-[26px]">
+          <h2 className="text-xl font-bold tracking-[3px] text-[#1E3A5F] sm:text-2xl md:text-[26px]">
             {t("hero.tagline1")}
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-sm font-medium tracking-[1px] text-[#000] sm:text-[15px]">
@@ -117,19 +117,19 @@ export function ProcessHighlight() {
               className="group relative"
             >
               {/* Card */}
-              <div className="relative flex h-full flex-col items-center rounded-sm border border-[#e0e0e0] bg-[#fafafa] p-6 pt-10 text-center transition-all duration-300 hover:border-[#4C5154]/30 hover:bg-white hover:shadow-lg hover:shadow-[#4C5154]/5 sm:p-7 sm:pt-12 md:p-8 md:pt-14">
+              <div className="relative flex h-full flex-col items-center rounded-sm border border-[#e0e0e0] bg-[#fafafa] p-6 pt-10 text-center transition-all duration-300 hover:border-[#1E3A5F]/30 hover:bg-white hover:shadow-lg hover:shadow-[#1E3A5F]/5 sm:p-7 sm:pt-12 md:p-8 md:pt-14">
                 {/* Number watermark */}
-                <span className="pointer-events-none absolute right-4 top-3 select-none text-[52px] font-bold leading-none text-[#4C5154]/[0.05] sm:text-[60px] md:text-[68px]">
+                <span className="pointer-events-none absolute right-4 top-3 select-none text-[52px] font-bold leading-none text-[#1E3A5F]/[0.05] sm:text-[60px] md:text-[68px]">
                   {proc.number}
                 </span>
 
                 {/* Icon */}
-                <div className="relative z-10 mb-4 flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#4C5154]/15 bg-white transition-all duration-300 group-hover:border-[#4C5154]/30 group-hover:bg-[#4C5154]/5 sm:mb-5 sm:h-[72px] sm:w-[72px]">
+                <div className="relative z-10 mb-4 flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#1E3A5F]/15 bg-white transition-all duration-300 group-hover:border-[#1E3A5F]/30 group-hover:bg-[#1E3A5F]/5 sm:mb-5 sm:h-[72px] sm:w-[72px]">
                   <proc.icon />
                 </div>
 
                 {/* Title */}
-                <h3 className="relative z-10 mb-3 text-lg font-bold tracking-wide text-[#4C5154] sm:text-xl">
+                <h3 className="relative z-10 mb-3 text-lg font-bold tracking-wide text-[#1E3A5F] sm:text-xl">
                   {t(proc.titleKey)}
                 </h3>
 
@@ -139,7 +139,7 @@ export function ProcessHighlight() {
                 </p>
 
                 {/* Bottom accent line */}
-                <div className="mt-5 h-[2px] w-10 bg-[#4C5154]/20 transition-all duration-300 group-hover:w-16 group-hover:bg-[#4C5154]/50 sm:mt-6" />
+                <div className="mt-5 h-[2px] w-10 bg-[#1E3A5F]/20 transition-all duration-300 group-hover:w-16 group-hover:bg-[#1E3A5F]/50 sm:mt-6" />
               </div>
             </motion.div>
           ))}
@@ -149,7 +149,7 @@ export function ProcessHighlight() {
         <div className="mx-auto mt-12 flex max-w-[600px] items-center gap-4 md:mt-16">
           <div className="h-px flex-1 bg-[#d0d0d0]" />
           <div className="flex h-6 w-6 items-center justify-center rounded-full border border-[#d0d0d0] bg-white">
-            <span className="text-[8px] font-bold text-[#4C5154]">K</span>
+            <span className="text-[8px] font-bold text-[#1E3A5F]">K</span>
           </div>
           <div className="h-px flex-1 bg-[#d0d0d0]" />
         </div>

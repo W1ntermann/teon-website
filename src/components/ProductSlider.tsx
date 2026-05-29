@@ -169,7 +169,7 @@ export function ProductSlider({
               className={cn(
                 "relative h-2 rounded-full transition-all duration-300",
                 index === selectedIndex
-                  ? "w-6 bg-[#4C5154]"
+                  ? "w-6 bg-[#1E3A5F]"
                   : "w-2 bg-[#c0c0c0] hover:bg-[#999]"
               )}
               aria-label={`Go to slide ${index + 1}`}

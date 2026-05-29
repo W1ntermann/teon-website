@@ -50,8 +50,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         theon: {
-          gray: "#4C5154",
-          "gray-dark": "#3a3f42",
+          blue: "#1E3A5F",
+          "blue-dark": "#152B47",
+          "blue-darker": "#0F1F33",
         },
       },
       borderRadius: {

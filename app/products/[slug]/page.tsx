@@ -29,7 +29,7 @@ export default function ProductDetail() {
         style={{ fontFamily: "Arial, sans-serif" }}
       >
         <div className="px-4 py-20 text-center">
-          <h1 className="text-2xl font-bold text-[#4C5154]">
+          <h1 className="text-2xl font-bold text-[#1E3A5F]">
             {lang === "uk"
               ? "Продукт не знайдено"
               : lang === "pl"
@@ -38,7 +38,7 @@ export default function ProductDetail() {
           </h1>
           <Link
             href="/products"
-            className="mt-4 inline-block font-medium text-[#4C5154] hover:underline"
+            className="mt-4 inline-block font-medium text-[#1E3A5F] hover:underline"
           >
             ← {t("product.back")}
           </Link>
@@ -67,7 +67,7 @@ export default function ProductDetail() {
       style={{ fontFamily: "Arial, sans-serif" }}
     >
       {/* Hero Header */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#2d3235] via-[#3a3f42] to-[#4C5154]">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#0F1F33] via-[#152B47] to-[#1E3A5F]">
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
@@ -125,13 +125,13 @@ export default function ProductDetail() {
               key={s}
               href={`/products/${s}`}
               className="relative shrink-0 whitespace-nowrap px-4 py-3.5 text-[12px] font-bold no-underline transition-all duration-200 sm:px-5 sm:text-[13px]"
-              style={{
-                color: i === currentIndex ? "#4C5154" : "#888",
-              }}
-            >
-              {names[i]}
-              {i === currentIndex && (
-                <span className="absolute bottom-0 left-1/2 h-[3px] w-10 -translate-x-1/2 rounded-full bg-[#4C5154] sm:w-12" />
+                style={{
+                  color: i === currentIndex ? "#1E3A5F" : "#888",
+                }}
+              >
+                {names[i]}
+                {i === currentIndex && (
+                  <span className="absolute bottom-0 left-1/2 h-[3px] w-10 -translate-x-1/2 rounded-full bg-[#1E3A5F] sm:w-12" />
               )}
             </Link>
           ))}
@@ -161,12 +161,12 @@ export default function ProductDetail() {
             <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <Link
                 href="/contact"
-                className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#4C5154] px-5 py-3 text-center text-sm font-semibold text-white no-underline shadow-sm shadow-[#4C5154]/20 transition-all duration-200 hover:bg-[#3a3f42] hover:shadow-md"
+                className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#1E3A5F] px-5 py-3 text-center text-sm font-semibold text-white no-underline shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md"
               >
                 <Mail size={16} />
                 {t("product.request")}
               </Link>
-              <button className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-[#4C5154] bg-white px-5 py-3 text-center text-sm font-semibold text-[#4C5154] transition-all duration-200 hover:bg-[#4C5154]/5">
+              <button className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-[#1E3A5F] bg-white px-5 py-3 text-center text-sm font-semibold text-[#1E3A5F] transition-all duration-200 hover:bg-[#1E3A5F]/5">
                 <Download size={16} />
                 {t("product.download")}
               </button>
@@ -177,7 +177,7 @@ export default function ProductDetail() {
           <div>
             {/* Product header */}
             <div className="mb-5">
-              <span className="mb-1 inline-block text-[10px] font-bold uppercase tracking-[3px] text-[#4C5154]/50">
+              <span className="mb-1 inline-block text-[10px] font-bold uppercase tracking-[3px] text-[#1E3A5F]/50">
                 {product.category}
               </span>
               <h2 className="mb-3 text-[22px] font-bold tracking-tight text-[#1a1a1a] sm:text-[24px]">
@@ -190,8 +190,8 @@ export default function ProductDetail() {
 
             {/* Features */}
             <div className="mb-6">
-              <h3 className="mb-4 flex items-center gap-2 text-base font-bold text-[#4C5154]">
-                <span className="h-px w-6 bg-[#4C5154]/30" />
+              <h3 className="mb-4 flex items-center gap-2 text-base font-bold text-[#1E3A5F]">
+                <span className="h-px w-6 bg-[#1E3A5F]/30" />
                 {t("product.features")}
               </h3>
               <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
@@ -200,8 +200,8 @@ export default function ProductDetail() {
                     key={feature}
                     className="flex items-start gap-2.5 rounded-lg border border-[#eee] bg-white px-3.5 py-2.5"
                   >
-                    <div className="mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#4C5154]/10">
-                      <Check size={9} className="text-[#4C5154]" strokeWidth={3} />
+                    <div className="mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#1E3A5F]/10">
+                      <Check size={9} className="text-[#1E3A5F]" strokeWidth={3} />
                     </div>
                     <span className="text-[12px] text-[#555] sm:text-[13px] break-words">
                       {feature}
@@ -222,8 +222,8 @@ export default function ProductDetail() {
         >
           {/* Applications */}
           <div className="rounded-xl border border-[#e0e0e0] bg-white p-5 sm:p-6">
-            <h3 className="mb-4 flex items-center gap-2 text-base font-bold text-[#4C5154]">
-              <span className="h-px w-6 bg-[#4C5154]/30" />
+            <h3 className="mb-4 flex items-center gap-2 text-base font-bold text-[#1E3A5F]">
+              <span className="h-px w-6 bg-[#1E3A5F]/30" />
               {t("product.applications")}
             </h3>
             <ul className="m-0 list-none space-y-1.5 p-0">
@@ -232,7 +232,7 @@ export default function ProductDetail() {
                   key={app}
                   className="flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-[#444] transition-colors hover:bg-[#f5f5f5]"
                 >
-                  <ChevronRight size={13} className="shrink-0 text-[#4C5154]/50" />
+                  <ChevronRight size={13} className="shrink-0 text-[#1E3A5F]/50" />
                   <span className="break-words">{app}</span>
                 </li>
               ))}
@@ -240,7 +240,7 @@ export default function ProductDetail() {
           </div>
 
           {/* Technical Specs */}
-          <div className="rounded-xl bg-gradient-to-br from-[#2d3235] to-[#4C5154] p-5 sm:p-6 text-white">
+          <div className="rounded-xl bg-gradient-to-br from-[#0F1F33] to-[#1E3A5F] p-5 sm:p-6 text-white">
             <h3 className="mb-4 flex items-center gap-2 text-base font-bold text-white">
               <span className="h-px w-6 bg-white/30" />
               {t("product.technical")}
@@ -274,25 +274,25 @@ export default function ProductDetail() {
           transition={{ delay: 0.2, duration: 0.4 }}
           className="mb-10 lg:mb-12"
         >
-          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-[#4C5154]">
-            <span className="h-px w-8 bg-[#4C5154]/40" />
+          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-[#1E3A5F]">
+            <span className="h-px w-8 bg-[#1E3A5F]/40" />
             {t("product.models")}
           </h3>
           <div className="overflow-hidden rounded-xl border border-[#e0e0e0] bg-white">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[500px] border-collapse text-sm sm:min-w-0">
                 <thead>
-                  <tr className="bg-[#4C5154]/5">
-                    <th className="px-4 py-3.5 text-left text-[12px] font-bold uppercase tracking-wider text-[#4C5154] sm:px-6 sm:text-[13px]">
+                  <tr className="bg-[#1E3A5F]/5">
+                    <th className="px-4 py-3.5 text-left text-[12px] font-bold uppercase tracking-wider text-[#1E3A5F] sm:px-6 sm:text-[13px]">
                       {t("products.models")}
                     </th>
-                    <th className="px-4 py-3.5 text-left text-[12px] font-bold uppercase tracking-wider text-[#4C5154] sm:px-6 sm:text-[13px]">
+                    <th className="px-4 py-3.5 text-left text-[12px] font-bold uppercase tracking-wider text-[#1E3A5F] sm:px-6 sm:text-[13px]">
                       {lang === "uk" ? "Двигун" : lang === "pl" ? "Silnik" : "Motor"}
                     </th>
-                    <th className="px-4 py-3.5 text-left text-[12px] font-bold uppercase tracking-wider text-[#4C5154] sm:px-6 sm:text-[13px]">
+                      <th className="px-4 py-3.5 text-left text-[12px] font-bold uppercase tracking-wider text-[#1E3A5F] sm:px-6 sm:text-[13px]">
                       {lang === "uk" ? "Об'єм" : lang === "pl" ? "Objętość" : "Volume"}
                     </th>
-                    <th className="px-4 py-3.5 text-center text-[12px] font-bold uppercase tracking-wider text-[#4C5154] sm:px-6 sm:text-[13px]" />
+                    <th className="px-4 py-3.5 text-center text-[12px] font-bold uppercase tracking-wider text-[#1E3A5F] sm:px-6 sm:text-[13px]" />
                   </tr>
                 </thead>
                 <tbody>
@@ -311,7 +311,7 @@ export default function ProductDetail() {
                       <td className="px-4 py-3.5 text-center sm:px-6">
                         <Link
                           href="/contact"
-                          className="inline-block rounded-lg bg-[#4C5154] px-4 py-2 text-[11px] font-semibold text-white no-underline shadow-sm transition-all duration-200 hover:bg-[#3a3f42] hover:shadow-md sm:px-5 sm:py-2 sm:text-xs"
+                          className="inline-block rounded-lg bg-[#1E3A5F] px-4 py-2 text-[11px] font-semibold text-white no-underline shadow-sm transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-5 sm:py-2 sm:text-xs"
                         >
                           {t("product.request")}
                         </Link>
@@ -338,18 +338,18 @@ export default function ProductDetail() {
               </h3>
               <div className="flex flex-col gap-1.5 text-[13px] text-[#666] sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-1.5">
                 <span className="flex items-center gap-1.5">
-                  <Phone size={14} className="shrink-0 text-[#4C5154]" />
+                  <Phone size={14} className="shrink-0 text-[#1E3A5F]" />
                   <span>+49 (0) 5744 / 508-0</span>
                 </span>
                 <span className="flex items-center gap-1.5 break-all">
-                  <Mail size={14} className="shrink-0 text-[#4C5154]" />
+                  <Mail size={14} className="shrink-0 text-[#1E3A5F]" />
                   <span className="break-all">info@theon.com</span>
                 </span>
               </div>
             </div>
             <Link
               href="/contact"
-              className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#4C5154] px-6 py-3 text-center text-sm font-semibold text-white no-underline shadow-sm shadow-[#4C5154]/20 transition-all duration-200 hover:bg-[#3a3f42] hover:shadow-md sm:px-7"
+              className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#1E3A5F] px-6 py-3 text-center text-sm font-semibold text-white no-underline shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-7"
             >
               {t("product.request")}
               <ChevronRight size={16} />
@@ -360,7 +360,7 @@ export default function ProductDetail() {
         {/* Back link */}
         <Link
           href="/products"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#4C5154] no-underline transition-colors hover:text-[#3a3f42]"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1E3A5F] no-underline transition-colors hover:text-[#152B47]"
         >
           <ArrowLeft size={15} />
           {t("product.back")}

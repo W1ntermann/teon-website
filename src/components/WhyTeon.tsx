@@ -168,7 +168,7 @@ export function WhyTeon() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#2d3235] via-[#3a3f42] to-[#4C5154] py-14 sm:py-18 md:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#0F1F33] via-[#152B47] to-[#1E3A5F] py-14 sm:py-18 md:py-20">
       {/* Pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"

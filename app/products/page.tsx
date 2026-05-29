@@ -29,7 +29,7 @@ export default function Products() {
   return (
     <div className="min-h-screen bg-[#fafafa] font-sans" style={{ fontFamily: "Arial, sans-serif" }}>
       {/* Hero Header */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#2d3235] via-[#3a3f42] to-[#4C5154]">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#0F1F33] via-[#152B47] to-[#1E3A5F]">
         {/* Background pattern */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -69,26 +69,26 @@ export default function Products() {
       {/* Category Filter Bar */}
       <div className="sticky top-0 z-20 border-b border-[#e5e5e5] bg-white/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1200px] items-center gap-1 overflow-x-auto px-4 py-3 scrollbar-hide">
-          <SlidersHorizontal size={14} className="mr-2 shrink-0 text-[#4C5154]/50" />
+          <SlidersHorizontal size={14} className="mr-2 shrink-0 text-[#1E3A5F]/50" />
           <button
             onClick={() => setActiveCategory(null)}
             className={cn(
               "rounded-full px-4 py-1.5 text-[12px] font-semibold tracking-wide transition-all duration-200",
               !activeCategory
-                ? "bg-[#4C5154] text-white shadow-md shadow-[#4C5154]/20"
+                ? "bg-[#1E3A5F] text-white shadow-md shadow-[#1E3A5F]/20"
                 : "bg-transparent text-[#666] hover:bg-[#e8e8e8] hover:text-[#333]"
             )}
           >
             {lang === "uk" ? "Всі" : lang === "pl" ? "Wszystkie" : "All"}
           </button>
-          {categories.map((cat) => (
+              {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat === activeCategory ? null : cat)}
               className={cn(
                 "rounded-full px-4 py-1.5 text-[12px] font-semibold tracking-wide transition-all duration-200",
                 cat === activeCategory
-                  ? "bg-[#4C5154] text-white shadow-md shadow-[#4C5154]/20"
+                  ? "bg-[#1E3A5F] text-white shadow-md shadow-[#1E3A5F]/20"
                   : "bg-transparent text-[#666] hover:bg-[#e8e8e8] hover:text-[#333]"
               )}
             >
@@ -114,7 +114,7 @@ export default function Products() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.08, duration: 0.4 }}
-                className="group relative overflow-hidden rounded-2xl border border-[#e5e5e5] bg-white transition-all duration-300 hover:border-[#4C5154]/30 hover:shadow-xl hover:shadow-[#4C5154]/5"
+                className="group relative overflow-hidden rounded-2xl border border-[#e5e5e5] bg-white transition-all duration-300 hover:border-[#1E3A5F]/30 hover:shadow-xl hover:shadow-[#1E3A5F]/5"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,340px)_1fr] xl:grid-cols-[minmax(0,420px)_1fr]">
                   {/* Image Area */}
@@ -128,10 +128,10 @@ export default function Products() {
 
                     {/* Brand Badge */}
                     <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-lg bg-white/90 px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#4C5154]">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#1E3A5F]">
                         <span className="text-[7px] font-bold text-white">K</span>
                       </div>
-                      <span className="text-[10px] font-bold tracking-[2px] text-[#4C5154]">
+                      <span className="text-[10px] font-bold tracking-[2px] text-[#1E3A5F]">
                         KREI
                       </span>
                     </div>
@@ -147,7 +147,7 @@ export default function Products() {
                       {/* Header Row */}
                       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                         <div>
-                          <span className="mb-1 inline-block text-[10px] font-bold uppercase tracking-[3px] text-[#4C5154]/50">
+                          <span className="mb-1 inline-block text-[10px] font-bold uppercase tracking-[3px] text-[#1E3A5F]/50">
                             KREI
                           </span>
                           <h2 className="text-xl font-bold tracking-tight text-[#1a1a1a] sm:text-[22px] md:text-2xl">
@@ -157,7 +157,7 @@ export default function Products() {
                       </div>
 
                       {/* Tagline */}
-                      <p className="mb-3 text-[13px] font-medium italic text-[#4C5154]/70">
+                      <p className="mb-3 text-[13px] font-medium italic text-[#1E3A5F]/70">
                         {product.tagline}
                       </p>
 
@@ -170,10 +170,10 @@ export default function Products() {
                       <div className="mb-6 grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
                         {product.features.slice(0, 6).map((feature) => (
                           <div key={feature} className="flex items-start gap-2">
-                            <div className="mt-[3px] flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#4C5154]/10">
+                            <div className="mt-[3px] flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#1E3A5F]/10">
                               <Check
                                 size={10}
-                                className="text-[#4C5154]"
+                                className="text-[#1E3A5F]"
                                 strokeWidth={3}
                               />
                             </div>
@@ -189,14 +189,14 @@ export default function Products() {
                     <div className="flex flex-wrap items-center gap-3 border-t border-[#eee] pt-4">
                       <Link
                         href={`/products/${product.slug}`}
-                        className="inline-flex items-center gap-2 rounded-lg bg-[#4C5154] px-5 py-2.5 text-[13px] font-semibold text-white no-underline shadow-sm shadow-[#4C5154]/20 transition-all duration-200 hover:bg-[#3a3f42] hover:shadow-md hover:shadow-[#4C5154]/30"
+                        className="inline-flex items-center gap-2 rounded-lg bg-[#1E3A5F] px-5 py-2.5 text-[13px] font-semibold text-white no-underline shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md hover:shadow-[#1E3A5F]/30"
                       >
                         {t("products.more")}
                         <ArrowRight size={14} />
                       </Link>
                       <Link
                         href="/contact"
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-[#d0d0d0] bg-white px-5 py-2.5 text-[13px] font-semibold text-[#4C5154] no-underline transition-all duration-200 hover:border-[#4C5154] hover:bg-[#4C5154]/5"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-[#d0d0d0] bg-white px-5 py-2.5 text-[13px] font-semibold text-[#1E3A5F] no-underline transition-all duration-200 hover:border-[#1E3A5F] hover:bg-[#1E3A5F]/5"
                       >
                         {t("products.request")}
                         <ArrowUpRight size={13} />
@@ -213,7 +213,7 @@ export default function Products() {
       {/* CTA Banner */}
       <div className="border-t border-[#e5e5e5] bg-white">
         <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-14">
-          <div className="flex flex-col items-center gap-6 rounded-2xl bg-gradient-to-br from-[#2d3235] via-[#3a3f42] to-[#4C5154] p-6 text-center sm:p-10 md:flex-row md:justify-between md:text-left md:px-10 md:py-10">
+          <div className="flex flex-col items-center gap-6 rounded-2xl bg-gradient-to-br from-[#0F1F33] via-[#152B47] to-[#1E3A5F] p-6 text-center sm:p-10 md:flex-row md:justify-between md:text-left md:px-10 md:py-10">
             <div>
               <h3 className="text-lg font-bold text-white sm:text-xl md:text-[22px]">
                 {lang === "uk"
@@ -232,7 +232,7 @@ export default function Products() {
             </div>
             <Link
               href="/contact"
-              className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-white px-6 py-3 text-[14px] font-bold text-[#4C5154] no-underline shadow-lg shadow-black/20 transition-all duration-200 hover:bg-[#f0f0f0] hover:shadow-xl"
+              className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-white px-6 py-3 text-[14px] font-bold text-[#1E3A5F] no-underline shadow-lg shadow-black/20 transition-all duration-200 hover:bg-[#f0f0f0] hover:shadow-xl"
             >
               {t("products.request")}
               <ArrowRight size={16} />
