@@ -53,25 +53,46 @@ export default function Home() {
         <div style={{ position: "absolute", inset: 0, backgroundColor: slide.overlay }} />
         <button type="button" onClick={() => setCurrentSlide((p) => (p - 1 + heroSlides.length) % heroSlides.length)} className="absolute left-4 top-1/2 z-10 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded border border-white/50 bg-white/20 text-white"><ChevronLeft size={24} /></button>
         <button type="button" onClick={() => setCurrentSlide((p) => (p + 1) % heroSlides.length)} className="absolute right-4 top-1/2 z-10 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded border border-white/50 bg-white/20 text-white"><ChevronRight size={24} /></button>
-        <div className="absolute bottom-[150px] left-1/2 z-10 flex -translate-x-1/2 gap-2 md:bottom-[108px]">
+        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 md:bottom-[108px]">
           {heroSlides.map((_, i) => (<button type="button" key={i} onClick={() => setCurrentSlide(i)} className="flex min-h-9 min-w-9 items-center justify-center p-0" aria-label={`Slide ${i + 1}`}><span className={cn("block h-2.5 w-2.5 rounded-full border border-white/80 transition-colors md:h-[10px] md:w-[10px]", i === currentSlide ? "bg-white" : "bg-white/30")} /></button>))}
         </div>
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 auto-rows-fr">
+
+        {/* Desktop: продуктова панель всередині хіро (absolute bottom-0) */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:block">
+          <div className="grid grid-cols-4 auto-rows-fr">
             {products.map((product, idx) => (
-              <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-2.5 bg-[rgba(30,58,95,0.82)] px-3 py-3.5 no-underline hover:bg-[rgba(30,58,95,0.92)] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4 md:gap-3.5 md:px-5 md:py-4", idx % 2 === 0 && "border-r border-white/10", idx < 2 && "border-b border-white/10 md:border-b-0", idx < 3 && "md:border-r md:border-white/10", idx === products.length - 1 && idx % 2 === 1 && "md:border-r-0")}>
+              <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-3.5 bg-[rgba(30,58,95,0.82)] px-5 py-4 no-underline hover:bg-[rgba(30,58,95,0.92)] transition-all duration-200 h-full w-full", idx < 3 && "border-r border-white/10")}>
                 <div className="flex shrink-0 items-center justify-center">
-                  <div className={cn("flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-9 w-9 sm:h-9 sm:w-9 md:h-10 md:w-10 transition-transform group-hover:scale-105")}>
-                    <span className={cn("font-bold text-white text-[7px] sm:text-[7px] md:text-[8px]")}>KREI</span>
+                  <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-10 w-10 transition-transform group-hover:scale-105">
+                    <span className="font-bold text-white text-[8px]">KREI</span>
                   </div>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className={cn("font-bold tracking-widest text-white text-[6px] sm:text-[7px] md:text-[8px] uppercase")}>KREI</div>
-                  <div className={cn("font-bold leading-tight text-white text-[10px] sm:text-[10px] md:text-[11px] line-clamp-2")}>{product.name.replace("KREI ", "")}</div>
+                  <div className="font-bold tracking-widest text-white text-[8px] uppercase">KREI</div>
+                  <div className="font-bold leading-tight text-white text-[11px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
                 </div>
               </Link>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Mobile: продуктова панель поза хіро, у потоці */}
+      <div className="md:hidden">
+        <div className="grid grid-cols-1 xs:grid-cols-2 auto-rows-fr">
+          {products.map((product, idx) => (
+            <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-2.5 bg-[rgba(30,58,95,0.82)] px-3 py-3.5 no-underline hover:bg-[rgba(30,58,95,0.92)] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4", idx % 2 === 0 && "border-r border-white/10", idx < 2 && "border-b border-white/10")}>
+              <div className="flex shrink-0 items-center justify-center">
+                <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-9 w-9 sm:h-9 sm:w-9 transition-transform group-hover:scale-105">
+                  <span className="font-bold text-white text-[7px] sm:text-[7px]">KREI</span>
+                </div>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-bold tracking-widest text-white text-[6px] sm:text-[7px] uppercase">KREI</div>
+                <div className="font-bold leading-tight text-white text-[10px] sm:text-[10px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 
