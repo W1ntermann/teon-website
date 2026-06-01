@@ -70,9 +70,9 @@ export default function Footer() {
             </div>
             <div className="text-[13px] leading-relaxed text-white/85">
               <div className="font-bold">Теон</div>
-              <div>Lange Straße 5</div>
-              <div>32609 Hüllhorst</div>
-              <div>Deutschland</div>
+              <div>Боровоського 28К</div>
+              <div>65004 Одеса</div>
+              <div>Україна</div>
               <div className="mt-2.5">+49 (0) 5744 / 508-0</div>
               <div>
                 <a href="mailto:info@theon.com" className="text-white/75 no-underline hover:text-white">
