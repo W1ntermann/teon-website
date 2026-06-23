@@ -1,4 +1,5 @@
 import type { Language } from "@/context/LanguageContext";
+import chemKit1 from "@/assets/Chem-kit1.png";
 
 export interface ProductData {
   id: string;
@@ -84,7 +85,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KD 500", power: "37 кВт", volume: "до 5000 л" },
       ],
       svgType: "dissolver",
-      photos: makePhotos("dissolver", "KREI DISSOLVER"),
+      photos: [chemKit1.src, ...makePhotos("dissolver", "KREI DISSOLVER").slice(1)],
     },
     {
       id: "basket-mill",
@@ -203,7 +204,7 @@ const products: Record<Language, ProductData[]> = {
         { label: "Потужність двигуна", value: "15 – 200 кВт" },
         { label: "Продуктивність", value: "до 10 000 л/год" },
         { label: "Тонкість помелу", value: "до 1 мкм" },
-        { label: "Мелючі тіла", value: "Ø 0,2 – 2,0 мм" },
+        { label: "Мелючі тіла", value: "Ø 0,4 – 2,0 мм" },
         { label: "Температура роботи", value: "до 80 °C" },
         { label: "Управління", value: "PLC / SCADA" },
       ],
@@ -266,7 +267,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KD 500", power: "37 kW", volume: "up to 5,000 l" },
       ],
       svgType: "dissolver",
-      photos: makePhotos("dissolver", "KREI DISSOLVER"),
+      photos: [chemKit1.src, ...makePhotos("dissolver", "KREI DISSOLVER").slice(1)],
     },
     {
       id: "basket-mill",
@@ -448,7 +449,7 @@ const products: Record<Language, ProductData[]> = {
         { name: "KD 500", power: "37 kW", volume: "do 5000 l" },
       ],
       svgType: "dissolver",
-      photos: makePhotos("dissolver", "KREI DISSOLVER"),
+      photos: [chemKit1.src, ...makePhotos("dissolver", "KREI DISSOLVER").slice(1)],
     },
     {
       id: "basket-mill",
