@@ -125,6 +125,14 @@ export default function Header() {
               );
             })}
 
+            {/* CTA Button */}
+            <Link
+              href="/contact"
+              className="flex items-center bg-[#E8A838] px-5 text-[13px] font-bold tracking-wide text-[#1E3A5F] no-underline transition-colors hover:bg-[#D4922E]"
+            >
+              {t("header.quote_btn")}
+            </Link>
+
             <button
               type="button"
               onClick={() => setSearchOpen((o) => !o)}

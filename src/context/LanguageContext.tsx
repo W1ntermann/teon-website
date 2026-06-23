@@ -164,6 +164,29 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "quick.contact.desc": "Знайдіть вашого менеджера",
     "quick.gallery.title": "Галерея",
     "quick.gallery.desc": "Перегляньте нашу роботу",
+    // B2B Hero & CTA
+    "hero.quote_btn": "Отримати КП",
+    "hero.trust_iso": "ISO 9001:2015",
+    "hero.trust_atex": "ATEX",
+    "hero.trust_ce": "CE",
+    "hero.trust_text": "Сертифікована німецька якість",
+    // Header CTA
+    "header.quote_btn": "Запросити пропозицію",
+    // Testimonials
+    "testimonials.title": "ВІДГУКИ КЛІЄНТІВ",
+    "testimonial.1.text": "Обладнання KREI значно підвищило продуктивність нашого виробництва. Якість диспергування перевершила наші очікування.",
+    "testimonial.1.name": "Петро Коваленко",
+    "testimonial.1.company": "ТОВ «Промфарб»",
+    "testimonial.2.text": "Сервісне обслуговування та підтримка Теон на найвищому рівні. Рекомендуємо як надійного партнера.",
+    "testimonial.2.name": "Андреас Шнайдер",
+    "testimonial.2.company": "Farben GmbH",
+    "testimonial.3.text": "Високоточне обладнання, яке повністю відповідає нашим вимогам. Особливо відзначаємо надійність та довговічність.",
+    "testimonial.3.name": "Марта Новак",
+    "testimonial.3.company": "Chemia Sp. z o.o.",
+    // Stats B2B
+    "stats.machines": "Машин встановлено",
+    "stats.clients": "Клієнтів",
+    "stats.years": "Років досвіду",
   },
 
   en: {
@@ -283,6 +306,29 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "quick.contact.desc": "Find your account manager",
     "quick.gallery.title": "Gallery",
     "quick.gallery.desc": "View our work",
+    // B2B Hero & CTA
+    "hero.quote_btn": "Request a Quote",
+    "hero.trust_iso": "ISO 9001:2015",
+    "hero.trust_atex": "ATEX",
+    "hero.trust_ce": "CE",
+    "hero.trust_text": "Certified German Quality",
+    // Header CTA
+    "header.quote_btn": "Request a Quote",
+    // Testimonials
+    "testimonials.title": "CLIENT TESTIMONIALS",
+    "testimonial.1.text": "KREI equipment significantly increased our production efficiency. The dispersion quality exceeded our expectations.",
+    "testimonial.1.name": "Peter Kovalenko",
+    "testimonial.1.company": "Promfarb LLC",
+    "testimonial.2.text": "Teon's service and support are top-notch. We recommend them as a reliable partner.",
+    "testimonial.2.name": "Andreas Schneider",
+    "testimonial.2.company": "Farben GmbH",
+    "testimonial.3.text": "High-precision equipment that fully meets our requirements. We especially appreciate the reliability and durability.",
+    "testimonial.3.name": "Marta Nowak",
+    "testimonial.3.company": "Chemia Sp. z o.o.",
+    // Stats B2B
+    "stats.machines": "Machines Installed",
+    "stats.clients": "Clients",
+    "stats.years": "Years Experience",
   },
 
   pl: {
@@ -402,5 +448,28 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "quick.contact.desc": "Znajdź swojego opiekuna",
     "quick.gallery.title": "Galeria",
     "quick.gallery.desc": "Zobacz nasze realizacje",
+    // B2B Hero & CTA
+    "hero.quote_btn": "Poproś o wycenę",
+    "hero.trust_iso": "ISO 9001:2015",
+    "hero.trust_atex": "ATEX",
+    "hero.trust_ce": "CE",
+    "hero.trust_text": "Certyfikowana niemiecka jakość",
+    // Header CTA
+    "header.quote_btn": "Poproś o ofertę",
+    // Testimonials
+    "testimonials.title": "OPINIE KLIENTÓW",
+    "testimonial.1.text": "Urządzenia KREI znacząco zwiększyły wydajność naszej produkcji. Jakość dyspergowania przekroczyła nasze oczekiwania.",
+    "testimonial.1.name": "Piotr Kowalenko",
+    "testimonial.1.company": "Promfarb Sp. z o.o.",
+    "testimonial.2.text": "Serwis i wsparcie Teon są na najwyższym poziomie. Polecamy jako niezawodnego partnera.",
+    "testimonial.2.name": "Andreas Schneider",
+    "testimonial.2.company": "Farben GmbH",
+    "testimonial.3.text": "Precyzyjne urządzenia, które w pełni spełniają nasze wymagania. Szczególnie cenimy niezawodność i trwałość.",
+    "testimonial.3.name": "Marta Nowak",
+    "testimonial.3.company": "Chemia Sp. z o.o.",
+    // Stats B2B
+    "stats.machines": "Zainstalowanych maszyn",
+    "stats.clients": "Klientów",
+    "stats.years": "Lat doświadczenia",
   },
 };

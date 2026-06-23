@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Star, Shield, Award } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts } from "@/translations/productData";
 import { QuickLinksSection } from "@/components/QuickLinks";
@@ -32,6 +32,23 @@ const showsData: Record<string, { date: string; name: string; city: string; hall
   pl: [{ date: "22-26 kwi 2024", name: "Hannover Messe", city: "Hanower", hall: "Hala 6, B12" }, { date: "05-08 cze 2024", name: "ECS", city: "Norymberga", hall: "Hala 9, C24" }, { date: "10-14 wrz 2024", name: "ACHEMA", city: "Frankfurt", hall: "Hala 4.2, A08" }],
 };
 
+const testimonialsData: Record<string, { text: string; name: string; company: string }[]> = {
+  uk: [
+    { text: "Обладнання KREI значно підвищило продуктивність нашого виробництва. Якість диспергування перевершила наші очікування.", name: "Петро Коваленко", company: "ТОВ «Промфарб»" },
+    { text: "Сервісне обслуговування та підтримка Теон на найвищому рівні. Рекомендуємо як надійного партнера.", name: "Андреас Шнайдер", company: "Farben GmbH" },
+    { text: "Високоточне обладнання, яке повністю відповідає нашим вимогам.", name: "Марта Новак", company: "Chemia Sp. z o.o." },
+  ],
+  en: [
+    { text: "KREI equipment significantly increased our production efficiency. The dispersion quality exceeded our expectations.", name: "Peter Kovalenko", company: "Promfarb LLC" },
+    { text: "Teon's service and support are top-notch. We recommend them as a reliable partner.", name: "Andreas Schneider", company: "Farben GmbH" },
+    { text: "High-precision equipment that fully meets our requirements. We especially appreciate the reliability and durability.", name: "Marta Nowak", company: "Chemia Sp. z o.o." },
+  ],
+  pl: [
+    { text: "Urządzenia KREI znacząco zwiększyły wydajność naszej produkcji. Jakość dyspergowania przekroczyła nasze oczekiwania.", name: "Piotr Kowalenko", company: "Promfarb Sp. z o.o." },
+    { text: "Serwis i wsparcie Teon są na najwyższym poziomie. Polecamy jako niezawodnego partnera.", name: "Andreas Schneider", company: "Farben GmbH" },
+    { text: "Precyzyjne urządzenia, które w pełni spełniają nasze wymagania.", name: "Marta Nowak", company: "Chemia Sp. z o.o." },
+  ],
+};
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -39,6 +56,7 @@ export default function Home() {
   const products = getProducts(lang);
   const news = newsData[lang];
   const shows = showsData[lang];
+  const testimonials = testimonialsData[lang];
 
   useEffect(() => {
     const timer = setInterval(() => { setCurrentSlide((prev) => (prev + 1) % heroSlides.length); }, 5000);
@@ -47,29 +65,112 @@ export default function Home() {
 
   const slide = heroSlides[currentSlide];
 
+  const trustBadges = [
+    { icon: Shield, label: t("hero.trust_iso") },
+    { icon: Award, label: t("hero.trust_atex") },
+    { icon: Shield, label: t("hero.trust_ce") },
+  ];
+
   return (
     <div className="min-h-screen font-sans bg-white text-black">
-      <div className="relative min-h-[300px] overflow-hidden sm:min-h-[360px] md:min-h-[420px]" style={{ backgroundImage: `url(${slide.image})`, backgroundSize: "cover", backgroundPosition: "center", transition: "background-image 0.8s ease" }}>
+      {/* ===== HERO SECTION ===== */}
+      <div
+        className="relative min-h-[400px] overflow-hidden sm:min-h-[460px] md:min-h-[520px]"
+        style={{ backgroundImage: `url(${slide.image})`, backgroundSize: "cover", backgroundPosition: "center", transition: "background-image 0.8s ease" }}
+      >
         <div style={{ position: "absolute", inset: 0, backgroundColor: slide.overlay }} />
-        <button type="button" onClick={() => setCurrentSlide((p) => (p - 1 + heroSlides.length) % heroSlides.length)} className="absolute left-4 top-1/2 z-10 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded border border-white/50 bg-white/20 text-white"><ChevronLeft size={24} /></button>
-        <button type="button" onClick={() => setCurrentSlide((p) => (p + 1) % heroSlides.length)} className="absolute right-4 top-1/2 z-10 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded border border-white/50 bg-white/20 text-white"><ChevronRight size={24} /></button>
-        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 md:bottom-[108px]">
-          {heroSlides.map((_, i) => (<button type="button" key={i} onClick={() => setCurrentSlide(i)} className="flex min-h-9 min-w-9 items-center justify-center p-0" aria-label={`Slide ${i + 1}`}><span className={cn("block h-2.5 w-2.5 rounded-full border border-white/80 transition-colors md:h-[10px] md:w-[10px]", i === currentSlide ? "bg-white" : "bg-white/30")} /></button>))}
+
+        {/* Hero Content */}
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center">
+          <div className="mx-auto max-w-[900px]">
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <div className="h-px w-10 bg-white/30" />
+              <span className="text-[11px] font-bold uppercase tracking-[4px] text-white/70">
+                TEON — {t("hero.trust_text")}
+              </span>
+              <div className="h-px w-10 bg-white/30" />
+            </div>
+            <h1 className="text-[28px] font-bold leading-tight tracking-[1px] text-white sm:text-[36px] md:text-[42px] lg:text-[48px]">
+              {t("hero.tagline1")}
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-[15px] font-medium leading-relaxed text-white/80 sm:text-[16px] md:text-[17px]">
+              {t("hero.tagline2")}
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded bg-[#E8A838] px-8 py-3.5 text-[14px] font-bold text-[#1E3A5F] shadow-lg transition-all hover:bg-[#D4922E] hover:shadow-xl"
+              >
+                {t("hero.quote_btn")}
+                <ArrowRight size={18} />
+              </Link>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 rounded border-2 border-white/50 bg-white/10 px-8 py-3.5 text-[14px] font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20"
+              >
+                {t("products.more")}
+              </Link>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-8 flex items-center justify-center gap-5 sm:gap-8">
+              {trustBadges.map((badge) => (
+                <div key={badge.label} className="flex items-center gap-1.5">
+                  <badge.icon size={14} className="text-[#E8A838]" />
+                  <span className="text-[12px] font-semibold text-white/80 sm:text-[13px]">{badge.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Desktop: продуктова панель всередині хіро (absolute bottom-0) */}
+        {/* Hero nav buttons */}
+        <button
+          type="button"
+          onClick={() => setCurrentSlide((p) => (p - 1 + heroSlides.length) % heroSlides.length)}
+          className="absolute left-4 top-1/2 z-20 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded border border-white/50 bg-white/20 text-white"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button
+          type="button"
+          onClick={() => setCurrentSlide((p) => (p + 1) % heroSlides.length)}
+          className="absolute right-4 top-1/2 z-20 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded border border-white/50 bg-white/20 text-white"
+        >
+          <ChevronRight size={24} />
+        </button>
+
+        {/* Slide indicators */}
+        <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 md:bottom-[108px]">
+          {heroSlides.map((_, i) => (
+            <button type="button" key={i} onClick={() => setCurrentSlide(i)} className="flex min-h-9 min-w-9 items-center justify-center p-0" aria-label={`Slide ${i + 1}`}>
+              <span className={cn("block h-3 w-3 rounded-full border border-white/80 transition-colors md:h-[12px] md:w-[12px]", i === currentSlide ? "bg-white" : "bg-white/30")} />
+            </button>
+          ))}
+        </div>
+
+        {/* Desktop: Product panel at hero bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:block">
           <div className="grid grid-cols-4 auto-rows-fr">
             {products.map((product, idx) => (
-              <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-3.5 bg-[rgba(30,58,95,0.82)] px-5 py-4 no-underline hover:bg-[rgba(30,58,95,0.92)] transition-all duration-200 h-full w-full", idx < 3 && "border-r border-white/10")}>
+              <Link
+                key={product.id}
+                href={`/products/${product.slug}`}
+                className={cn(
+                  "group flex items-center justify-center gap-3.5 bg-[rgba(30,58,95,0.82)] px-5 py-4 no-underline hover:bg-[rgba(30,58,95,0.92)] transition-all duration-200 h-full w-full",
+                  idx < 3 && "border-r border-white/10"
+                )}
+              >
                 <div className="flex shrink-0 items-center justify-center">
-                  <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-10 w-10 transition-transform group-hover:scale-105">
-                    <span className="font-bold text-white text-[8px]">KREI</span>
+                  <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-11 w-11 transition-transform group-hover:scale-105">
+                    <span className="font-bold text-white text-[10px]">KREI</span>
                   </div>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-bold tracking-widest text-white text-[8px] uppercase">KREI</div>
-                  <div className="font-bold leading-tight text-white text-[11px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
+                  <div className="font-bold tracking-widest text-white text-[9px] uppercase">KREI</div>
+                  <div className="font-bold leading-tight text-white text-[12px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
                 </div>
               </Link>
             ))}
@@ -77,40 +178,135 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Mobile: продуктова панель поза хіро, у потоці */}
+      {/* Mobile: Product panel outside hero */}
       <div className="md:hidden">
         <div className="grid grid-cols-1 xs:grid-cols-2 auto-rows-fr">
           {products.map((product, idx) => (
-              <Link key={product.id} href={`/products/${product.slug}`} className={cn("group flex items-center justify-center gap-2.5 bg-[#1E3A5F] px-3 py-3.5 no-underline hover:bg-[#152B47] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4", idx % 2 === 0 && "border-r border-white/10", idx < 2 && "border-b border-white/10")}>
+            <Link
+              key={product.id}
+              href={`/products/${product.slug}`}
+              className={cn(
+                "group flex items-center justify-center gap-2.5 bg-[#1E3A5F] px-3 py-3.5 no-underline hover:bg-[#152B47] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4",
+                idx % 2 === 0 && "border-r border-white/10",
+                idx < 2 && "border-b border-white/10"
+              )}
+            >
               <div className="flex shrink-0 items-center justify-center">
-                <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-9 w-9 sm:h-9 sm:w-9 transition-transform group-hover:scale-105">
-                  <span className="font-bold text-white text-[7px] sm:text-[7px]">KREI</span>
+                <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-10 w-10 sm:h-10 sm:w-10 transition-transform group-hover:scale-105">
+                  <span className="font-bold text-white text-[9px] sm:text-[9px]">KREI</span>
                 </div>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-bold tracking-widest text-white text-[6px] sm:text-[7px] uppercase">KREI</div>
-                <div className="font-bold leading-tight text-white text-[10px] sm:text-[10px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
+                <div className="font-bold tracking-widest text-white text-[8px] sm:text-[8px] uppercase">KREI</div>
+                <div className="font-bold leading-tight text-white text-[11px] sm:text-[11px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
               </div>
             </Link>
           ))}
         </div>
       </div>
 
-      {/* Process + About Section */}
+      {/* ===== B2B STATS BAR ===== */}
+      <div className="border-b border-[#e5e5e5] bg-[#f5f5f5]">
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-4 px-4 py-6 sm:flex-row sm:items-center sm:justify-around sm:py-5">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F]/10">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#1E3A5F]" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                <path d="M19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10" />
+                <path d="M13 11h4a2 2 0 012 2v3" />
+              </svg>
+            </div>
+            <div>
+              <div className="text-[22px] font-extrabold text-[#1E3A5F]">1,500+</div>
+              <div className="text-[12px] font-medium text-[#888]">{t("stats.machines")}</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F]/10">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#1E3A5F]" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                <path d="M16 3.13a4 4 0 010 7.75" />
+              </svg>
+            </div>
+            <div>
+              <div className="text-[22px] font-extrabold text-[#1E3A5F]">500+</div>
+              <div className="text-[12px] font-medium text-[#888]">{t("stats.clients")}</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F]/10">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#1E3A5F]" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+            </div>
+            <div>
+              <div className="text-[22px] font-extrabold text-[#1E3A5F]">130+</div>
+              <div className="text-[12px] font-medium text-[#888]">{t("stats.years")}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ===== TESTIMONIALS ===== */}
+      <section className="border-b border-[#e5e5e5] bg-white py-14 sm:py-16 md:py-18">
+        <div className="mx-auto max-w-[1200px] px-4">
+          <div className="mb-8 text-center md:mb-10">
+            <div className="mb-3 flex items-center justify-center gap-2">
+              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
+              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
+              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
+              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
+              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
+            </div>
+            <h2 className="text-[20px] font-bold tracking-[3px] text-[#1E3A5F] sm:text-[24px] md:text-[26px]">
+              {t("testimonials.title")}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((item, idx) => (
+              <div
+                key={idx}
+                className="relative rounded-lg border border-[#e5e5e5] bg-[#fafafa] p-6 transition-all hover:border-[#1E3A5F]/20 hover:shadow-md"
+              >
+                {/* Quote icon */}
+                <div className="mb-3 text-[#1E3A5F]/10">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+                <p className="mb-4 text-[14px] leading-relaxed text-[#444] italic">
+                  &ldquo;{item.text}&rdquo;
+                </p>
+                <div className="border-t border-[#e5e5e5] pt-3">
+                  <div className="text-[14px] font-bold text-[#1E3A5F]">{item.name}</div>
+                  <div className="text-[12px] text-[#888]">{item.company}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PROCESS HIGHLIGHT ===== */}
       <ProcessHighlight />
 
-      <div className="bg-[#fafafa] border-b border-[#e5e5e5]">
+      {/* ===== ABOUT SECTION ===== */}
+      <div className="border-b border-[#e5e5e5] bg-[#fafafa]">
         <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-14">
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-12 xl:gap-14">
             {/* Text Column */}
             <div>
-              <span className="mb-3 inline-block text-[10px] font-bold uppercase tracking-[4px] text-[#1E3A5F]/50">
+              <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[4px] text-[#1E3A5F]/50">
                 {t("about.title")}
               </span>
-              <p className="text-[14px] leading-[1.9] text-[#333] sm:text-[15px]">
+              <p className="text-[15px] leading-[1.9] text-[#333] sm:text-[16px]">
                 {t("about.text1")}
               </p>
-              <p className="mt-4 text-[14px] leading-[1.9] text-[#333] sm:text-[15px]">
+              <p className="mt-4 text-[15px] leading-[1.9] text-[#333] sm:text-[16px]">
                 {t("about.text2")}
               </p>
 
@@ -118,19 +314,19 @@ export default function Home() {
               <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
                 <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center">
                   <div className="text-xl font-bold tracking-tight text-[#1E3A5F] sm:text-2xl">1889</div>
-                  <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#888]">
+                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-[#888]">
                     {lang === "uk" ? "Засновано" : lang === "pl" ? "Założona" : "Founded"}
                   </div>
                 </div>
                 <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center">
                   <div className="text-xl font-bold tracking-tight text-[#1E3A5F] sm:text-2xl">130+</div>
-                  <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#888]">
+                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-[#888]">
                     {lang === "uk" ? "Років досвіду" : lang === "pl" ? "Lat doświadczenia" : "Years experience"}
                   </div>
                 </div>
                 <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center col-span-2 sm:col-span-1">
                   <div className="text-xl font-bold tracking-tight text-[#1E3A5F] sm:text-2xl">50+</div>
-                  <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#888]">
+                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-[#888]">
                     {lang === "uk" ? "Країн" : lang === "pl" ? "Krajów" : "Countries"}
                   </div>
                 </div>
@@ -152,8 +348,7 @@ export default function Home() {
                 ))}
                 <rect x="0" y="242" width="640" height="4" fill="#aaa" />
               </svg>
-              {/* Overlay badge */}
-              <div className="absolute bottom-3 right-3 bg-[rgba(30,58,95,0.85)] text-white px-3 py-1.5 text-[10px] font-semibold tracking-wider rounded-sm">
+              <div className="absolute bottom-3 right-3 bg-[rgba(30,58,95,0.85)] text-white px-3 py-1.5 text-[11px] font-semibold tracking-wider rounded-sm">
                 {lang === "uk" ? "Теон — Hüllhorst" : lang === "pl" ? "Teon — Hüllhorst" : "Teon — Hüllhorst"}
               </div>
             </div>
@@ -161,14 +356,16 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ===== QUICK LINKS ===== */}
       <QuickLinksSection />
 
-      {/* Products Showcase */}
+      {/* ===== PRODUCTS SHOWCASE ===== */}
       <ProductsShowcase />
 
-      {/* Why Teon */}
+      {/* ===== WHY TEON ===== */}
       <WhyTeon />
 
+      {/* ===== NEWS SECTION ===== */}
       <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-[50px]">
         <div className="mb-5 flex flex-col gap-3 sm:mb-[22px] sm:flex-row sm:items-center sm:justify-between">
           <h2 className="m-0 text-lg font-bold tracking-wide text-[#1E3A5F] sm:text-xl md:text-[22px]">{t("news.title")}</h2>
@@ -176,28 +373,33 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-[22px]">
           {news.map((item) => (
-            <div key={item.title} style={{ border: "1px solid #d0d0d0", padding: "20px", cursor: "pointer", borderTop: "3px solid #1E3A5F", transition: "box-shadow 0.2s" }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 16px rgba(0,0,0,0.09)")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.boxShadow = "none")}>
-              <div style={{ color: "#666", fontSize: "12px", marginBottom: "8px" }}>{item.date}</div>
-              <h3 style={{ color: "#1E3A5F", fontSize: "14px", fontWeight: "bold", marginBottom: "10px", lineHeight: "1.4" }}>{item.title}</h3>
-              <p style={{ color: "#000", fontSize: "13px", lineHeight: "1.6", margin: "0 0 14px" }}>{item.text}</p>
-              <a href="#" style={{ color: "#1E3A5F", fontSize: "12px", textDecoration: "none", fontWeight: "bold", display: "inline-flex", alignItems: "center", gap: "4px" }}>{t("news.read_more")} <ArrowRight size={12} /></a>
+            <div
+              key={item.title}
+              className="group cursor-pointer border border-[#d0d0d0] p-5 pt-[20px] transition-all hover:shadow-[0_4px_16px_rgba(0,0,0,0.09)]"
+              style={{ borderTop: "3px solid #1E3A5F" }}
+            >
+              <div className="mb-2 text-[12px] text-[#666]">{item.date}</div>
+              <h3 className="mb-2.5 text-[14px] font-bold leading-[1.4] text-[#1E3A5F]">{item.title}</h3>
+              <p className="mb-3.5 text-[13px] leading-[1.6] text-[#000]">{item.text}</p>
+              <a href="#" className="inline-flex items-center gap-1 text-[12px] font-bold text-[#1E3A5F] no-underline">
+                {t("news.read_more")} <ArrowRight size={12} />
+              </a>
             </div>
           ))}
         </div>
       </div>
 
+      {/* ===== EXHIBITIONS SECTION ===== */}
       <div className="bg-[#f5f5f5] px-4 py-8 sm:py-10 md:py-10 md:pb-11">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="mb-5 text-lg font-bold tracking-wide text-[#1E3A5F] sm:text-xl md:mb-[22px] md:text-[22px]">{t("exhibitions.title")}</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shows.map((show) => (
-              <div key={show.name} style={{ backgroundColor: "#fff", border: "1px solid #d0d0d0", padding: "16px" }}>
-                <div style={{ color: "#1E3A5F", fontSize: "12px", fontWeight: "bold", marginBottom: "6px" }}>{show.date}</div>
-                <div style={{ color: "#1E3A5F", fontSize: "14px", fontWeight: "bold", marginBottom: "4px" }}>{show.name}</div>
-                <div style={{ color: "#000", fontSize: "12px" }}>{show.city}</div>
-                <div style={{ color: "#666", fontSize: "11px", marginTop: "4px" }}>{show.hall}</div>
+              <div key={show.name} className="border border-[#d0d0d0] bg-white p-4">
+                <div className="mb-1.5 text-[12px] font-bold text-[#1E3A5F]">{show.date}</div>
+                <div className="mb-1 text-[14px] font-bold text-[#1E3A5F]">{show.name}</div>
+                <div className="text-[12px] text-[#000]">{show.city}</div>
+                <div className="mt-1 text-[11px] text-[#666]">{show.hall}</div>
               </div>
             ))}
           </div>
