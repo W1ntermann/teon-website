@@ -9,6 +9,7 @@ import { QuickLinksSection } from "@/components/QuickLinks";
 import { ProcessHighlight } from "@/components/ProcessHighlight";
 import { ProductsShowcase } from "@/components/ProductsShowcase";
 import { WhyTeon } from "@/components/WhyTeon";
+import AboutCompany from "@/components/AboutCompany";
 import { cn } from "@/lib/utils";
 import hero1 from "@/assets/hero1.jpg";
 import hero2 from "@/assets/hero2.jpg";
@@ -294,67 +295,8 @@ export default function Home() {
       {/* ===== PROCESS HIGHLIGHT ===== */}
       <ProcessHighlight />
 
-      {/* ===== ABOUT SECTION ===== */}
-      <div className="border-b border-[#e5e5e5] bg-[#fafafa]">
-        <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-14">
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-12 xl:gap-14">
-            {/* Text Column */}
-            <div>
-              <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[4px] text-[#1E3A5F]/50">
-                {t("about.title")}
-              </span>
-              <p className="text-[15px] leading-[1.9] text-[#333] sm:text-[16px]">
-                {t("about.text1")}
-              </p>
-              <p className="mt-4 text-[15px] leading-[1.9] text-[#333] sm:text-[16px]">
-                {t("about.text2")}
-              </p>
-
-              {/* Stats row */}
-              <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-                <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center">
-                  <div className="text-xl font-bold tracking-tight text-[#1E3A5F] sm:text-2xl">1889</div>
-                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-[#888]">
-                    {lang === "uk" ? "Засновано" : lang === "pl" ? "Założona" : "Founded"}
-                  </div>
-                </div>
-                <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center">
-                  <div className="text-xl font-bold tracking-tight text-[#1E3A5F] sm:text-2xl">130+</div>
-                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-[#888]">
-                    {lang === "uk" ? "Років досвіду" : lang === "pl" ? "Lat doświadczenia" : "Years experience"}
-                  </div>
-                </div>
-                <div className="rounded-sm border border-[#d5d5d5] bg-white px-4 py-3 text-center col-span-2 sm:col-span-1">
-                  <div className="text-xl font-bold tracking-tight text-[#1E3A5F] sm:text-2xl">50+</div>
-                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-[#888]">
-                    {lang === "uk" ? "Країн" : lang === "pl" ? "Krajów" : "Countries"}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Image Column */}
-            <div className="relative overflow-hidden rounded-sm bg-[#e8e8e8] min-h-[240px] sm:min-h-[300px] lg:min-h-[340px]">
-              <svg viewBox="0 0 640 340" width="100%" height="100%" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
-                <rect width="640" height="340" fill="#c8c8c8" />
-                <rect x="0" y="160" width="640" height="180" fill="#a0a0a0" />
-                <rect x="60" y="100" width="220" height="90" rx="2" fill="#d5d5d5" />
-                <rect x="80" y="82" width="180" height="24" rx="3" fill="#b0b0b0" />
-                <rect x="290" y="110" width="130" height="80" rx="2" fill="#cccccc" />
-                <rect x="430" y="115" width="100" height="75" rx="2" fill="#d0d0d0" />
-                <rect x="60" y="190" width="360" height="50" rx="2" fill="#999" />
-                {[0, 40, 80, 120, 360, 400, 440, 520, 560, 600].map((x, i) => (
-                  <ellipse key={i} cx={x + 25} cy="178" rx="14" ry="10" fill="#888" />
-                ))}
-                <rect x="0" y="242" width="640" height="4" fill="#aaa" />
-              </svg>
-              <div className="absolute bottom-3 right-3 bg-[rgba(30,58,95,0.85)] text-white px-3 py-1.5 text-[11px] font-semibold tracking-wider rounded-sm">
-                {lang === "uk" ? "Теон — Hüllhorst" : lang === "pl" ? "Teon — Hüllhorst" : "Teon — Hüllhorst"}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* ===== ABOUT COMPANY ===== */}
+      <AboutCompany />
 
       {/* ===== QUICK LINKS ===== */}
       <QuickLinksSection />

@@ -1,7 +1,21 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { Shield, Award, CheckCircle, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Shield, Award, MapPin, Phone, Mail, Clock, FileText, ExternalLink } from "lucide-react";
+
+interface Certificate {
+  name: string;
+  file: string;
+  lang: string;
+}
+
+const certificates: Certificate[] = [
+  { name: "ISO 9001:2015", file: "/certificates/iso-9001-ua.pdf", lang: "UA" },
+  { name: "ISO 9001:2015", file: "/certificates/iso-9001-en-1.pdf", lang: "EN" },
+  { name: "ISO 9001:2015", file: "/certificates/iso-9001-en-2.pdf", lang: "EN" },
+  { name: "ISO 45001:2018", file: "/certificates/iso-45001-ua.pdf", lang: "UA" },
+  { name: "ISO 45001:2018", file: "/certificates/iso-45001-en.pdf", lang: "EN" },
+];
 
 const historyData: Record<string, { year: string; text: string }[]> = {
   uk: [
@@ -161,19 +175,25 @@ export default function Company() {
                 <Shield size={18} />
                 {t("company.certificates")}
               </h3>
-              <div className="space-y-0 text-[13px] text-white/85">
-                <div className="flex items-center gap-2 border-b border-white/15 py-2.5">
-                  <CheckCircle size={16} className="text-[#E8A838]" />
-                  ISO 9001:2015
-                </div>
-                <div className="flex items-center gap-2 border-b border-white/15 py-2.5">
-                  <CheckCircle size={16} className="text-[#E8A838]" />
-                  ATEX Certification
-                </div>
-                <div className="flex items-center gap-2 py-2.5">
-                  <CheckCircle size={16} className="text-[#E8A838]" />
-                  CE Marking
-                </div>
+              <div className="space-y-1 text-[13px] text-white/85">
+                {certificates.map((cert) => (
+                  <a
+                    key={cert.file}
+                    href={cert.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between gap-2 rounded-md px-2 py-2 transition-colors hover:bg-white/10"
+                  >
+                    <div className="flex items-center gap-2">
+                      <FileText size={16} className="shrink-0 text-[#E8A838]" />
+                      <span>{cert.name}</span>
+                    </div>
+                    <span className="flex items-center gap-1 text-[11px] font-medium uppercase text-white/50">
+                      {cert.lang}
+                      <ExternalLink size={12} />
+                    </span>
+                  </a>
+                ))}
               </div>
             </div>
 
