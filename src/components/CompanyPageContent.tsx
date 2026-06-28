@@ -17,8 +17,29 @@ import {
   Package,
   Globe,
   Clock,
+  MapPin,
+  Phone,
+  Mail,
+  FileText,
+  ExternalLink,
+  Target,
+  Zap,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+
+interface Certificate {
+  name: string;
+  file: string;
+  lang: string;
+}
+
+const certificates: Certificate[] = [
+  { name: "ISO 9001:2015", file: "/certificates/iso-9001-ua.pdf", lang: "UA" },
+  { name: "ISO 9001:2015", file: "/certificates/iso-9001-en-1.pdf", lang: "EN" },
+  { name: "ISO 9001:2015", file: "/certificates/iso-9001-en-2.pdf", lang: "EN" },
+  { name: "ISO 45001:2018", file: "/certificates/iso-45001-ua.pdf", lang: "UA" },
+  { name: "ISO 45001:2018", file: "/certificates/iso-45001-en.pdf", lang: "EN" },
+];
 
 interface StatCounterProps {
   icon: React.ReactNode;
@@ -52,7 +73,7 @@ function StatCounter({ icon, value, label, suffix, delay }: StatCounterProps) {
 
   return (
     <motion.div
-      className="bg-white/50 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center text-center group hover:bg-white transition-colors duration-300 border border-border"
+      className="bg-white/50 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center text-center group hover:bg-white transition-colors duration-300 border border-[#e5e5e5]"
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: {
@@ -64,17 +85,17 @@ function StatCounter({ icon, value, label, suffix, delay }: StatCounterProps) {
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
     >
       <motion.div
-        className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary group-hover:bg-primary/20 transition-colors duration-300"
+        className="w-14 h-14 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center mb-4 text-[#1E3A5F] group-hover:bg-[#1E3A5F]/20 transition-colors duration-300"
         whileHover={{ rotate: 360, transition: { duration: 0.8 } }}
       >
         {icon}
       </motion.div>
-      <motion.div ref={countRef} className="text-3xl font-bold text-foreground flex items-center">
+      <motion.div ref={countRef} className="text-3xl font-bold text-[#1E3A5F] flex items-center">
         <motion.span>{displayValue}</motion.span>
         <span>{suffix}</span>
       </motion.div>
-      <p className="text-muted-foreground text-sm mt-1">{label}</p>
-      <motion.div className="w-10 h-0.5 bg-primary mt-3 group-hover:w-16 transition-all duration-300" />
+      <p className="text-[#888] text-sm mt-1">{label}</p>
+      <motion.div className="w-10 h-0.5 bg-[#E8A838] mt-3 group-hover:w-16 transition-all duration-300" />
     </motion.div>
   );
 }
@@ -89,7 +110,7 @@ interface ServiceItemProps {
 function ServiceItem({ icon, title, description, delay }: ServiceItemProps) {
   return (
     <motion.div
-      className="flex flex-col group p-6 rounded-xl bg-card border border-border hover:shadow-lg transition-all duration-300"
+      className="flex flex-col group p-6 rounded-xl bg-white border border-[#e5e5e5] hover:shadow-lg transition-all duration-300"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.3 }}
@@ -104,16 +125,16 @@ function ServiceItem({ icon, title, description, delay }: ServiceItemProps) {
         transition={{ duration: 0.6, delay: delay + 0.2 }}
       >
         <motion.div
-          className="text-primary bg-primary/10 p-3 rounded-lg transition-colors duration-300 group-hover:bg-primary/20"
+          className="text-[#1E3A5F] bg-[#1E3A5F]/10 p-3 rounded-lg transition-colors duration-300 group-hover:bg-[#1E3A5F]/20"
           whileHover={{ rotate: [0, -10, 10, -5, 0], transition: { duration: 0.5 } }}
         >
           {icon}
         </motion.div>
-        <h3 className="text-xl font-medium text-foreground group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-xl font-medium text-[#1E3A5F] group-hover:text-[#1E3A5F] transition-colors duration-300">
           {title}
         </h3>
       </motion.div>
-      <p className="text-sm text-muted-foreground leading-relaxed">
+      <p className="text-sm text-[#666] leading-relaxed">
         {description}
       </p>
     </motion.div>
@@ -211,10 +232,10 @@ export default function CompanyPageContent() {
   };
 
   const stats = [
-    { icon: <Factory className="w-6 h-6" />, value: 500, label: lang === "uk" ? "Виконаних проєктів" : lang === "pl" ? "Zrealizowanych projektów" : "Projects Completed", suffix: "+" },
-    { icon: <Users className="w-6 h-6" />, value: 250, label: lang === "uk" ? "Промислових партнерів" : lang === "pl" ? "Partnerów przemysłowych" : "Industrial Partners", suffix: "+" },
-    { icon: <Clock className="w-6 h-6" />, value: 135, label: lang === "uk" ? "Років досвіду" : lang === "pl" ? "Lat doświadczenia" : "Years Experience", suffix: "" },
-    { icon: <TrendingUp className="w-6 h-6" />, value: 99, label: lang === "uk" ? "Задоволених клієнтів" : lang === "pl" ? "Zadowolonych klientów" : "Client Satisfaction", suffix: "%" },
+    { icon: <Factory className="w-6 h-6" />, value: 1500, label: lang === "uk" ? "Машин встановлено" : lang === "pl" ? "Zainstalowanych maszyn" : "Machines Installed", suffix: "+" },
+    { icon: <Users className="w-6 h-6" />, value: 500, label: lang === "uk" ? "Клієнтів" : lang === "pl" ? "Klientów" : "Clients Worldwide", suffix: "+" },
+    { icon: <Globe className="w-6 h-6" />, value: 50, label: lang === "uk" ? "Країн" : lang === "pl" ? "Krajów" : "Countries Served", suffix: "+" },
+    { icon: <Award className="w-6 h-6" />, value: 135, label: lang === "uk" ? "Років досвіду" : lang === "pl" ? "Lat doświadczenia" : "Years of Experience", suffix: "" },
   ];
 
   const partners = [
@@ -232,189 +253,305 @@ export default function CompanyPageContent() {
   return (
     <section
       ref={sectionRef}
-      className="w-full text-foreground overflow-hidden relative"
+      className="w-full bg-[#fafafa] text-[#333] overflow-hidden relative"
     >
+      {/* Background decorative blobs */}
       <motion.div
-        className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary/5 blur-3xl"
+        className="absolute top-20 left-10 w-64 h-64 rounded-full bg-[#1E3A5F]/5 blur-3xl"
         style={{ y: y1 }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-primary/5 blur-3xl"
+        className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-[#E8A838]/5 blur-3xl"
         style={{ y: y2 }}
       />
 
-      <motion.div
-        className="relative z-10"
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={containerVariants}
-      >
-        {/* ===== ABOUT SECTION ===== */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <motion.div className="flex items-center gap-2 mb-4 text-primary font-medium">
-            <CheckCircle className="w-5 h-5" />
-            <span className="text-sm uppercase tracking-wider">
-              {lang === "uk" ? "Промислова досконалість" : lang === "pl" ? "Doskonałość przemysłowa" : "Industrial Excellence"}
-            </span>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          className="relative z-10"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          {/* ===== INTRO ===== */}
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <motion.div className="inline-flex items-center gap-2 mb-4 text-[#E8A838] font-medium">
+              <CheckCircle className="w-5 h-5" />
+              <span className="text-sm uppercase tracking-wider">
+                {lang === "uk" ? "Промислова досконалість" : lang === "pl" ? "Doskonałość przemysłowa" : "Industrial Excellence"}
+              </span>
+            </motion.div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E3A5F] mb-6">
+              {lang === "uk" ? "Понад 130 років інженерної досконалості" : lang === "pl" ? "Ponad 130 lat inżynieryjnej doskonałości" : "Over 130 Years of Engineering Excellence"}
+            </h2>
+            <motion.div
+              className="w-24 h-1 bg-[#E8A838] mx-auto mb-6"
+              initial={{ width: 0 }}
+              animate={{ width: 96 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            />
+            <p className="text-lg text-[#666] max-w-3xl mx-auto leading-relaxed">
+              {lang === "uk"
+                ? "Лідируємо в промисловому виробничому секторі з інноваційними рішеннями, передовими технологіями та непохитною відданістю якості та досконалості."
+                : lang === "pl"
+                  ? "Prowadzimy w sektorze produkcji przemysłowej z innowacyjnymi rozwiązaniami, najnowocześniejszą technologią i niezachwianym zaangażowaniem w jakość i doskonałość."
+                  : "Leading the industrial manufacturing sector with innovative solutions, cutting-edge technology, and unwavering commitment to quality and excellence."
+              }
+            </p>
           </motion.div>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-            {lang === "uk" 
-              ? "Лідируємо в промисловому виробничому секторі з інноваційними рішеннями, передовими технологіями та непохитною відданістю якості та досконалості."
-              : lang === "pl"
-                ? "Prowadzimy w sektorze produkcji przemysłowej z innowacyjnymi rozwiązaniami, najnowocześniejszą technologią i niezachwianym zaangażowaniem w jakość i doskonałość."
-                : "Leading the industrial manufacturing sector with innovative solutions, cutting-edge technology, and unwavering commitment to quality and excellence."
-            }
-          </p>
-        </motion.div>
 
-        {/* ===== OUR MISSION ===== */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <h2 className="text-3xl font-bold mb-4">
-            {lang === "uk" ? "Наша місія" : lang === "pl" ? "Nasza misja" : "Our Mission"}
-          </h2>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            {lang === "uk"
-              ? "У Teon ми присвячені трансформації промислового виробничого ландшафту через інновації, точність та сталі практики. Наша команда досвідчених інженерів та техніків невтомно працює, щоб забезпечити рішення, які сприяють прогресу та ефективності."
-              : lang === "pl"
-                ? "W Teon jesteśmy oddani transformacji krajobrazu produkcji przemysłowej poprzez innowacje, precyzję i zrównoważone praktyki. Nasz zespół doświadczonych inżynierów i techników niestrudzenie pracuje, aby dostarczać rozwiązania napędzające postęp i wydajność."
-                : "At Teon, we are dedicated to transforming the industrial manufacturing landscape through innovation, precision, and sustainable practices. Our team of expert engineers and technicians work tirelessly to deliver solutions that drive progress and efficiency."
-            }
-          </p>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            {lang === "uk"
-              ? "З понад двадцятирічним досвідом ми зарекомендували себе як надійний партнер для бізнесу, що шукає надійні, високоякісні виробничі рішення."
-              : lang === "pl"
-                ? "Z ponad dwudziestoletnim doświadczeniem ugruntowaliśmy naszą pozycję jako zaufany partner dla firm poszukujących niezawodnych, wysokiej jakości rozwiązań produkcyjnych."
-                : "With over two decades of experience, we have established ourselves as a trusted partner for businesses seeking reliable, high-quality manufacturing solutions."
-            }
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium">
-                {lang === "uk" ? "Сертифіковано ISO" : lang === "pl" ? "Certyfikat ISO" : "ISO Certified"}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium">
-                {lang === "uk" ? "Глобальне охоплення" : lang === "pl" ? "Globalny zasięg" : "Global Reach"}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium">
-                {lang === "uk" ? "Підтримка 24/7" : lang === "pl" ? "Wsparcie 24/7" : "24/7 Support"}
-              </span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* ===== HISTORY TIMELINE ===== */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <h2 className="text-3xl font-bold mb-6">
-            {lang === "uk" ? "Наша історія" : lang === "pl" ? "Nasza historia" : "Our History"}
-          </h2>
-          <div className="border-l-[3px] border-primary pl-5">
-            {history.map((item) => (
-              <div key={item.year} className="relative mb-6 pl-4 last:mb-0">
-                <div className="absolute -left-[27px] top-1.5 h-3 w-3 rounded-full border-2 border-primary bg-background" />
-                <div className="text-[16px] font-bold text-foreground">{item.year}</div>
-                <div className="mt-1.5 text-[14px] text-muted-foreground">{item.text}</div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ===== CAPABILITIES ===== */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <h2 className="text-3xl font-bold mb-6">
-            {lang === "uk" ? "Наші можливості" : lang === "pl" ? "Nasze możliwości" : "Our Capabilities"}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {services.map((service, index) => (
-              <ServiceItem
+          {/* ===== STATS ===== */}
+          <motion.div
+            ref={statsRef}
+            className="mb-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            initial="hidden"
+            animate={isStatsInView ? "visible" : "hidden"}
+            variants={containerVariants}
+          >
+            {stats.map((stat, index) => (
+              <StatCounter
                 key={index}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
+                icon={stat.icon}
+                value={stat.value}
+                label={stat.label}
+                suffix={stat.suffix}
                 delay={index * 0.1}
               />
             ))}
+          </motion.div>
+
+          {/* ===== ABOUT + MISSION ===== */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
+            <motion.div variants={itemVariants} className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop"
+                alt={lang === "uk" ? "Виробничий завод" : lang === "pl" ? "Zakład produkcyjny" : "Manufacturing facility"}
+                className="w-full h-[400px] object-cover rounded-2xl shadow-xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#fafafa]/80 to-transparent rounded-2xl" />
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="flex flex-col justify-center">
+              <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">
+                {lang === "uk" ? "Наша місія" : lang === "pl" ? "Nasza misja" : "Our Mission"}
+              </h2>
+              <p className="text-[#555] leading-relaxed mb-4">
+                {lang === "uk"
+                  ? "У Teon ми присвячені трансформації промислового виробничого ландшафту через інновації, точність та сталі практики. Наша команда досвідчених інженерів та техніків невтомно працює, щоб забезпечити рішення, які сприяють прогресу та ефективності."
+                  : lang === "pl"
+                    ? "W Teon jesteśmy oddani transformacji krajobrazu produkcji przemysłowej poprzez innowacje, precyzję i zrównoważone praktyki. Nasz zespół doświadczonych inżynierów i techników niestrudzenie pracuje, aby dostarczać rozwiązania napędzające postęp i wydajność."
+                    : "At Teon, we are dedicated to transforming the industrial manufacturing landscape through innovation, precision, and sustainable practices. Our team of expert engineers and technicians work tirelessly to deliver solutions that drive progress and efficiency."
+                }
+              </p>
+              <p className="text-[#555] leading-relaxed mb-6">
+                {lang === "uk"
+                  ? "З понад столітнім досвідом ми зарекомендували себе як надійний партнер для бізнесу, що шукає надійні, високоякісні виробничі рішення, які відповідають вимогам сучасної промисловості."
+                  : lang === "pl"
+                    ? "Z ponad stuletnim doświadczeniem ugruntowaliśmy naszą pozycję jako zaufany partner dla firm poszukujących niezawodnych, wysokiej jakości rozwiązań produkcyjnych, które spełniają wymagania nowoczesnego przemysłu."
+                    : "With over a century of experience, we have established ourselves as a trusted partner for businesses seeking reliable, high-quality manufacturing solutions that meet the demands of modern industry."
+                }
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-[#E8A838]" />
+                  <span className="text-sm font-medium text-[#1E3A5F]">
+                    {lang === "uk" ? "Сертифіковано ISO" : lang === "pl" ? "Certyfikat ISO" : "ISO Certified"}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-[#E8A838]" />
+                  <span className="text-sm font-medium text-[#1E3A5F]">
+                    {lang === "uk" ? "Глобальне охоплення" : lang === "pl" ? "Globalny zasięg" : "Global Reach"}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-[#E8A838]" />
+                  <span className="text-sm font-medium text-[#1E3A5F]">
+                    {lang === "uk" ? "Підтримка 24/7" : lang === "pl" ? "Wsparcie 24/7" : "24/7 Support"}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
 
-        {/* ===== STATS ===== */}
-        <motion.div
-          ref={statsRef}
-          className="mb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          initial="hidden"
-          animate={isStatsInView ? "visible" : "hidden"}
-          variants={containerVariants}
-        >
-          {stats.map((stat, index) => (
-            <StatCounter
-              key={index}
-              icon={stat.icon}
-              value={stat.value}
-              label={stat.label}
-              suffix={stat.suffix}
-              delay={index * 0.1}
-            />
-          ))}
-        </motion.div>
+          {/* ===== HISTORY TIMELINE ===== */}
+          <motion.div variants={itemVariants} className="mb-20">
+            <h2 className="text-3xl font-bold text-[#1E3A5F] text-center mb-12">
+              {lang === "uk" ? "Наша історія" : lang === "pl" ? "Nasza historia" : "Our History"}
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <div className="border-l-[3px] border-[#1E3A5F] pl-5">
+                {history.map((item) => (
+                  <div key={item.year} className="relative mb-8 pl-4 last:mb-0">
+                    <div className="absolute -left-[27px] top-1.5 h-3 w-3 rounded-full border-2 border-[#1E3A5F] bg-white" />
+                    <div className="text-lg font-bold text-[#1E3A5F]">{item.year}</div>
+                    <div className="mt-1.5 text-[15px] text-[#555]">{item.text}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
 
-        {/* ===== PARTNERS ===== */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <p className="text-center text-muted-foreground mb-6 font-medium">
-            {lang === "uk" ? "Довіряють лідери промисловості по всьому світу" : lang === "pl" ? "Zaufane przez liderów przemysłu na całym świecie" : "Trusted by Industry Leaders Worldwide"}
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {partners.map((partner, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.1 }}
-              >
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ===== CTA ===== */}
-        <motion.div
-          className="bg-primary text-primary-foreground p-8 md:p-10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isStatsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-bold mb-2">
-              {lang === "uk" ? "Готові до партнерства?" : lang === "pl" ? "Gotowi do współpracy?" : "Ready to Partner with Excellence?"}
-            </h3>
-            <p className="text-primary-foreground/90">
-              {lang === "uk" ? "Обговорімо, як Teon може підвищити ваші виробничі можливості." : lang === "pl" ? "Porozmawiajmy o tym, jak Teon może podnieść Twoje możliwości produkcyjne." : "Let's discuss how Teon can elevate your manufacturing capabilities."}
+          {/* ===== CAPABILITIES ===== */}
+          <motion.div variants={itemVariants} className="mb-20">
+            <h2 className="text-3xl font-bold text-[#1E3A5F] text-center mb-4">
+              {lang === "uk" ? "Наші можливості" : lang === "pl" ? "Nasze możliwości" : "Our Capabilities"}
+            </h2>
+            <p className="text-center text-[#666] mb-10 max-w-2xl mx-auto">
+              {lang === "uk"
+                ? "Комплексні промислові рішення, що охоплюють усі аспекти виробництва"
+                : lang === "pl"
+                  ? "Kompleksowe rozwiązania przemysłowe obejmujące wszystkie aspekty produkcji"
+                  : "Comprehensive industrial solutions covering all aspects of manufacturing"}
             </p>
-          </div>
-          <a href="/contact">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="gap-2 font-semibold"
-            >
-              {lang === "uk" ? "Зв'язатися з нами" : lang === "pl" ? "Skontaktuj się z nami" : "Contact Us"} <ArrowRight className="w-4 h-4" />
-            </Button>
-          </a>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {services.map((service, index) => (
+                <ServiceItem
+                  key={index}
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  delay={index * 0.1}
+                />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== CERTIFICATES ===== */}
+          <motion.div variants={itemVariants} className="mb-20">
+            <h2 className="text-3xl font-bold text-[#1E3A5F] text-center mb-4">
+              {lang === "uk" ? "Сертифікати" : lang === "pl" ? "Certyfikaty" : "Certificates"}
+            </h2>
+            <p className="text-center text-[#666] mb-10 max-w-2xl mx-auto">
+              {lang === "uk"
+                ? "Наші сертифікати підтверджують відповідність найвищим міжнародним стандартам якості та безпеки"
+                : lang === "pl"
+                  ? "Nasze certyfikaty potwierdzają zgodność z najwyższymi międzynarodowymi standardami jakości i bezpieczeństwa"
+                  : "Our certificates confirm compliance with the highest international quality and safety standards"}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {certificates.map((cert) => (
+                <a
+                  key={cert.file}
+                  href={cert.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between gap-3 rounded-xl bg-white border border-[#e5e5e5] p-5 transition-all hover:shadow-md hover:border-[#1E3A5F]/30 group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-[#1E3A5F]/10 flex items-center justify-center text-[#1E3A5F] group-hover:bg-[#1E3A5F]/20 transition-colors">
+                      <Shield size={20} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-[#1E3A5F]">{cert.name}</div>
+                      <div className="text-xs text-[#888]">
+                        {lang === "uk" ? "Переглянути сертифікат" : lang === "pl" ? "Zobacz certyfikat" : "View certificate"}
+                      </div>
+                    </div>
+                  </div>
+                  <span className="flex items-center gap-1 text-[11px] font-medium uppercase text-[#E8A838]">
+                    {cert.lang}
+                    <ExternalLink size={12} />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== PARTNERS ===== */}
+          <motion.div variants={itemVariants} className="mb-20">
+            <p className="text-center text-[#888] mb-8 font-medium uppercase tracking-wider text-sm">
+              {lang === "uk" ? "Довіряють лідери промисловості по всьому світу" : lang === "pl" ? "Zaufane przez liderów przemysłu na całym świecie" : "Trusted by Industry Leaders Worldwide"}
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-12">
+              {partners.map((partner, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: false }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="h-8 w-auto opacity-50 hover:opacity-100 transition-opacity"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== CONTACT INFO ===== */}
+          <motion.div variants={itemVariants} className="mb-20">
+            <div className="max-w-4xl mx-auto bg-white rounded-2xl border border-[#e5e5e5] p-8 md:p-10">
+              <h3 className="text-2xl font-bold text-[#1E3A5F] text-center mb-8">
+                {lang === "uk" ? "Контактна інформація" : lang === "pl" ? "Informacje kontaktowe" : "Contact Information"}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center mb-3 text-[#1E3A5F]">
+                    <MapPin size={22} />
+                  </div>
+                  <div className="font-bold text-[#1E3A5F]">Теон Maschinenfabrik</div>
+                  <div className="text-sm text-[#666] mt-1">
+                    Lange Straße 5<br />
+                    32609 Hüllhorst<br />
+                    Deutschland
+                  </div>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center mb-3 text-[#1E3A5F]">
+                    <Phone size={22} />
+                  </div>
+                  <div className="font-bold text-[#1E3A5F]">
+                    {lang === "uk" ? "Телефон" : lang === "pl" ? "Telefon" : "Phone"}
+                  </div>
+                  <div className="text-sm text-[#666] mt-1">+49 (0) 5744 / 508-0</div>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center mb-3 text-[#1E3A5F]">
+                    <Mail size={22} />
+                  </div>
+                  <div className="font-bold text-[#1E3A5F]">Email</div>
+                  <a href="mailto:info@theon.com" className="text-sm text-[#1E3A5F] font-semibold hover:underline mt-1">
+                    info@theon.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ===== CTA ===== */}
+          <motion.div
+            className="bg-gradient-to-r from-[#1E3A5F] to-[#0F1F33] text-white p-8 md:p-12 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 mb-10"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isStatsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                {lang === "uk" ? "Готові до співпраці?" : lang === "pl" ? "Gotowi do współpracy?" : "Ready to Partner?"}
+              </h3>
+              <p className="text-white/80">
+                {lang === "uk"
+                  ? "Зв'яжіться з нами для обговорення вашого проекту"
+                  : lang === "pl"
+                    ? "Skontaktuj się z nami, aby omówić Twój projekt"
+                    : "Contact us to discuss your project and discover how Teon can elevate your manufacturing capabilities."}
+              </p>
+            </div>
+            <a href="/contact">
+              <Button
+                size="lg"
+                className="bg-[#E8A838] text-[#1E3A5F] hover:bg-[#D4922E] gap-2 font-bold"
+              >
+                {lang === "uk" ? "Зв'язатися з нами" : lang === "pl" ? "Skontaktuj się z nami" : "Contact Us"} <ArrowRight className="w-4 h-4" />
+              </Button>
+            </a>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
