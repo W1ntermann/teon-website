@@ -87,28 +87,34 @@ export default function CompanyPageContent() {
 
   const historyData: Record<string, { year: string; text: string }[]> = {
     uk: [
-      { year: "1889", text: "Заснування машинобудівного заводу Теон" },
-      { year: "1950", text: "Початок виробництва спеціалізованих машин для лакофарбової промисловості" },
-      { year: "1970", text: "Запуск серії KREI — високоякісних диссольверів та млинів" },
-      { year: "1990", text: "Розширення виробничих потужностей, вихід на міжнародний ринок" },
-      { year: "2000", text: "Розробка нового покоління машин з електронним управлінням" },
-      { year: "2020", text: "Впровадження Industry 4.0 — інтелектуальні технології виробництва" },
+      { year: "2017", text: "Заснування ТОВ «ТЕОН УКРАЇНА». Початок представництва високоякісного обладнання Teon на українському ринку." },
+      { year: "2018", text: "Перші поставки машин серії KREI для провідних підприємств лакофарбової промисловості." },
+      { year: "2019", text: "Розширення команди фахівців. Відкриття сервісного центру в Одесі." },
+      { year: "2020", text: "Запуск повноцінного технічного обслуговування, ремонту та пуско-налагодження." },
+      { year: "2021", text: "Партнерство з 50+ підприємствами України. Розширення географії обслуговування." },
+      { year: "2022", text: "Продовження роботи в умовах воєнного стану. Забезпечення клієнтів запчастинами та технічною підтримкою." },
+      { year: "2023", text: "Створення власного складу оригінальних запчастин. Досягнення показника 200+ клієнтів." },
+      { year: "2024", text: "Запуск онлайн-платформи підтримки клієнтів. Цифровізація сервісних послуг." },
     ],
     en: [
-      { year: "1889", text: "Founding of the Teon machine factory" },
-      { year: "1950", text: "Start of production of specialized machines for the paint industry" },
-      { year: "1970", text: "Launch of the KREI series — high-quality dissolvers and mills" },
-      { year: "1990", text: "Expansion of production facilities, entry into the international market" },
-      { year: "2000", text: "Development of a new generation of machines with electronic control" },
-      { year: "2020", text: "Introduction of Industry 4.0 — smart manufacturing technologies" },
+      { year: "2017", text: "Founding of TEON UKRAINE LLC. Start of representing high-quality Teon equipment in the Ukrainian market." },
+      { year: "2018", text: "First deliveries of KREI series machines to leading paint industry enterprises." },
+      { year: "2019", text: "Expansion of the team of specialists. Opening of a service center in Odesa." },
+      { year: "2020", text: "Launch of full-scale maintenance, repair, and commissioning services." },
+      { year: "2021", text: "Partnership with 50+ enterprises in Ukraine. Expansion of service geography." },
+      { year: "2022", text: "Continued operations under martial law. Ensuring customers with spare parts and technical support." },
+      { year: "2023", text: "Establishment of an in-house warehouse of original spare parts. Reaching 200+ customers." },
+      { year: "2024", text: "Launch of an online customer support platform. Digitalization of services." },
     ],
     pl: [
-      { year: "1889", text: "Założenie fabryki maszyn Teon" },
-      { year: "1950", text: "Rozpoczęcie produkcji wyspecjalizowanych maszyn dla przemysłu lakierniczego" },
-      { year: "1970", text: "Uruchomienie serii KREI — wysokiej jakości dyspergatora i młynów" },
-      { year: "1990", text: "Rozbudowa mocy produkcyjnych, wejście na rynek międzynarodowy" },
-      { year: "2000", text: "Opracowanie nowej generacji maszyn ze sterowaniem elektronicznym" },
-      { year: "2020", text: "Wdrożenie Industry 4.0 — inteligentne technologie produkcji" },
+      { year: "2017", text: "Założenie TEON UKRAINE Sp. z o.o. Rozpoczęcie reprezentacji wysokiej jakości sprzętu Teon na rynku ukraińskim." },
+      { year: "2018", text: "Pierwsze dostawy maszyn serii KREI dla wiodących przedsiębiorstw przemysłu lakierniczego." },
+      { year: "2019", text: "Rozbudowa zespołu specjalistów. Otwarcie centrum serwisowego w Odessie." },
+      { year: "2020", text: "Uruchomienie pełnej obsługi technicznej, napraw i uruchomień." },
+      { year: "2021", text: "Partnerstwo z 50+ przedsiębiorstwami na Ukrainie. Rozszerzenie geografii obsługi." },
+      { year: "2022", text: "Kontynuacja działalności w warunkach stanu wojennego. Zapewnienie klientom części zamiennych i wsparcia technicznego." },
+      { year: "2023", text: "Powstanie własnego magazynu oryginalnych części zamiennych. Osiągnięcie 200+ klientów." },
+      { year: "2024", text: "Uruchomienie online platformy wsparcia klientów. Cyfryzacja usług serwisowych." },
     ],
   };
 
@@ -140,10 +146,10 @@ export default function CompanyPageContent() {
   };
 
   const stats = [
-    { icon: <Factory className="w-6 h-6" />, value: 1500, label: lang === "uk" ? "Машин встановлено" : lang === "pl" ? "Zainstalowanych maszyn" : "Machines Installed", suffix: "+" },
-    { icon: <Users className="w-6 h-6" />, value: 500, label: lang === "uk" ? "Клієнтів" : lang === "pl" ? "Klientów" : "Clients Worldwide", suffix: "+" },
+    { icon: <Factory className="w-6 h-6" />, value: 200, label: lang === "uk" ? "Машин встановлено" : lang === "pl" ? "Zainstalowanych maszyn" : "Machines Installed", suffix: "+" },
+    { icon: <Users className="w-6 h-6" />, value: 200, label: lang === "uk" ? "Клієнтів" : lang === "pl" ? "Klientów" : "Clients", suffix: "+" },
     { icon: <Globe className="w-6 h-6" />, value: 50, label: lang === "uk" ? "Країн" : lang === "pl" ? "Krajów" : "Countries Served", suffix: "+" },
-    { icon: <Award className="w-6 h-6" />, value: 135, label: lang === "uk" ? "Років досвіду" : lang === "pl" ? "Lat doświadczenia" : "Years of Experience", suffix: "" },
+    { icon: <Award className="w-6 h-6" />, value: 8, label: lang === "uk" ? "Років досвіду" : lang === "pl" ? "Lat doświadczenia" : "Years of Experience", suffix: "" },
   ];
 
   const partners = [
@@ -171,7 +177,7 @@ export default function CompanyPageContent() {
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E3A5F] mb-6">
-              {lang === "uk" ? "Понад 130 років інженерної досконалості" : lang === "pl" ? "Ponad 130 lat inżynieryjnej doskonałości" : "Over 130 Years of Engineering Excellence"}
+              {lang === "uk" ? "З 2017 року на ринку України" : lang === "pl" ? "Od 2017 roku na rynku ukraińskim" : "Since 2017 in the Ukrainian Market"}
             </h2>
             <div className="w-24 h-1 bg-[#E8A838] mx-auto mb-6" />
             <p className="text-lg text-[#666] max-w-3xl mx-auto leading-relaxed">
@@ -363,11 +369,11 @@ export default function CompanyPageContent() {
                   <div className="w-12 h-12 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center mb-3 text-[#1E3A5F]">
                     <MapPin size={22} />
                   </div>
-                  <div className="font-bold text-[#1E3A5F]">Теон Maschinenfabrik</div>
+                  <div className="font-bold text-[#1E3A5F]">ТОВ «ТЕОН УКРАЇНА»</div>
                   <div className="text-sm text-[#666] mt-1">
-                    Lange Straße 5<br />
-                    32609 Hüllhorst<br />
-                    Deutschland
+                    вул. Боровського Миколи, 28 К<br />
+                    65031 Одеса<br />
+                    Україна
                   </div>
                 </div>
                 <div className="flex flex-col items-center text-center">
@@ -377,15 +383,15 @@ export default function CompanyPageContent() {
                   <div className="font-bold text-[#1E3A5F]">
                     {lang === "uk" ? "Телефон" : lang === "pl" ? "Telefon" : "Phone"}
                   </div>
-                  <div className="text-sm text-[#666] mt-1">+49 (0) 5744 / 508-0</div>
+                  <div className="text-sm text-[#666] mt-1">+380 68 547 16 11</div>
                 </div>
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center mb-3 text-[#1E3A5F]">
                     <Mail size={22} />
                   </div>
                   <div className="font-bold text-[#1E3A5F]">Email</div>
-                  <a href="mailto:info@theon.com" className="text-sm text-[#1E3A5F] font-semibold hover:underline mt-1">
-                    info@theon.com
+                  <a href="mailto:box.teonmachinery@gmail.com" className="text-sm text-[#1E3A5F] font-semibold hover:underline mt-1">
+                    box.teonmachinery@gmail.com
                   </a>
                 </div>
               </div>

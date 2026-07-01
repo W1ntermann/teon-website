@@ -58,10 +58,10 @@ export default function Products() {
           </h1>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/60 sm:text-base">
             {lang === "uk"
-              ? "Промислове дисперсійне обладнання KREI — німецька якість, точність та надійність для вашого виробництва."
+              ? "Промислове дисперсійне обладнання KREI — високоякісні машини для диспергування, змішування та подрібнення від провідного європейського виробника."
               : lang === "pl"
-                ? "Przemysłowe urządzenia dyspergujące KREI — niemiecka jakość, precyzja i niezawodność dla Twojej produkcji."
-                : "KREI industrial dispersing equipment — German quality, precision and reliability for your production."}
+                ? "Przemysłowe urządzenia dyspergujące KREI — wysokiej jakości maszyny do dyspergowania, mieszania i mielenia od wiodącego europejskiego producenta."
+                : "KREI industrial dispersing equipment — high-quality machines for dispersing, mixing and grinding from a leading European manufacturer."}
           </p>
         </div>
       </div>

@@ -339,11 +339,11 @@ export default function ProductDetail() {
               <div className="flex flex-col gap-1.5 text-[13px] text-[#666] sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-1.5">
                 <span className="flex items-center gap-1.5">
                   <Phone size={14} className="shrink-0 text-[#1E3A5F]" />
-                  <span>+49 (0) 5744 / 508-0</span>
+                  <span>+380 68 547 16 11</span>
                 </span>
                 <span className="flex items-center gap-1.5 break-all">
                   <Mail size={14} className="shrink-0 text-[#1E3A5F]" />
-                  <span className="break-all">info@theon.com</span>
+                  <span className="break-all">box.teonmachinery@gmail.com</span>
                 </span>
               </div>
             </div>

@@ -69,14 +69,14 @@ export default function Footer() {
               {t("nav.contact")}
             </div>
             <div className="text-[13px] leading-relaxed text-white/85">
-              <div className="font-bold">Теон</div>
-              <div>Боровоського 28К</div>
-              <div>65004 Одеса</div>
+              <div className="font-bold">ТОВ «ТЕОН УКРАЇНА»</div>
+              <div>вул. Боровського Миколи, 28 К</div>
+              <div>65031 Одеса</div>
               <div>Україна</div>
-              <div className="mt-2.5">+49 (0) 5744 / 508-0</div>
+              <div className="mt-2.5">+380 68 547 16 11</div>
               <div>
-                <a href="mailto:info@theon.com" className="text-white/75 no-underline hover:text-white">
-                  info@theon.com
+                <a href="mailto:box.teonmachinery@gmail.com" className="text-white/75 no-underline hover:text-white">
+                  box.teonmachinery@gmail.com
                 </a>
               </div>
             </div>

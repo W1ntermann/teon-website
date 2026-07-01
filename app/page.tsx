@@ -200,10 +200,10 @@ export default function Home() {
                 <path d="M13 11h4a2 2 0 012 2v3" />
               </svg>
             </div>
-            <div>
-              <div className="text-[22px] font-extrabold text-[#1E3A5F]">1,500+</div>
-              <div className="text-[12px] font-medium text-[#888]">{t("stats.machines")}</div>
-            </div>
+              <div>
+                <div className="text-[22px] font-extrabold text-[#1E3A5F]">200+</div>
+                <div className="text-[12px] font-medium text-[#888]">{t("stats.machines")}</div>
+              </div>
           </div>
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F]/10">
@@ -214,10 +214,10 @@ export default function Home() {
                 <path d="M16 3.13a4 4 0 010 7.75" />
               </svg>
             </div>
-            <div>
-              <div className="text-[22px] font-extrabold text-[#1E3A5F]">500+</div>
-              <div className="text-[12px] font-medium text-[#888]">{t("stats.clients")}</div>
-            </div>
+              <div>
+                <div className="text-[22px] font-extrabold text-[#1E3A5F]">200+</div>
+                <div className="text-[12px] font-medium text-[#888]">{t("stats.clients")}</div>
+              </div>
           </div>
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F]/10">
@@ -226,10 +226,10 @@ export default function Home() {
                 <path d="M12 6v6l4 2" />
               </svg>
             </div>
-            <div>
-              <div className="text-[22px] font-extrabold text-[#1E3A5F]">130+</div>
-              <div className="text-[12px] font-medium text-[#888]">{t("stats.years")}</div>
-            </div>
+              <div>
+                <div className="text-[22px] font-extrabold text-[#1E3A5F]">8+</div>
+                <div className="text-[12px] font-medium text-[#888]">{t("stats.years")}</div>
+              </div>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ function HeritageIcon() {
       <rect x="17" y="28" width="8" height="7" rx="1" stroke="#fff" strokeWidth="1" />
       <rect x="39" y="28" width="8" height="7" rx="1" stroke="#fff" strokeWidth="1" />
       {/* Year inside */}
-      <text x="32" y="60" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="800" fontFamily="Arial" letterSpacing="2">1889</text>
+      <text x="32" y="60" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="800" fontFamily="Arial" letterSpacing="2">2017</text>
     </svg>
   );
 }
@@ -110,21 +110,21 @@ function InnovationIcon() {
   );
 }
 
-const whyItems = [
-  {
-    icon: HeritageIcon,
-    titleKey: "why.since",
-    descKey: "why.since.desc",
-    stat: "1889",
-    statLabelKey: "stats.founded",
-  },
-  {
-    icon: QualityIcon,
-    titleKey: "why.quality",
-    descKey: "why.quality.desc",
-    stat: "130+",
-    statLabelKey: "stats.experience",
-  },
+  const whyItems = [
+    {
+      icon: HeritageIcon,
+      titleKey: "why.since",
+      descKey: "why.since.desc",
+      stat: "2017",
+      statLabelKey: "stats.founded",
+    },
+    {
+      icon: QualityIcon,
+      titleKey: "why.quality",
+      descKey: "why.quality.desc",
+      stat: "8+",
+      statLabelKey: "stats.experience",
+    },
   {
     icon: WorldwideIcon,
     titleKey: "why.worldwide",
@@ -205,10 +205,10 @@ export function WhyTeon() {
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-[13px] leading-relaxed text-white/50 sm:text-sm">
             {lang === "uk"
-              ? "Понад 130 років німецької інженерної досконалості для вашої промисловості."
+              ? "8+ років досвіду на ринку України. Високоякісне обладнання та повний сервіс для вашої промисловості."
               : lang === "pl"
-                ? "Ponad 130 lat niemieckiej doskonałości inżynieryjnej dla Twojej branży."
-                : "Over 130 years of German engineering excellence for your industry."}
+                ? "8+ lat doświadczenia na rynku ukraińskim. Wysokiej jakości sprzęt i pełen serwis dla Twojej branży."
+                : "8+ years of experience in the Ukrainian market. High-quality equipment and full service for your industry."}
           </p>
         </motion.div>
 

@@ -119,10 +119,10 @@ export default function Contact() {
                   <MapPin size={18} className="text-white" />
                 </div>
                 <div>
-                  <div className="font-bold text-[#1E3A5F] mb-1">Теон Україна</div>
+                  <div className="font-bold text-[#1E3A5F] mb-1">ТОВ «ТЕОН УКРАЇНА»</div>
                   <div className="text-sm text-[#555] leading-relaxed">
-                    вул. Боровського Миколи, 28к<br />
-                    Одеса<br />
+                    вул. Боровського Миколи, 28 К<br />
+                    65031 Одеса<br />
                     Україна
                   </div>
                 </div>
@@ -132,8 +132,7 @@ export default function Contact() {
                   <Phone size={18} className="text-white" />
                 </div>
                 <div className="text-sm text-[#555] leading-relaxed">
-                  +49 (0) 5744 / 508-0<br />
-                  Fax: +49 (0) 5744 / 508-190
+                  +380 68 547 16 11
                 </div>
               </div>
               <div className="flex gap-4 items-start">
@@ -141,8 +140,8 @@ export default function Contact() {
                   <Mail size={18} className="text-white" />
                 </div>
                 <div>
-                  <a href="mailto:info@theon.com" className="text-sm text-[#1E3A5F] font-semibold hover:underline">
-                    info@theon.com
+                  <a href="mailto:box.teonmachinery@gmail.com" className="text-sm text-[#1E3A5F] font-semibold hover:underline">
+                    box.teonmachinery@gmail.com
                   </a>
                 </div>
               </div>

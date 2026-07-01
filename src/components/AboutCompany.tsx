@@ -24,17 +24,17 @@ export default function AboutCompany() {
   const stats = [
     {
       icon: <Factory className="h-6 w-6" />,
-      value: "1889",
+      value: "2017",
       label: lang === "uk" ? "Засновано" : lang === "pl" ? "Założona" : "Founded",
     },
     {
       icon: <Award className="h-6 w-6" />,
-      value: "130+",
+      value: "8+",
       label: lang === "uk" ? "Років досвіду" : lang === "pl" ? "Lat doświadczenia" : "Years Experience",
     },
     {
       icon: <Users className="h-6 w-6" />,
-      value: "500+",
+      value: "200+",
       label: lang === "uk" ? "Клієнтів" : lang === "pl" ? "Klientów" : "Clients",
     },
     {
@@ -47,7 +47,7 @@ export default function AboutCompany() {
   const values = [
     {
       icon: <Shield className="h-6 w-6" />,
-      title: lang === "uk" ? "Німецька якість" : lang === "pl" ? "Niemiecka jakość" : "German Quality",
+      title: lang === "uk" ? "Європейська якість" : lang === "pl" ? "Jakość europejska" : "European Quality",
       description:
         lang === "uk"
           ? "Найвищі стандарти виготовлення та контролю якості"
@@ -100,13 +100,17 @@ export default function AboutCompany() {
           </Badge>
           <h2 className="mb-4 text-3xl font-bold text-[#1E3A5F] sm:text-4xl md:text-5xl">
             {lang === "uk"
-              ? "Понад 130 років інженерної досконалості"
+              ? "З 2017 року на ринку України"
               : lang === "pl"
-                ? "Ponad 130 lat inżynieryjnej doskonałości"
-                : "Over 130 Years of Engineering Excellence"}
+                ? "Od 2017 roku na rynku ukraińskim"
+                : "Since 2017 in the Ukrainian Market"}
           </h2>
           <p className="mx-auto max-w-3xl text-base leading-relaxed text-[#555] sm:text-lg">
-            {t("about.text1")}
+            {lang === "uk"
+              ? "ТОВ «ТЕОН УКРАЇНА» — офіційний представник високоякісного європейського обладнання Teon в Україні. Ми надаємо високоякісні машини для диспергування, змішування та подрібнення, а також повний цикл сервісних послуг для підприємств лакофарбової та хімічної промисловості."
+              : lang === "pl"
+                ? "TEON UKRAINE Sp. z o.o. — oficjalny przedstawiciel wysokiej jakości europejskiego sprzętu Teon na Ukrainie. Dostarczamy wysokiej jakości maszyny do dyspergowania, mieszania i mielenia, a także pełen zakres usług serwisowych dla przemysłu lakierniczego i chemicznego."
+                : "TEON UKRAINE LLC — official representative of high-quality European Teon equipment in Ukraine. We provide high-quality machines for dispersing, mixing and grinding, as well as a full range of services for the paint and chemical industries."}
           </p>
         </div>
 
@@ -152,7 +156,11 @@ export default function AboutCompany() {
                     {t("about.text1")}
                   </p>
                   <p className="mb-6 leading-relaxed text-[#444]">
-                    {t("about.text2")}
+                    {lang === "uk"
+                      ? "За 8 років роботи ми встановили понад 200 машин, побудували мережу сервісних центрів і заслужили довіру провідних підприємств України. Наша місія — забезпечити українську промисловість сучасним обладнанням з повноцінною технічною підтримкою."
+                      : lang === "pl"
+                        ? "W ciągu 8 lat działalności zainstalowaliśmy ponad 200 maszyn, zbudowaliśmy sieć centrów serwisowych i zyskaliśmy zaufanie wiodących przedsiębiorstw na Ukrainie. Naszą misją jest wyposażenie ukraińskiego przemysłu w nowoczesny sprzęt z pełnym wsparciem technicznym."
+                        : "Over 8 years, we have installed over 200 machines, built a network of service centers, and earned the trust of leading Ukrainian enterprises. Our mission is to provide Ukrainian industry with modern equipment with full technical support."}
                   </p>
                   <Link href="/company">
                     <Button className="bg-[#1E3A5F] text-white hover:bg-[#152B47]">
@@ -180,7 +188,7 @@ export default function AboutCompany() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                   <div className="absolute -left-4 top-8 hidden rounded-lg bg-[#E8A838] p-4 shadow-lg md:block">
-                    <div className="text-2xl font-bold text-[#1E3A5F]">1889</div>
+                    <div className="text-2xl font-bold text-[#1E3A5F]">2017</div>
                     <div className="text-xs font-semibold text-[#1E3A5F]/80">
                       {lang === "uk"
                         ? "Засновано"
