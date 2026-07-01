@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useInView, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Factory,
@@ -9,21 +8,16 @@ import {
   Shield,
   Award,
   Users,
-  TrendingUp,
+  Globe,
   ArrowRight,
   CheckCircle,
   Wrench,
   Settings,
   Package,
-  Globe,
-  Clock,
   MapPin,
   Phone,
   Mail,
-  FileText,
   ExternalLink,
-  Target,
-  Zap,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -46,57 +40,21 @@ interface StatCounterProps {
   value: number;
   label: string;
   suffix: string;
-  delay: number;
 }
 
-function StatCounter({ icon, value, label, suffix, delay }: StatCounterProps) {
-  const countRef = useRef(null);
-  const isInView = useInView(countRef, { once: false });
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  const springValue = useSpring(0, {
-    stiffness: 50,
-    damping: 10,
-  });
-
-  useEffect(() => {
-    if (isInView && !hasAnimated) {
-      springValue.set(value);
-      setHasAnimated(true);
-    } else if (!isInView && hasAnimated) {
-      springValue.set(0);
-      setHasAnimated(false);
-    }
-  }, [isInView, value, springValue, hasAnimated]);
-
-  const displayValue = useTransform(springValue, (latest) => Math.floor(latest));
-
+function StatCounter({ icon, value, label, suffix }: StatCounterProps) {
   return (
-    <motion.div
-      className="bg-white/50 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center text-center group hover:bg-white transition-colors duration-300 border border-[#e5e5e5]"
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.6, delay },
-        },
-      }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-    >
-      <motion.div
-        className="w-14 h-14 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center mb-4 text-[#1E3A5F] group-hover:bg-[#1E3A5F]/20 transition-colors duration-300"
-        whileHover={{ rotate: 360, transition: { duration: 0.8 } }}
-      >
+    <div className="bg-white/50 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center text-center group hover:bg-white transition-colors duration-300 border border-[#e5e5e5]">
+      <div className="w-14 h-14 rounded-full bg-[#1E3A5F]/10 flex items-center justify-center mb-4 text-[#1E3A5F] group-hover:bg-[#1E3A5F]/20 transition-colors duration-300">
         {icon}
-      </motion.div>
-      <motion.div ref={countRef} className="text-3xl font-bold text-[#1E3A5F] flex items-center">
-        <motion.span>{displayValue}</motion.span>
+      </div>
+      <div className="text-3xl font-bold text-[#1E3A5F] flex items-center">
+        <span>{value}</span>
         <span>{suffix}</span>
-      </motion.div>
+      </div>
       <p className="text-[#888] text-sm mt-1">{label}</p>
-      <motion.div className="w-10 h-0.5 bg-[#E8A838] mt-3 group-hover:w-16 transition-all duration-300" />
-    </motion.div>
+      <div className="w-10 h-0.5 bg-[#E8A838] mt-3 group-hover:w-16 transition-all duration-300" />
+    </div>
   );
 }
 
@@ -104,78 +62,28 @@ interface ServiceItemProps {
   icon: React.ReactNode;
   title: string;
   description: string;
-  delay: number;
 }
 
-function ServiceItem({ icon, title, description, delay }: ServiceItemProps) {
+function ServiceItem({ icon, title, description }: ServiceItemProps) {
   return (
-    <motion.div
-      className="flex flex-col group p-6 rounded-xl bg-white border border-[#e5e5e5] hover:shadow-lg transition-all duration-300"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.3 }}
-      transition={{ duration: 0.6, delay }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-    >
-      <motion.div
-        className="flex items-center gap-3 mb-3"
-        initial={{ x: -20, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.6, delay: delay + 0.2 }}
-      >
-        <motion.div
-          className="text-[#1E3A5F] bg-[#1E3A5F]/10 p-3 rounded-lg transition-colors duration-300 group-hover:bg-[#1E3A5F]/20"
-          whileHover={{ rotate: [0, -10, 10, -5, 0], transition: { duration: 0.5 } }}
-        >
+    <div className="flex flex-col group p-6 rounded-xl bg-white border border-[#e5e5e5] hover:shadow-lg transition-all duration-300">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="text-[#1E3A5F] bg-[#1E3A5F]/10 p-3 rounded-lg transition-colors duration-300 group-hover:bg-[#1E3A5F]/20">
           {icon}
-        </motion.div>
+        </div>
         <h3 className="text-xl font-medium text-[#1E3A5F] group-hover:text-[#1E3A5F] transition-colors duration-300">
           {title}
         </h3>
-      </motion.div>
+      </div>
       <p className="text-sm text-[#666] leading-relaxed">
         {description}
       </p>
-    </motion.div>
+    </div>
   );
 }
 
 export default function CompanyPageContent() {
   const { lang } = useLanguage();
-
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
-  const isStatsInView = useInView(statsRef, { once: false, amount: 0.3 });
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
 
   const historyData: Record<string, { year: string; text: string }[]> = {
     uk: [
@@ -251,44 +159,21 @@ export default function CompanyPageContent() {
   const services = servicesData[lang] || servicesData.en;
 
   return (
-    <section
-      ref={sectionRef}
-      className="w-full bg-[#fafafa] text-[#333] overflow-hidden relative"
-    >
-      {/* Background decorative blobs */}
-      <motion.div
-        className="absolute top-20 left-10 w-64 h-64 rounded-full bg-[#1E3A5F]/5 blur-3xl"
-        style={{ y: y1 }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-[#E8A838]/5 blur-3xl"
-        style={{ y: y2 }}
-      />
-
+    <section className="w-full bg-[#fafafa] text-[#333] relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          className="relative z-10"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-        >
+        <div className="relative z-10">
           {/* ===== INTRO ===== */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <motion.div className="inline-flex items-center gap-2 mb-4 text-[#E8A838] font-medium">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 mb-4 text-[#E8A838] font-medium">
               <CheckCircle className="w-5 h-5" />
               <span className="text-sm uppercase tracking-wider">
                 {lang === "uk" ? "Промислова досконалість" : lang === "pl" ? "Doskonałość przemysłowa" : "Industrial Excellence"}
               </span>
-            </motion.div>
+            </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E3A5F] mb-6">
               {lang === "uk" ? "Понад 130 років інженерної досконалості" : lang === "pl" ? "Ponad 130 lat inżynieryjnej doskonałości" : "Over 130 Years of Engineering Excellence"}
             </h2>
-            <motion.div
-              className="w-24 h-1 bg-[#E8A838] mx-auto mb-6"
-              initial={{ width: 0 }}
-              animate={{ width: 96 }}
-              transition={{ duration: 1, delay: 0.5 }}
-            />
+            <div className="w-24 h-1 bg-[#E8A838] mx-auto mb-6" />
             <p className="text-lg text-[#666] max-w-3xl mx-auto leading-relaxed">
               {lang === "uk"
                 ? "Лідируємо в промисловому виробничому секторі з інноваційними рішеннями, передовими технологіями та непохитною відданістю якості та досконалості."
@@ -297,16 +182,10 @@ export default function CompanyPageContent() {
                   : "Leading the industrial manufacturing sector with innovative solutions, cutting-edge technology, and unwavering commitment to quality and excellence."
               }
             </p>
-          </motion.div>
+          </div>
 
           {/* ===== STATS ===== */}
-          <motion.div
-            ref={statsRef}
-            className="mb-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            initial="hidden"
-            animate={isStatsInView ? "visible" : "hidden"}
-            variants={containerVariants}
-          >
+          <div className="mb-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <StatCounter
                 key={index}
@@ -314,23 +193,22 @@ export default function CompanyPageContent() {
                 value={stat.value}
                 label={stat.label}
                 suffix={stat.suffix}
-                delay={index * 0.1}
               />
             ))}
-          </motion.div>
+          </div>
 
           {/* ===== ABOUT + MISSION ===== */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
-            <motion.div variants={itemVariants} className="relative">
+            <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop"
                 alt={lang === "uk" ? "Виробничий завод" : lang === "pl" ? "Zakład produkcyjny" : "Manufacturing facility"}
                 className="w-full h-[400px] object-cover rounded-2xl shadow-xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#fafafa]/80 to-transparent rounded-2xl" />
-            </motion.div>
+            </div>
 
-            <motion.div variants={itemVariants} className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center">
               <h2 className="text-3xl font-bold text-[#1E3A5F] mb-4">
                 {lang === "uk" ? "Наша місія" : lang === "pl" ? "Nasza misja" : "Our Mission"}
               </h2>
@@ -370,11 +248,11 @@ export default function CompanyPageContent() {
                   </span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* ===== HISTORY TIMELINE ===== */}
-          <motion.div variants={itemVariants} className="mb-20">
+          <div className="mb-20">
             <h2 className="text-3xl font-bold text-[#1E3A5F] text-center mb-12">
               {lang === "uk" ? "Наша історія" : lang === "pl" ? "Nasza historia" : "Our History"}
             </h2>
@@ -389,10 +267,10 @@ export default function CompanyPageContent() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* ===== CAPABILITIES ===== */}
-          <motion.div variants={itemVariants} className="mb-20">
+          <div className="mb-20">
             <h2 className="text-3xl font-bold text-[#1E3A5F] text-center mb-4">
               {lang === "uk" ? "Наші можливості" : lang === "pl" ? "Nasze możliwości" : "Our Capabilities"}
             </h2>
@@ -410,14 +288,13 @@ export default function CompanyPageContent() {
                   icon={service.icon}
                   title={service.title}
                   description={service.description}
-                  delay={index * 0.1}
                 />
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* ===== CERTIFICATES ===== */}
-          <motion.div variants={itemVariants} className="mb-20">
+          <div className="mb-20">
             <h2 className="text-3xl font-bold text-[#1E3A5F] text-center mb-4">
               {lang === "uk" ? "Сертифікати" : lang === "pl" ? "Certyfikaty" : "Certificates"}
             </h2>
@@ -455,35 +332,28 @@ export default function CompanyPageContent() {
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* ===== PARTNERS ===== */}
-          <motion.div variants={itemVariants} className="mb-20">
+          <div className="mb-20">
             <p className="text-center text-[#888] mb-8 font-medium uppercase tracking-wider text-sm">
               {lang === "uk" ? "Довіряють лідери промисловості по всьому світу" : lang === "pl" ? "Zaufane przez liderów przemysłu na całym świecie" : "Trusted by Industry Leaders Worldwide"}
             </p>
             <div className="flex flex-wrap justify-center items-center gap-12">
               {partners.map((partner, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: false }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  whileHover={{ scale: 1.1 }}
-                >
+                <div key={idx}>
                   <img
                     src={partner.logo}
                     alt={partner.name}
                     className="h-8 w-auto opacity-50 hover:opacity-100 transition-opacity"
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* ===== CONTACT INFO ===== */}
-          <motion.div variants={itemVariants} className="mb-20">
+          <div className="mb-20">
             <div className="max-w-4xl mx-auto bg-white rounded-2xl border border-[#e5e5e5] p-8 md:p-10">
               <h3 className="text-2xl font-bold text-[#1E3A5F] text-center mb-8">
                 {lang === "uk" ? "Контактна інформація" : lang === "pl" ? "Informacje kontaktowe" : "Contact Information"}
@@ -520,15 +390,10 @@ export default function CompanyPageContent() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* ===== CTA ===== */}
-          <motion.div
-            className="bg-gradient-to-r from-[#1E3A5F] to-[#0F1F33] text-white p-8 md:p-12 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 mb-10"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isStatsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
+          <div className="bg-gradient-to-r from-[#1E3A5F] to-[#0F1F33] text-white p-8 md:p-12 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
             <div className="flex-1 text-center md:text-left">
               <h3 className="text-2xl md:text-3xl font-bold mb-2">
                 {lang === "uk" ? "Готові до співпраці?" : lang === "pl" ? "Gotowi do współpracy?" : "Ready to Partner?"}
@@ -549,8 +414,8 @@ export default function CompanyPageContent() {
                 {lang === "uk" ? "Зв'язатися з нами" : lang === "pl" ? "Skontaktuj się z nami" : "Contact Us"} <ArrowRight className="w-4 h-4" />
               </Button>
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

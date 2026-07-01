@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ArrowRight, Star, Shield, Award } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Shield, Award } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts } from "@/translations/productData";
 import { QuickLinksSection } from "@/components/QuickLinks";
@@ -10,6 +10,7 @@ import { ProcessHighlight } from "@/components/ProcessHighlight";
 import { ProductsShowcase } from "@/components/ProductsShowcase";
 import { WhyTeon } from "@/components/WhyTeon";
 import AboutCompany from "@/components/AboutCompany";
+import Testimonials from "@/components/Testimonials";
 import { cn } from "@/lib/utils";
 import hero1 from "@/assets/hero1.jpg";
 import hero2 from "@/assets/hero2.jpg";
@@ -33,31 +34,12 @@ const showsData: Record<string, { date: string; name: string; city: string; hall
   pl: [{ date: "22-26 kwi 2024", name: "Hannover Messe", city: "Hanower", hall: "Hala 6, B12" }, { date: "05-08 cze 2024", name: "ECS", city: "Norymberga", hall: "Hala 9, C24" }, { date: "10-14 wrz 2024", name: "ACHEMA", city: "Frankfurt", hall: "Hala 4.2, A08" }],
 };
 
-const testimonialsData: Record<string, { text: string; name: string; company: string }[]> = {
-  uk: [
-    { text: "Обладнання KREI значно підвищило продуктивність нашого виробництва. Якість диспергування перевершила наші очікування.", name: "Петро Коваленко", company: "ТОВ «Промфарб»" },
-    { text: "Сервісне обслуговування та підтримка Теон на найвищому рівні. Рекомендуємо як надійного партнера.", name: "Андреас Шнайдер", company: "Farben GmbH" },
-    { text: "Високоточне обладнання, яке повністю відповідає нашим вимогам.", name: "Марта Новак", company: "Chemia Sp. z o.o." },
-  ],
-  en: [
-    { text: "KREI equipment significantly increased our production efficiency. The dispersion quality exceeded our expectations.", name: "Peter Kovalenko", company: "Promfarb LLC" },
-    { text: "Teon's service and support are top-notch. We recommend them as a reliable partner.", name: "Andreas Schneider", company: "Farben GmbH" },
-    { text: "High-precision equipment that fully meets our requirements. We especially appreciate the reliability and durability.", name: "Marta Nowak", company: "Chemia Sp. z o.o." },
-  ],
-  pl: [
-    { text: "Urządzenia KREI znacząco zwiększyły wydajność naszej produkcji. Jakość dyspergowania przekroczyła nasze oczekiwania.", name: "Piotr Kowalenko", company: "Promfarb Sp. z o.o." },
-    { text: "Serwis i wsparcie Teon są na najwyższym poziomie. Polecamy jako niezawodnego partnera.", name: "Andreas Schneider", company: "Farben GmbH" },
-    { text: "Precyzyjne urządzenia, które w pełni spełniają nasze wymagania.", name: "Marta Nowak", company: "Chemia Sp. z o.o." },
-  ],
-};
-
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { lang, t } = useLanguage();
   const products = getProducts(lang);
   const news = newsData[lang];
   const shows = showsData[lang];
-  const testimonials = testimonialsData[lang];
 
   useEffect(() => {
     const timer = setInterval(() => { setCurrentSlide((prev) => (prev + 1) % heroSlides.length); }, 5000);
@@ -101,7 +83,7 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
               <Link
-                href="/contact"
+                href="/quote"
                 className="inline-flex items-center gap-2 rounded bg-[#E8A838] px-8 py-3.5 text-[14px] font-bold text-[#1E3A5F] shadow-lg transition-all hover:bg-[#D4922E] hover:shadow-xl"
               >
                 {t("hero.quote_btn")}
@@ -252,45 +234,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ===== TESTIMONIALS ===== */}
-      <section className="border-b border-[#e5e5e5] bg-white py-14 sm:py-16 md:py-18">
-        <div className="mx-auto max-w-[1200px] px-4">
-          <div className="mb-8 text-center md:mb-10">
-            <div className="mb-3 flex items-center justify-center gap-2">
-              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
-              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
-              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
-              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
-              <Star size={18} className="fill-[#E8A838] text-[#E8A838]" />
-            </div>
-            <h2 className="text-[20px] font-bold tracking-[3px] text-[#1E3A5F] sm:text-[24px] md:text-[26px]">
-              {t("testimonials.title")}
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((item, idx) => (
-              <div
-                key={idx}
-                className="relative rounded-lg border border-[#e5e5e5] bg-[#fafafa] p-6 transition-all hover:border-[#1E3A5F]/20 hover:shadow-md"
-              >
-                {/* Quote icon */}
-                <div className="mb-3 text-[#1E3A5F]/10">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-                <p className="mb-4 text-[14px] leading-relaxed text-[#444] italic">
-                  &ldquo;{item.text}&rdquo;
-                </p>
-                <div className="border-t border-[#e5e5e5] pt-3">
-                  <div className="text-[14px] font-bold text-[#1E3A5F]">{item.name}</div>
-                  <div className="text-[12px] text-[#888]">{item.company}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ===== PROCESS HIGHLIGHT ===== */}
       <ProcessHighlight />
@@ -306,6 +249,9 @@ export default function Home() {
 
       {/* ===== WHY TEON ===== */}
       <WhyTeon />
+      
+      {/* ===== TESTIMONIALS ===== */}
+      <Testimonials />
 
       {/* ===== NEWS SECTION ===== */}
       <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-[50px]">

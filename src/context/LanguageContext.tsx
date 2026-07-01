@@ -43,6 +43,7 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "nav.products": "ПРОДУКТИ",
     "nav.service": "СЕРВІС",
     "nav.contact": "КОНТАКТ",
+    "nav.quote": "ОТРИМАТИ КП",
     "nav.menu": "Меню",
     // Search
     "search.placeholder": "Пошук...",
@@ -170,8 +171,6 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "hero.trust_atex": "ATEX",
     "hero.trust_ce": "CE",
     "hero.trust_text": "Сертифікована німецька якість",
-    // Header CTA
-    "header.quote_btn": "Запросити пропозицію",
     // Testimonials
     "testimonials.title": "ВІДГУКИ КЛІЄНТІВ",
     "testimonial.1.text": "Обладнання KREI значно підвищило продуктивність нашого виробництва. Якість диспергування перевершила наші очікування.",
@@ -187,6 +186,21 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "stats.machines": "Машин встановлено",
     "stats.clients": "Клієнтів",
     "stats.years": "Років досвіду",
+    // Quote page
+    "quote.title": "ОТРИМАТИ КП",
+    "quote.subtitle": "Залиште заявку — і ми надішлемо вам комерційну пропозицію протягом 24 годин",
+    "quote.name": "Ім'я *",
+    "quote.email": "Email *",
+    "quote.message": "Повідомлення *",
+    "quote.send": "Надіслати запит",
+    "quote.success": "Дякуємо за запит!",
+    "quote.success.text": "Ми зв'яжемося з вами найближчим часом.",
+    "quote.required": "* Обов'язкові поля",
+    // Trust block
+    "trust.quality": "Німецька якість",
+    "trust.global": "Понад 50 країн",
+    "trust.experience": "130+ років досвіду",
+    "trust.certified": "Сертифіковано",
   },
 
   en: {
@@ -198,6 +212,7 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "nav.products": "PRODUCTS",
     "nav.service": "SERVICE",
     "nav.contact": "CONTACT",
+    "nav.quote": "REQUEST A QUOTE",
     "nav.menu": "Menu",
     "search.placeholder": "Search...",
     "search.open": "Open search",
@@ -312,8 +327,6 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "hero.trust_atex": "ATEX",
     "hero.trust_ce": "CE",
     "hero.trust_text": "Certified German Quality",
-    // Header CTA
-    "header.quote_btn": "Request a Quote",
     // Testimonials
     "testimonials.title": "CLIENT TESTIMONIALS",
     "testimonial.1.text": "KREI equipment significantly increased our production efficiency. The dispersion quality exceeded our expectations.",
@@ -329,6 +342,21 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "stats.machines": "Machines Installed",
     "stats.clients": "Clients",
     "stats.years": "Years Experience",
+    // Quote page
+    "quote.title": "REQUEST A QUOTE",
+    "quote.subtitle": "Leave a request and we will send you a commercial offer within 24 hours",
+    "quote.name": "Name *",
+    "quote.email": "Email *",
+    "quote.message": "Message *",
+    "quote.send": "Send Request",
+    "quote.success": "Thank you for your request!",
+    "quote.success.text": "We will contact you shortly.",
+    "quote.required": "* Required fields",
+    // Trust block
+    "trust.quality": "German Quality",
+    "trust.global": "50+ Countries",
+    "trust.experience": "130+ Years Experience",
+    "trust.certified": "Certified",
   },
 
   pl: {
@@ -340,6 +368,7 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "nav.products": "PRODUKTY",
     "nav.service": "SERWIS",
     "nav.contact": "KONTAKT",
+    "nav.quote": "POPROŚ O WYCENĘ",
     "nav.menu": "Menu",
     "search.placeholder": "Szukaj...",
     "search.open": "Otwórz wyszukiwarkę",
@@ -454,8 +483,6 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "hero.trust_atex": "ATEX",
     "hero.trust_ce": "CE",
     "hero.trust_text": "Certyfikowana niemiecka jakość",
-    // Header CTA
-    "header.quote_btn": "Poproś o ofertę",
     // Testimonials
     "testimonials.title": "OPINIE KLIENTÓW",
     "testimonial.1.text": "Urządzenia KREI znacząco zwiększyły wydajność naszej produkcji. Jakość dyspergowania przekroczyła nasze oczekiwania.",
@@ -471,5 +498,20 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "stats.machines": "Zainstalowanych maszyn",
     "stats.clients": "Klientów",
     "stats.years": "Lat doświadczenia",
+    // Quote page
+    "quote.title": "POPROŚ O WYCENĘ",
+    "quote.subtitle": "Zostaw zapytanie, a wyślemy Ci ofertę handlową w ciągu 24 godzin",
+    "quote.name": "Imię i nazwisko *",
+    "quote.email": "Email *",
+    "quote.message": "Wiadomość *",
+    "quote.send": "Wyślij zapytanie",
+    "quote.success": "Dziękujemy za zapytanie!",
+    "quote.success.text": "Skontaktujemy się z Tobą wkrótce.",
+    "quote.required": "* Pola wymagane",
+    // Trust block
+    "trust.quality": "Niemiecka jakość",
+    "trust.global": "Ponad 50 krajów",
+    "trust.experience": "130+ lat doświadczenia",
+    "trust.certified": "Certyfikowane",
   },
 };
