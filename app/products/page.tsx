@@ -15,6 +15,7 @@ import {
   Maximize2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import hero1 from "@/assets/hero1.jpg";
 
 export default function Products() {
   const { lang, t } = useLanguage();
@@ -29,7 +30,14 @@ export default function Products() {
   return (
     <div className="min-h-screen bg-[#fafafa] font-sans" style={{ fontFamily: "Arial, sans-serif" }}>
       {/* Hero Header */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#0F1F33] via-[#152B47] to-[#1E3A5F]">
+      <div 
+        className="relative overflow-hidden bg-gradient-to-br from-[#0F1F33] via-[#152B47] to-[#1E3A5F]"
+        style={{ 
+          backgroundImage: `url(${hero1.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
         {/* Background pattern */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -39,6 +47,8 @@ export default function Products() {
             backgroundSize: "60px 60px, 40px 40px",
           }}
         />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F1F33]/85 via-[#152B47]/80 to-[#1E3A5F]/75" />
         <div className="relative mx-auto max-w-[1200px] px-4 py-10 sm:py-14 md:py-16">
           {/* Breadcrumb */}
           <div className="flex flex-wrap items-center gap-2 text-[13px] text-white/50">
