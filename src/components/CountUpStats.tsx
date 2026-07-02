@@ -76,14 +76,14 @@ export function CountUpStats({ lang, t }: CountUpStatsProps) {
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#E8A838] via-[#E8A838]/60 to-transparent" />
 
-      <div className="relative mx-auto max-w-[1200px] px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-0">
+      <div className="relative mx-auto max-w-[1200px] px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+        <div className="flex flex-row items-stretch sm:grid sm:grid-cols-3 sm:gap-0">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
               <div
                 key={stat.label}
-                className="group relative flex items-center gap-5 px-6 py-5 sm:justify-center sm:px-8 sm:py-6"
+                className="group relative flex flex-1 flex-col items-center justify-center gap-2 px-1 py-3 text-center sm:flex-0 sm:flex-row sm:gap-5 sm:px-8 sm:py-6 sm:text-left"
               >
                 {/* Vertical divider between stats on desktop */}
                 {idx < stats.length - 1 && (
@@ -91,16 +91,16 @@ export function CountUpStats({ lang, t }: CountUpStatsProps) {
                 )}
 
                 {/* Icon container */}
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10 transition-all duration-300 group-hover:bg-white/10 group-hover:ring-[#E8A838]/40 sm:h-[72px] sm:w-[72px]">
-                  <Icon className="h-7 w-7 text-[#E8A838] sm:h-8 sm:w-8" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10 transition-all duration-300 group-hover:bg-white/10 group-hover:ring-[#E8A838]/40 sm:h-[72px] sm:w-[72px]">
+                  <Icon className="h-4 w-4 text-[#E8A838] sm:h-8 sm:w-8" />
                 </div>
 
                 {/* Text */}
                 <div className="flex-1 min-w-0">
-                  <div className="text-3xl font-black leading-none tracking-tight text-white sm:text-4xl lg:text-5xl">
+                  <div className="text-xl font-black leading-none tracking-tight text-white sm:text-4xl lg:text-5xl">
                     <CountUp end={stat.value} suffix={stat.suffix} />
                   </div>
-                  <div className="mt-1.5 text-sm font-medium tracking-wide text-white/60 sm:text-base">
+                  <div className="mt-0.5 text-[10px] font-medium tracking-wide text-white/60 sm:mt-1.5 sm:text-base">
                     {stat.label}
                   </div>
                 </div>

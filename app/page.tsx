@@ -1,28 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ArrowRight, Shield, Award } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts } from "@/translations/productData";
 import { QuickLinksSection } from "@/components/QuickLinks";
+import { HeroSection } from "@/components/HeroSection";
+import { ProductPanel } from "@/components/ProductPanel";
 import { ProcessHighlight } from "@/components/ProcessHighlight";
 import { ProductsShowcase } from "@/components/ProductsShowcase";
 import { WhyTeon } from "@/components/WhyTeon";
 import AboutCompany from "@/components/AboutCompany";
 import Testimonials from "@/components/Testimonials";
 import { CountUpStats } from "@/components/CountUpStats";
-import { cn } from "@/lib/utils";
-import hero1 from "@/assets/hero1.jpg";
-import hero2 from "@/assets/hero2.jpg";
-import hero3 from "@/assets/hero3.jpg";
-
-const heroSlides = [
-  { id: 1, image: hero1.src, overlay: "rgba(0,0,0,0.45)" },
-  { id: 2, image: hero2.src, overlay: "rgba(0,0,0,0.45)" },
-  { id: 3, image: hero3.src, overlay: "rgba(0,0,0,0.45)" },
-];
 
 const newsData: Record<string, { date: string; title: string; text: string }[]> = {
   uk: [{ date: "15.04.2024", title: "Теон на виставці Hannover Messe 2024", text: "Відвідайте наш стенд на найбільшій промисловій виставці світу." }, { date: "01.03.2024", title: "Нова версія KREI DISSOLVER-Butterfly", text: "Представляємо оновлену серію диссольверів." }, { date: "10.02.2024", title: "Розширення сервісного відділу", text: "Наша команда фахівців готова надати швидкий сервіс." }],
@@ -37,185 +27,18 @@ const showsData: Record<string, { date: string; name: string; city: string; hall
 };
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isHoveringTrustBadges, setIsHoveringTrustBadges] = useState(false);
   const { lang, t } = useLanguage();
   const products = getProducts(lang);
   const news = newsData[lang];
   const shows = showsData[lang];
 
-  useEffect(() => {
-    const timer = setInterval(() => { setCurrentSlide((prev) => (prev + 1) % heroSlides.length); }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const slide = heroSlides[currentSlide];
-
-  const trustBadges = [
-    { icon: Shield, label: t("hero.trust_iso") },
-    { icon: Award, label: t("hero.trust_atex") },
-    { icon: Shield, label: t("hero.trust_ce") },
-  ];
-
   return (
     <div className="min-h-screen font-sans bg-white text-black">
       {/* ===== HERO SECTION ===== */}
-      <div
-        className="relative min-h-[450px] overflow-hidden sm:min-h-[500px] md:min-h-[540px]"
-        style={{ backgroundImage: `url(${slide.image})`, backgroundSize: "cover", backgroundPosition: "center", transition: "background-image 0.8s ease" }}
-      >
-        <div style={{ position: "absolute", inset: 0, backgroundColor: slide.overlay }} />
+      <HeroSection />
 
-        {/* Hero Content */}
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center">
-          <div className="mx-auto w-full max-w-[900px] sm:max-w-[900px]">
-            <div className="mb-3 flex items-center justify-center gap-3 sm:mb-4">
-              <div className="h-px w-8 bg-white/30 sm:w-10" />
-              <span className="text-[10px] font-bold uppercase tracking-[3px] text-white/70 sm:text-[11px] sm:tracking-[4px]">
-                TEON — {t("hero.trust_text")}
-              </span>
-              <div className="h-px w-8 bg-white/30 sm:w-10" />
-            </div>
-            <h1 className="text-[22px] font-bold leading-snug tracking-[0.5px] text-white sm:text-[28px] sm:leading-tight sm:tracking-[1px] md:text-[36px] md:tracking-[1px] lg:text-[42px]">
-              {t("hero.tagline1")}
-            </h1>
-            <p className="mx-auto mt-3 max-w-2xl text-[13px] font-medium leading-relaxed text-white/80 sm:mt-4 sm:text-[15px] sm:leading-relaxed md:text-[16px] md:leading-relaxed lg:text-[17px]">
-              {t("hero.tagline2")}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-              <Link
-                href="/quote"
-                className="inline-flex items-center gap-2 rounded bg-[#E8A838] px-8 py-3.5 text-[14px] font-bold text-[#1E3A5F] shadow-lg transition-all hover:bg-[#D4922E] hover:shadow-xl"
-              >
-                {t("hero.quote_btn")}
-                <ArrowRight size={18} />
-              </Link>
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-2 rounded border-2 border-white/50 bg-white/10 px-8 py-3.5 text-[14px] font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20"
-              >
-                {t("products.more")}
-              </Link>
-            </div>
-
-            {/* Trust Badges + Slide Indicators */}
-            <div 
-              className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:gap-5 md:gap-8"
-              onMouseEnter={() => setIsHoveringTrustBadges(true)}
-              onMouseLeave={() => setIsHoveringTrustBadges(false)}
-            >
-              {trustBadges.map((badge) => (
-                <div key={badge.label} className="flex items-center gap-1.5">
-                  <badge.icon size={12} className="text-[#E8A838] sm:size-14" />
-                  <span className="text-[11px] font-semibold text-white/80 sm:text-[12px] md:text-[13px]">{badge.label}</span>
-                </div>
-              ))}
-              
-              {/* Slide indicators + slide number */}
-              <div className="flex items-center gap-2">
-                {/* Slide dots */}
-                <div className="flex items-center gap-1.5">
-                  {heroSlides.map((_, i) => (
-                    <button type="button" key={i} onClick={() => setCurrentSlide(i)} className="flex items-center justify-center p-0" aria-label={`Slide ${i + 1}`}>
-                      <span className={cn("block h-2.5 w-2.5 rounded-full border border-white/80 transition-colors", i === currentSlide ? "bg-white" : "bg-white/30")} />
-                    </button>
-                  ))}
-                </div>
-                
-                {/* Desktop: Show current slide number on hover */}
-                <div className="hidden md:block">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ 
-                      opacity: isHoveringTrustBadges ? 1 : 0,
-                      scale: isHoveringTrustBadges ? 1 : 0.8
-                    }}
-                    transition={{ duration: 0.2 }}
-                    className="flex items-center gap-1.5 rounded-full bg-white/20 px-2.5 py-1 backdrop-blur-sm"
-                  >
-                    <span className="text-[10px] font-semibold text-white/90">{currentSlide + 1}</span>
-                    <span className="text-[9px] text-white/60">/ {heroSlides.length}</span>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Hero nav buttons */}
-        <button
-          type="button"
-          onClick={() => setCurrentSlide((p) => (p - 1 + heroSlides.length) % heroSlides.length)}
-          className="absolute left-4 top-1/2 z-20 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded border border-white/50 bg-white/20 text-white"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button
-          type="button"
-          onClick={() => setCurrentSlide((p) => (p + 1) % heroSlides.length)}
-          className="absolute right-4 top-1/2 z-20 flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded border border-white/50 bg-white/20 text-white"
-        >
-          <ChevronRight size={24} />
-        </button>
-
-        {/* Slide indicators - mobile only */}
-        <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 md:hidden">
-          {heroSlides.map((_, i) => (
-            <button type="button" key={i} onClick={() => setCurrentSlide(i)} className="flex min-h-9 min-w-9 items-center justify-center p-0" aria-label={`Slide ${i + 1}`}>
-              <span className={cn("block h-3 w-3 rounded-full border border-white/80 transition-colors", i === currentSlide ? "bg-white" : "bg-white/30")} />
-            </button>
-          ))}
-        </div>
-
-        {/* Desktop: Product panel at hero bottom */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:block">
-          <div className="grid grid-cols-4 auto-rows-fr">
-            {products.map((product, idx) => (
-              <Link
-                key={product.id}
-                href={`/products/${product.slug}`}
-                className={cn(
-                  "group flex items-center justify-center gap-3.5 bg-[rgba(30,58,95,0.82)] px-5 py-4 no-underline hover:bg-[rgba(30,58,95,0.92)] transition-all duration-200 h-full w-full",
-                  idx < 3 && "border-r border-white/10"
-                )}
-              >
-                <div className="flex shrink-0 items-center justify-center">
-                  <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-11 w-11 transition-transform group-hover:scale-105">
-                    <span className="font-bold text-white text-[10px]">KREI</span>
-                  </div>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-bold tracking-widest text-white text-[9px] uppercase">KREI</div>
-                  <div className="font-bold leading-tight text-white text-[12px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile: Product panel outside hero - horizontal scroll */}
-      <div className="md:hidden bg-[#1E3A5F]">
-        <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -space-x-3 px-4 py-5">
-          {products.map((product) => (
-            <Link
-              key={product.id}
-              href={`/products/${product.slug}`}
-              className="group snap-start shrink-0 w-[200px] first:pl-0 last:pr-0 px-3"
-            >
-              <div className="flex flex-col items-center gap-3 rounded-xl bg-white/10 px-4 py-6 text-center backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:scale-[1.02] active:scale-[0.98]">
-                <div className="flex items-center justify-center rounded-full border-2 border-[#E8A838] bg-[#1E3A5F] h-14 w-14 transition-transform group-hover:scale-110">
-                  <span className="font-bold text-white text-[11px]">KREI</span>
-                </div>
-                <div className="font-bold tracking-widest text-[#E8A838] text-[9px] uppercase">KREI</div>
-                <div className="font-bold leading-tight text-white text-[13px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
+      {/* ===== PRODUCT PANEL (below hero) ===== */}
+      <ProductPanel products={products} />
 
       {/* ===== B2B STATS BAR ===== */}
       <CountUpStats lang={lang} t={t} />
