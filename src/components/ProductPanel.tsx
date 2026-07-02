@@ -24,7 +24,7 @@ export function ProductPanel({ products }: ProductPanelProps) {
               )}
             >
               {/* Text content — above photo */}
-              <div className="flex flex-col gap-0.5 px-5 pt-4 pb-2.5">
+              <div className="flex flex-col items-center gap-0.5 px-5 pt-4 pb-2.5 text-center">
                 <div className="font-bold tracking-widest text-white/50 text-[9px] uppercase">
                   {product.category}
                 </div>
