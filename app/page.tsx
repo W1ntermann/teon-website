@@ -12,6 +12,7 @@ import { ProductsShowcase } from "@/components/ProductsShowcase";
 import { WhyTeon } from "@/components/WhyTeon";
 import AboutCompany from "@/components/AboutCompany";
 import Testimonials from "@/components/Testimonials";
+import { CountUpStats } from "@/components/CountUpStats";
 import { cn } from "@/lib/utils";
 import hero1 from "@/assets/hero1.jpg";
 import hero2 from "@/assets/hero2.jpg";
@@ -99,7 +100,7 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Trust Badges */}
+            {/* Trust Badges + Slide Indicators */}
             <div 
               className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:gap-5 md:gap-8"
               onMouseEnter={() => setIsHoveringTrustBadges(true)}
@@ -112,21 +113,32 @@ export default function Home() {
                 </div>
               ))}
               
-              {/* Desktop: Show current slide number on hover */}
-              <div className="hidden md:block">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ 
-                    opacity: isHoveringTrustBadges ? 1 : 0,
-                    scale: isHoveringTrustBadges ? 1 : 0.8
-                  }}
-                  transition={{ duration: 0.2 }}
-                  className="flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 backdrop-blur-sm"
-                >
-                  <span className="text-[11px] font-semibold text-white/90">Слайд</span>
-                  <span className="text-[13px] font-bold text-white">{currentSlide + 1}</span>
-                  <span className="text-[11px] text-white/70">/ {heroSlides.length}</span>
-                </motion.div>
+              {/* Slide indicators + slide number */}
+              <div className="flex items-center gap-2">
+                {/* Slide dots */}
+                <div className="flex items-center gap-1.5">
+                  {heroSlides.map((_, i) => (
+                    <button type="button" key={i} onClick={() => setCurrentSlide(i)} className="flex items-center justify-center p-0" aria-label={`Slide ${i + 1}`}>
+                      <span className={cn("block h-2.5 w-2.5 rounded-full border border-white/80 transition-colors", i === currentSlide ? "bg-white" : "bg-white/30")} />
+                    </button>
+                  ))}
+                </div>
+                
+                {/* Desktop: Show current slide number on hover */}
+                <div className="hidden md:block">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ 
+                      opacity: isHoveringTrustBadges ? 1 : 0,
+                      scale: isHoveringTrustBadges ? 1 : 0.8
+                    }}
+                    transition={{ duration: 0.2 }}
+                    className="flex items-center gap-1.5 rounded-full bg-white/20 px-2.5 py-1 backdrop-blur-sm"
+                  >
+                    <span className="text-[10px] font-semibold text-white/90">{currentSlide + 1}</span>
+                    <span className="text-[9px] text-white/60">/ {heroSlides.length}</span>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </div>
@@ -148,11 +160,11 @@ export default function Home() {
           <ChevronRight size={24} />
         </button>
 
-        {/* Slide indicators */}
-        <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 md:bottom-[108px]">
+        {/* Slide indicators - mobile only */}
+        <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 md:hidden">
           {heroSlides.map((_, i) => (
             <button type="button" key={i} onClick={() => setCurrentSlide(i)} className="flex min-h-9 min-w-9 items-center justify-center p-0" aria-label={`Slide ${i + 1}`}>
-              <span className={cn("block h-3 w-3 rounded-full border border-white/80 transition-colors md:h-[12px] md:w-[12px]", i === currentSlide ? "bg-white" : "bg-white/30")} />
+              <span className={cn("block h-3 w-3 rounded-full border border-white/80 transition-colors", i === currentSlide ? "bg-white" : "bg-white/30")} />
             </button>
           ))}
         </div>
@@ -184,27 +196,21 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Mobile: Product panel outside hero */}
-      <div className="md:hidden">
-        <div className="grid grid-cols-1 sm:grid-cols-2 auto-rows-fr">
-          {products.map((product, idx) => (
+      {/* Mobile: Product panel outside hero - horizontal scroll */}
+      <div className="md:hidden bg-[#1E3A5F]">
+        <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -space-x-3 px-4 py-5">
+          {products.map((product) => (
             <Link
               key={product.id}
               href={`/products/${product.slug}`}
-              className={cn(
-                "group flex items-center justify-center gap-2.5 bg-[#1E3A5F] px-3 py-3.5 no-underline hover:bg-[#152B47] transition-all duration-200 h-full w-full sm:gap-3 sm:px-4 sm:py-4",
-                idx % 2 === 0 && "border-r border-white/10",
-                idx < 2 && "border-b border-white/10"
-              )}
+              className="group snap-start shrink-0 w-[200px] first:pl-0 last:pr-0 px-3"
             >
-              <div className="flex shrink-0 items-center justify-center">
-                <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-9 w-9 sm:h-10 sm:w-10 transition-transform group-hover:scale-105">
-                  <span className="font-bold text-white text-[9px] sm:text-[9px]">KREI</span>
+              <div className="flex flex-col items-center gap-3 rounded-xl bg-white/10 px-4 py-6 text-center backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:scale-[1.02] active:scale-[0.98]">
+                <div className="flex items-center justify-center rounded-full border-2 border-[#E8A838] bg-[#1E3A5F] h-14 w-14 transition-transform group-hover:scale-110">
+                  <span className="font-bold text-white text-[11px]">KREI</span>
                 </div>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-bold tracking-widest text-white text-[8px] sm:text-[8px] uppercase">KREI</div>
-                <div className="font-bold leading-tight text-white text-[11px] sm:text-[11px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
+                <div className="font-bold tracking-widest text-[#E8A838] text-[9px] uppercase">KREI</div>
+                <div className="font-bold leading-tight text-white text-[13px] line-clamp-2">{product.name.replace("KREI ", "")}</div>
               </div>
             </Link>
           ))}
@@ -212,62 +218,7 @@ export default function Home() {
       </div>
 
       {/* ===== B2B STATS BAR ===== */}
-      <div className="relative overflow-hidden border-b border-[#e5e5e5] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef]">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #1E3A5F 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-        </div>
-        
-        <div className="relative mx-auto max-w-[1200px] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8 lg:gap-12">
-            {/* Stat 1 - Machines */}
-            <div className="group flex items-center gap-4 sm:justify-center">
-              <div className="flex h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1E3A5F] to-[#2a4a7a] shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <svg viewBox="0 0 24 24" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                  <path d="M19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                  <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10" />
-                  <path d="M13 11h4a2 2 0 012 2v3" />
-                </svg>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] leading-none tracking-tight">200+</div>
-                <div className="mt-1 text-sm sm:text-base font-semibold text-[#555]">{t("stats.machines")}</div>
-              </div>
-            </div>
-
-            {/* Stat 2 - Clients */}
-            <div className="group flex items-center gap-4 sm:justify-center">
-              <div className="flex h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#E8A838] to-[#D4922E] shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <svg viewBox="0 0 24 24" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 00-3-3.87" />
-                  <path d="M16 3.13a4 4 0 010 7.75" />
-                </svg>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] leading-none tracking-tight">200+</div>
-                <div className="mt-1 text-sm sm:text-base font-semibold text-[#555]">{t("stats.clients")}</div>
-              </div>
-            </div>
-
-            {/* Stat 3 - Years */}
-            <div className="group flex items-center gap-4 sm:justify-center">
-              <div className="flex h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1E3A5F] to-[#2a4a7a] shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <svg viewBox="0 0 24 24" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] leading-none tracking-tight">8+</div>
-                <div className="mt-1 text-sm sm:text-base font-semibold text-[#555]">{t("stats.years")}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CountUpStats lang={lang} t={t} />
 
 
       {/* ===== PROCESS HIGHLIGHT ===== */}
