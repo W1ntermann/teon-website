@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight, Shield, Award } from "lucide-react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts } from "@/translations/productData";
 import { QuickLinksSection } from "@/components/QuickLinks";
@@ -36,6 +37,7 @@ const showsData: Record<string, { date: string; name: string; city: string; hall
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHoveringTrustBadges, setIsHoveringTrustBadges] = useState(false);
   const { lang, t } = useLanguage();
   const products = getProducts(lang);
   const news = newsData[lang];
@@ -58,25 +60,25 @@ export default function Home() {
     <div className="min-h-screen font-sans bg-white text-black">
       {/* ===== HERO SECTION ===== */}
       <div
-        className="relative min-h-[400px] overflow-hidden sm:min-h-[460px] md:min-h-[520px]"
+        className="relative min-h-[450px] overflow-hidden sm:min-h-[500px] md:min-h-[540px]"
         style={{ backgroundImage: `url(${slide.image})`, backgroundSize: "cover", backgroundPosition: "center", transition: "background-image 0.8s ease" }}
       >
         <div style={{ position: "absolute", inset: 0, backgroundColor: slide.overlay }} />
 
         {/* Hero Content */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center">
-          <div className="mx-auto max-w-[900px]">
-            <div className="mb-4 flex items-center justify-center gap-3">
-              <div className="h-px w-10 bg-white/30" />
-              <span className="text-[11px] font-bold uppercase tracking-[4px] text-white/70">
+          <div className="mx-auto w-full max-w-[900px] sm:max-w-[900px]">
+            <div className="mb-3 flex items-center justify-center gap-3 sm:mb-4">
+              <div className="h-px w-8 bg-white/30 sm:w-10" />
+              <span className="text-[10px] font-bold uppercase tracking-[3px] text-white/70 sm:text-[11px] sm:tracking-[4px]">
                 TEON — {t("hero.trust_text")}
               </span>
-              <div className="h-px w-10 bg-white/30" />
+              <div className="h-px w-8 bg-white/30 sm:w-10" />
             </div>
-            <h1 className="text-[28px] font-bold leading-tight tracking-[1px] text-white sm:text-[36px] md:text-[42px] lg:text-[48px]">
+            <h1 className="text-[22px] font-bold leading-snug tracking-[0.5px] text-white sm:text-[28px] sm:leading-tight sm:tracking-[1px] md:text-[36px] md:tracking-[1px] lg:text-[42px]">
               {t("hero.tagline1")}
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-[15px] font-medium leading-relaxed text-white/80 sm:text-[16px] md:text-[17px]">
+            <p className="mx-auto mt-3 max-w-2xl text-[13px] font-medium leading-relaxed text-white/80 sm:mt-4 sm:text-[15px] sm:leading-relaxed md:text-[16px] md:leading-relaxed lg:text-[17px]">
               {t("hero.tagline2")}
             </p>
 
@@ -98,13 +100,34 @@ export default function Home() {
             </div>
 
             {/* Trust Badges */}
-            <div className="mt-8 flex items-center justify-center gap-5 sm:gap-8">
+            <div 
+              className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:gap-5 md:gap-8"
+              onMouseEnter={() => setIsHoveringTrustBadges(true)}
+              onMouseLeave={() => setIsHoveringTrustBadges(false)}
+            >
               {trustBadges.map((badge) => (
                 <div key={badge.label} className="flex items-center gap-1.5">
-                  <badge.icon size={14} className="text-[#E8A838]" />
-                  <span className="text-[12px] font-semibold text-white/80 sm:text-[13px]">{badge.label}</span>
+                  <badge.icon size={12} className="text-[#E8A838] sm:size-14" />
+                  <span className="text-[11px] font-semibold text-white/80 sm:text-[12px] md:text-[13px]">{badge.label}</span>
                 </div>
               ))}
+              
+              {/* Desktop: Show current slide number on hover */}
+              <div className="hidden md:block">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ 
+                    opacity: isHoveringTrustBadges ? 1 : 0,
+                    scale: isHoveringTrustBadges ? 1 : 0.8
+                  }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 backdrop-blur-sm"
+                >
+                  <span className="text-[11px] font-semibold text-white/90">Слайд</span>
+                  <span className="text-[13px] font-bold text-white">{currentSlide + 1}</span>
+                  <span className="text-[11px] text-white/70">/ {heroSlides.length}</span>
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
@@ -163,7 +186,7 @@ export default function Home() {
 
       {/* Mobile: Product panel outside hero */}
       <div className="md:hidden">
-        <div className="grid grid-cols-1 xs:grid-cols-2 auto-rows-fr">
+        <div className="grid grid-cols-1 sm:grid-cols-2 auto-rows-fr">
           {products.map((product, idx) => (
             <Link
               key={product.id}
@@ -175,7 +198,7 @@ export default function Home() {
               )}
             >
               <div className="flex shrink-0 items-center justify-center">
-                <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-10 w-10 sm:h-10 sm:w-10 transition-transform group-hover:scale-105">
+                <div className="flex items-center justify-center rounded-full border-2 border-white bg-[#1E3A5F] h-9 w-9 sm:h-10 sm:w-10 transition-transform group-hover:scale-105">
                   <span className="font-bold text-white text-[9px] sm:text-[9px]">KREI</span>
                 </div>
               </div>
@@ -189,47 +212,59 @@ export default function Home() {
       </div>
 
       {/* ===== B2B STATS BAR ===== */}
-      <div className="border-b border-[#e5e5e5] bg-[#f5f5f5]">
-        <div className="mx-auto flex max-w-[1200px] flex-col gap-4 px-4 py-6 sm:flex-row sm:items-center sm:justify-around sm:py-5">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F]/10">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#1E3A5F]" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                <path d="M19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10" />
-                <path d="M13 11h4a2 2 0 012 2v3" />
-              </svg>
-            </div>
-              <div>
-                <div className="text-[22px] font-extrabold text-[#1E3A5F]">200+</div>
-                <div className="text-[12px] font-medium text-[#888]">{t("stats.machines")}</div>
+      <div className="relative overflow-hidden border-b border-[#e5e5e5] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef]">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #1E3A5F 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        </div>
+        
+        <div className="relative mx-auto max-w-[1200px] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8 lg:gap-12">
+            {/* Stat 1 - Machines */}
+            <div className="group flex items-center gap-4 sm:justify-center">
+              <div className="flex h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1E3A5F] to-[#2a4a7a] shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <svg viewBox="0 0 24 24" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 text-white" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                  <path d="M19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                  <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10" />
+                  <path d="M13 11h4a2 2 0 012 2v3" />
+                </svg>
               </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F]/10">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#1E3A5F]" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 00-3-3.87" />
-                <path d="M16 3.13a4 4 0 010 7.75" />
-              </svg>
-            </div>
-              <div>
-                <div className="text-[22px] font-extrabold text-[#1E3A5F]">200+</div>
-                <div className="text-[12px] font-medium text-[#888]">{t("stats.clients")}</div>
+              <div className="flex-1 min-w-0">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] leading-none tracking-tight">200+</div>
+                <div className="mt-1 text-sm sm:text-base font-semibold text-[#555]">{t("stats.machines")}</div>
               </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E3A5F]/10">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#1E3A5F]" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" />
-              </svg>
             </div>
-              <div>
-                <div className="text-[22px] font-extrabold text-[#1E3A5F]">8+</div>
-                <div className="text-[12px] font-medium text-[#888]">{t("stats.years")}</div>
+
+            {/* Stat 2 - Clients */}
+            <div className="group flex items-center gap-4 sm:justify-center">
+              <div className="flex h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#E8A838] to-[#D4922E] shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <svg viewBox="0 0 24 24" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 text-white" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                  <path d="M16 3.13a4 4 0 010 7.75" />
+                </svg>
               </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] leading-none tracking-tight">200+</div>
+                <div className="mt-1 text-sm sm:text-base font-semibold text-[#555]">{t("stats.clients")}</div>
+              </div>
+            </div>
+
+            {/* Stat 3 - Years */}
+            <div className="group flex items-center gap-4 sm:justify-center">
+              <div className="flex h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1E3A5F] to-[#2a4a7a] shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <svg viewBox="0 0 24 24" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 text-white" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1E3A5F] leading-none tracking-tight">8+</div>
+                <div className="mt-1 text-sm sm:text-base font-semibold text-[#555]">{t("stats.years")}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
