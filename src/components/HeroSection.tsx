@@ -27,8 +27,6 @@ export function HeroSection() {
     return () => clearInterval(timer);
   }, []);
 
-  const slide = heroSlides[currentSlide];
-
   const trustBadges = [
     { icon: Shield, label: t("hero.trust_iso") },
     { icon: Award, label: t("hero.trust_atex") },
@@ -36,16 +34,26 @@ export function HeroSection() {
   ];
 
   return (
-    <div
-      className="relative min-h-[450px] overflow-hidden sm:min-h-[500px] md:min-h-[540px]"
-      style={{
-        backgroundImage: `url(${slide.image})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        transition: "background-image 0.8s ease",
-      }}
-    >
-      <div style={{ position: "absolute", inset: 0, backgroundColor: slide.overlay }} />
+    <div className="relative min-h-[450px] overflow-hidden sm:min-h-[500px] md:min-h-[540px]">
+      {/* Slides as <img> elements with opacity transitions */}
+      {heroSlides.map((s, i) => (
+        <div
+          key={s.id}
+          className="absolute inset-0 transition-opacity duration-700"
+          style={{ opacity: i === currentSlide ? 1 : 0 }}
+        >
+          <img
+            src={s.image}
+            alt=""
+            className="h-full w-full object-cover"
+            loading={i === 0 ? "eager" : "lazy"}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: s.overlay }}
+          />
+        </div>
+      ))}
 
       {/* Hero Content */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center">
