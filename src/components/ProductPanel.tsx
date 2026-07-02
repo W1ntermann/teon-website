@@ -12,8 +12,8 @@ export function ProductPanel({ products }: ProductPanelProps) {
   return (
     <>
       {/* Desktop: grid below hero */}
-      <div className="hidden md:block bg-[rgba(30,58,95,0.82)] px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-4 auto-rows-fr">
+      <div className="hidden md:block w-full bg-[rgba(30,58,95,0.82)]">
+        <div className="grid grid-cols-4 auto-rows-fr w-full">
           {products.map((product, idx) => (
             <Link
               key={product.id}
