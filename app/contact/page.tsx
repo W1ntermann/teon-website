@@ -150,27 +150,32 @@ export default function Contact() {
                   <Clock size={18} className="text-white" />
                 </div>
                 <div className="text-sm text-[#555] leading-relaxed">
-                  Mo – Fr: 07:00 – 17:00 Uhr
+                  {t("contact.hours_days")}: {t("contact.hours_time")}
                 </div>
               </div>
             </div>
 
-            {/* Map placeholder */}
-            <div className="relative mt-8 overflow-hidden rounded-xl bg-[#e0e0e0] h-[200px] flex items-center justify-center">
-              <svg viewBox="0 0 300 200" className="h-auto max-h-full w-full max-w-[300px] opacity-70">
-                <rect width="300" height="200" fill="#d0d0d0"/>
-                <rect x="0" y="95" width="300" height="3" fill="#b0b0b0" opacity="0.6"/>
-                <rect x="148" y="0" width="3" height="200" fill="#b0b0b0" opacity="0.6"/>
-                <circle cx="150" cy="98" r="12" fill="#1E3A5F"/>
-                <circle cx="150" cy="98" r="6" fill="#fff"/>
-                <rect x="60" y="30" width="60" height="40" rx="2" fill="#c0c0c0" opacity="0.7"/>
-                <rect x="180" y="50" width="80" height="30" rx="2" fill="#c0c0c0" opacity="0.7"/>
-                <rect x="20" y="100" width="100" height="25" rx="2" fill="#b0b0b0" opacity="0.6"/>
-                <rect x="180" y="110" width="70" height="20" rx="2" fill="#b0b0b0" opacity="0.6"/>
-              </svg>
-              <div className="absolute bottom-3 left-3 bg-[#1E3A5F]/90 text-white px-3 py-1.5 text-xs rounded-md">
-                Одеса, Україна
-              </div>
+            {/* OpenStreetMap */}
+            <div className="relative mt-8 overflow-hidden rounded-xl h-[220px] sm:h-[250px]">
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=30.7200%2C46.4600%2C30.7600%2C46.4800&layer=mapnik&marker=46.4700%2C30.7400"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="TEON Ukraine — Odesa map"
+                className="absolute inset-0"
+              />
+              <a
+                href="https://www.openstreetmap.org/?mlat=46.4700&mlon=30.7400&zoom=15&layers=M"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-2 left-2 rounded-md bg-[#1E3A5F]/90 px-2.5 py-1.5 text-[11px] text-white shadow-sm backdrop-blur-sm transition-colors hover:bg-[#1E3A5F]"
+              >
+                {lang === "uk" ? "Відкрити на OpenStreetMap" : lang === "pl" ? "Otwórz na OpenStreetMap" : "Open in OpenStreetMap"} ↗
+              </a>
             </div>
           </motion.div>
 
