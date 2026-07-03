@@ -33,19 +33,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
 const allTranslations: Record<Language, Record<string, string>> = {
   uk: {
-    // Top bar
     "nav.news": "Новини",
     "nav.exhibitions": "Виставки",
     "nav.contact_person": "Контактна особа",
     "nav.worldwide": "По всьому світу",
-    // Main nav
     "nav.company": "КОМПАНІЯ",
     "nav.products": "ПРОДУКТИ",
     "nav.service": "СЕРВІС",
     "nav.contact": "КОНТАКТ",
     "nav.quote": "ОТРИМАТИ КП",
     "nav.menu": "Меню",
-    // Search
     "search.placeholder": "Пошук...",
     "search.open": "Відкрити пошук",
     "search.close": "Закрити пошук",
@@ -56,10 +53,8 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "search.no_results_desc": "Спробуйте змінити пошуковий запит або перегляньте наші продукти.",
     "search.browse_products": "Переглянути всі продукти",
     "search.found": "Знайдено {count} результатів",
-    // Hero
     "hero.tagline1": "ДИСПЕРГУВАННЯ ▪ ЗМІШУВАННЯ ▪ ПОДРІБНЕННЯ",
     "hero.tagline2": "МАШИНИ ДЛЯ ЛАКОФАРБОВОЇ ТА ХІМІЧНОЇ ПРОМИСЛОВОСТІ",
-    // Process cards
     "process.title": "НАШІ ТЕХНОЛОГІЇ",
     "process.dispersing": "Диспергування",
     "process.dispersing.desc": "Ефективне диспергування пігментів та наповнювачів у рідких системах для досягнення максимальної якості кольору та стабільності.",
@@ -67,14 +62,11 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "process.mixing.desc": "Точне змішування багатокомпонентних рецептур із забезпеченням гомогенності по всьому об'єму резервуара.",
     "process.grinding": "Подрібнення",
     "process.grinding.desc": "Тонке мокре подрібнення до субмікронних розмірів для отримання ідеально гладких покриттів та високої покривної здатності.",
-    // About
     "about.title": "ТЕОН представляється",
     "about.text1": "ТОВ «ТЕОН УКРАЇНА» — офіційний представник високоякісного обладнання Teon в Україні. Ми надаємо повний спектр рішень для диспергування, змішування та подрібнення, а також сервісних послуг для підприємств лакофарбової та хімічної промисловості.",
     "about.text2": "За 8 років роботи ми встановили понад 200 машин, побудували мережу сервісних центрів і заслужили довіру провідних підприємств України. Наша місія — забезпечити українську промисловість сучасним обладнанням з повноцінною технічною підтримкою.",
-    // Products
     "products.title": "НАШІ ПРОДУКТИ",
     "products.more": "Детальніше",
-    // Why Teon
     "why.title": "ЧОМУ ТЕОН?",
     "why.since": "З 2017 року",
     "why.since.desc": "8+ років досвіду на ринку України",
@@ -84,33 +76,26 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "why.worldwide.desc": "Поставки та сервіс у більш ніж 50 країнах світу",
     "why.innovation": "Інновації",
     "why.innovation.desc": "Постійний розвиток та вдосконалення технологій",
-    // News
     "news.title": "НОВИНИ",
     "news.all": "Всі новини",
     "news.read_more": "Читати далі",
-    // Exhibitions
     "exhibitions.title": "ВИСТАВКИ",
-    // Footer
     "footer.rights": "© 2024 Теон. Усі права захищені.",
-    // Company page
     "company.title": "КОМПАНІЯ",
     "company.about": "Про нас",
     "company.history": "Історія компанії",
     "company.contact_info": "Контактна інформація",
     "company.certificates": "Сертифікати",
-    // Products page
     "products.page.title": "ПРОДУКТИ",
     "products.request": "Запросити інформацію",
     "products.features": "Характеристики:",
     "products.models": "Моделі:",
-    // Service page
     "service.title": "СЕРВІС",
     "service.our": "Наш сервіс",
     "service.text": "Компанія Теон пропонує повний спектр сервісних послуг для свого обладнання. Наші спеціалісти готові надати підтримку на всіх етапах — від монтажу та пуско-налагодження до планового технічного обслуговування та ремонту.",
     "service.cta": "Потрібна допомога?",
     "service.cta.text": "Зв'яжіться з нашою службою технічної підтримки",
     "service.contact_us": "Зв'язатися з нами",
-    // Service items
     "service.item.install.title": "Монтаж та пуско-налагодження",
     "service.item.install.text": "Кваліфіковані техніки Теон здійснять монтаж та налагодження обладнання на вашому підприємстві.",
     "service.item.maintenance.title": "Технічне обслуговування",
@@ -123,7 +108,6 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "service.item.training.text": "Навчання операторів та технічного персоналу на підприємстві або на нашому навчальному центрі у Хюллгорсті.",
     "service.item.support.title": "Технічна підтримка",
     "service.item.support.text": "Цілодобова технічна підтримка для вирішення будь-яких питань по телефону або онлайн.",
-    // Contact page
     "contact.title": "КОНТАКТ",
     "contact.info": "Контактна інформація",
     "contact.write": "Написати нам",
@@ -143,7 +127,6 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "contact.subject.general": "Загальне питання",
     "contact.subject.other": "Інше",
     "contact.subject.select": "Оберіть тему...",
-    // Product detail
     "product.back": "← Назад до продуктів",
     "product.request": "Запросити пропозицію",
     "product.download": "Завантажити каталог",
@@ -154,24 +137,22 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "product.contact_expert": "Зв'язатися з експертом",
     "breadcrumb.home": "Головна",
     "breadcrumb.products": "Продукти",
-    // Gallery
     "gallery.title": "Галерея",
     "gallery.description": "Тут буде представлено наші роботи, фото та відео з виробництва, монтажу та сервісу обладнання.",
     "gallery.photo": "Фото",
-    // Quick links / cards
     "quick.service.title": "Сервіс",
     "quick.service.desc": "Технічна підтримка та обслуговування",
     "quick.contact.title": "Контактна особа",
     "quick.contact.desc": "Знайдіть вашого менеджера",
     "quick.gallery.title": "Галерея",
     "quick.gallery.desc": "Перегляньте нашу роботу",
-    // B2B Hero & CTA
     "hero.quote_btn": "Отримати КП",
+    "hero.catalog_btn": "Каталог продукції",
+    "hero.consultation_btn": "Консультація",
     "hero.trust_iso": "ISO 9001:2015",
     "hero.trust_atex": "ATEX",
     "hero.trust_ce": "CE",
     "hero.trust_text": "Сертифікована європейська якість",
-    // Testimonials
     "testimonials.title": "ВІДГУКИ КЛІЄНТІВ",
     "testimonial.1.text": "Обладнання KREI значно підвищило продуктивність нашого виробництва. Якість диспергування перевершила наші очікування.",
     "testimonial.1.name": "Петро Коваленко",
@@ -182,11 +163,9 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "testimonial.3.text": "Високоточне обладнання, яке повністю відповідає нашим вимогам. Особливо відзначаємо надійність та довговічність.",
     "testimonial.3.name": "Марта Новак",
     "testimonial.3.company": "Chemia Sp. z o.o.",
-    // Stats B2B
     "stats.machines": "Машин встановлено",
     "stats.clients": "Клієнтів",
     "stats.years": "Років досвіду",
-    // Quote page
     "quote.title": "ОТРИМАТИ КП",
     "quote.subtitle": "Залиште заявку — і ми надішлемо вам комерційну пропозицію протягом 24 годин",
     "quote.name": "Ім'я *",
@@ -196,13 +175,29 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "quote.success": "Дякуємо за запит!",
     "quote.success.text": "Ми зв'яжемося з вами найближчим часом.",
     "quote.required": "* Обов'язкові поля",
-    // Trust block
+    "product.feedback_title": "Отримати консультацію",
+    "product.feedback_desc": "Залиште свої контакти — наш менеджер зв'яжеться з вами протягом 24 годин",
+    "product.feedback_name": "Ваше ім'я *",
+    "product.feedback_phone": "Телефон *",
+    "product.feedback_email": "Email",
+    "product.feedback_comment": "Коментар (модель, об'єм, потужність...)",
+    "product.feedback_send": "Відправити запит",
+    "product.feedback_success": "Дякуємо!",
+    "product.feedback_success_text": "Ми зв'яжемося з вами найближчим часом.",
+    "product.feedback_via": "Або зв'яжіться з нами напряму:",
+    "product.media_title": "Фото та відео реальної роботи",
+    "product.media_desc": "Подивіться, як обладнання KREI працює на реальних виробничих майданчиках",
+    "product.media_request": "Запитати фото/відео",
+    "product.media_request_text": "Хочете побачити більше матеріалів? Надішліть запит — і ми поділимося деталями.",
+    "product.media_video_title": "Відео роботи",
+    "product.comparison_title": "Порівняння моделей",
+    "home.about_short": "ТОВ «ТЕОН УКРАЇНА» — офіційний представник високоякісного європейського обладнання Teon в Україні. За 8 років — понад 200 машин та 50+ країн.",
+    "home.about_link": "Дізнатися більше про компанію",
     "trust.quality": "Європейська якість",
     "trust.global": "Понад 50 країн",
     "trust.experience": "8+ років досвіду",
     "trust.certified": "Сертифіковано",
   },
-
   en: {
     "nav.news": "News",
     "nav.exhibitions": "Exhibitions",
@@ -226,7 +221,6 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "search.found": "Found {count} results",
     "hero.tagline1": "DISPERSING ▪ MIXING ▪ GRINDING",
     "hero.tagline2": "MACHINES FOR THE PAINT AND CHEMICAL INDUSTRY",
-    // Process cards
     "process.title": "OUR TECHNOLOGIES",
     "process.dispersing": "Dispersing",
     "process.dispersing.desc": "Efficient dispersion of pigments and fillers in liquid systems to achieve maximum color quality and stability.",
@@ -242,8 +236,8 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "why.title": "WHY TEON?",
     "why.since": "Since 2017",
     "why.since.desc": "8+ years of experience in the Ukrainian market",
-    "why.quality": "Європейська якість",
-    "why.quality.desc": "Найвищі стандарти виготовлення та контролю якості",
+    "why.quality": "European Quality",
+    "why.quality.desc": "The highest manufacturing and quality control standards",
     "why.worldwide": "Worldwide",
     "why.worldwide.desc": "Delivery and service in more than 50 countries",
     "why.innovation": "Innovation",
@@ -268,7 +262,6 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "service.cta": "Need Help?",
     "service.cta.text": "Contact our technical support team",
     "service.contact_us": "Contact Us",
-    // Service items
     "service.item.install.title": "Installation & Commissioning",
     "service.item.install.text": "Qualified Teon technicians will install and commission the equipment at your facility.",
     "service.item.maintenance.title": "Maintenance",
@@ -310,24 +303,22 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "product.contact_expert": "Contact an Expert",
     "breadcrumb.home": "Home",
     "breadcrumb.products": "Products",
-    // Gallery
     "gallery.title": "Gallery",
     "gallery.description": "Here we will showcase our work — photos and videos of production, installation and service of equipment.",
     "gallery.photo": "Photo",
-    // Quick links / cards
     "quick.service.title": "Service",
     "quick.service.desc": "Technical support and maintenance",
     "quick.contact.title": "Contact Person",
     "quick.contact.desc": "Find your account manager",
     "quick.gallery.title": "Gallery",
     "quick.gallery.desc": "View our work",
-    // B2B Hero & CTA
     "hero.quote_btn": "Request a Quote",
+    "hero.catalog_btn": "Product Catalogue",
+    "hero.consultation_btn": "Consultation",
     "hero.trust_iso": "ISO 9001:2015",
     "hero.trust_atex": "ATEX",
     "hero.trust_ce": "CE",
     "hero.trust_text": "Certified European Quality",
-    // Testimonials
     "testimonials.title": "CLIENT TESTIMONIALS",
     "testimonial.1.text": "KREI equipment significantly increased our production efficiency. The dispersion quality exceeded our expectations.",
     "testimonial.1.name": "Peter Kovalenko",
@@ -338,11 +329,9 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "testimonial.3.text": "High-precision equipment that fully meets our requirements. We especially appreciate the reliability and durability.",
     "testimonial.3.name": "Marta Nowak",
     "testimonial.3.company": "Chemia Sp. z o.o.",
-    // Stats B2B
     "stats.machines": "Machines Installed",
     "stats.clients": "Clients",
     "stats.years": "Years Experience",
-    // Quote page
     "quote.title": "REQUEST A QUOTE",
     "quote.subtitle": "Leave a request and we will send you a commercial offer within 24 hours",
     "quote.name": "Name *",
@@ -352,13 +341,29 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "quote.success": "Thank you for your request!",
     "quote.success.text": "We will contact you shortly.",
     "quote.required": "* Required fields",
-    // Trust block
+    "product.feedback_title": "Get a Consultation",
+    "product.feedback_desc": "Leave your contacts — our manager will contact you within 24 hours",
+    "product.feedback_name": "Your Name *",
+    "product.feedback_phone": "Phone *",
+    "product.feedback_email": "Email",
+    "product.feedback_comment": "Comment (model, volume, power...)",
+    "product.feedback_send": "Send Request",
+    "product.feedback_success": "Thank you!",
+    "product.feedback_success_text": "We will contact you shortly.",
+    "product.feedback_via": "Or contact us directly:",
+    "product.media_title": "Real Work Photos & Videos",
+    "product.media_desc": "See how KREI equipment works on real production sites",
+    "product.media_request": "Request Photos/Videos",
+    "product.media_request_text": "Want to see more materials? Send a request and we'll share the details.",
+    "product.media_video_title": "Work Video",
+    "product.comparison_title": "Model Comparison",
+    "home.about_short": "TEON UKRAINE LLC is the official representative of high-quality European Teon equipment in Ukraine. Over 8 years — more than 200 machines and 50+ countries.",
+    "home.about_link": "Learn More About the Company",
     "trust.quality": "European Quality",
     "trust.global": "50+ Countries",
     "trust.experience": "8+ Years Experience",
     "trust.certified": "Certified",
   },
-
   pl: {
     "nav.news": "Aktualności",
     "nav.exhibitions": "Targi",
@@ -382,7 +387,6 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "search.found": "Znaleziono {count} wyników",
     "hero.tagline1": "DYSPERGOWANIE ▪ MIESZANIE ▪ MIELENIE",
     "hero.tagline2": "MASZYNY DLA PRZEMYSŁU LAKIERNICZEGO I CHEMICZNEGO",
-    // Process cards
     "process.title": "NASZE TECHNOLOGIE",
     "process.dispersing": "Dyspergowanie",
     "process.dispersing.desc": "Efektywne dyspergowanie pigmentów i wypełniaczy w układach ciekłych dla osiągnięcia maksymalnej jakości koloru i stabilności.",
@@ -424,7 +428,6 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "service.cta": "Potrzebujesz pomocy?",
     "service.cta.text": "Skontaktuj się z naszym działem wsparcia technicznego",
     "service.contact_us": "Skontaktuj się z nami",
-    // Service items
     "service.item.install.title": "Montaż i uruchomienie",
     "service.item.install.text": "Wykwalifikowani technicy Teon przeprowadzą montaż i uruchomienie urządzeń w Twoim zakładzie.",
     "service.item.maintenance.title": "Konserwacja",
@@ -466,24 +469,22 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "product.contact_expert": "Skontaktuj się z ekspertem",
     "breadcrumb.home": "Strona główna",
     "breadcrumb.products": "Produkty",
-    // Gallery
     "gallery.title": "Galeria",
     "gallery.description": "Tutaj zaprezentujemy nasze realizacje, zdjęcia i filmy z produkcji, montażu i serwisu urządzeń.",
     "gallery.photo": "Zdjęcie",
-    // Quick links / cards
     "quick.service.title": "Serwis",
     "quick.service.desc": "Wsparcie techniczne i konserwacja",
     "quick.contact.title": "Osoba kontaktowa",
     "quick.contact.desc": "Znajdź swojego opiekuna",
     "quick.gallery.title": "Galeria",
     "quick.gallery.desc": "Zobacz nasze realizacje",
-    // B2B Hero & CTA
     "hero.quote_btn": "Poproś o wycenę",
+    "hero.catalog_btn": "Katalog produktów",
+    "hero.consultation_btn": "Konsultacja",
     "hero.trust_iso": "ISO 9001:2015",
     "hero.trust_atex": "ATEX",
     "hero.trust_ce": "CE",
     "hero.trust_text": "Certyfikowana niemiecka jakość",
-    // Testimonials
     "testimonials.title": "OPINIE KLIENTÓW",
     "testimonial.1.text": "Urządzenia KREI znacząco zwiększyły wydajność naszej produkcji. Jakość dyspergowania przekroczyła nasze oczekiwania.",
     "testimonial.1.name": "Piotr Kowalenko",
@@ -494,11 +495,9 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "testimonial.3.text": "Precyzyjne urządzenia, które w pełni spełniają nasze wymagania. Szczególnie cenimy niezawodność i trwałość.",
     "testimonial.3.name": "Marta Nowak",
     "testimonial.3.company": "Chemia Sp. z o.o.",
-    // Stats B2B
     "stats.machines": "Zainstalowanych maszyn",
     "stats.clients": "Klientów",
     "stats.years": "Lat doświadczenia",
-    // Quote page
     "quote.title": "POPROŚ O WYCENĘ",
     "quote.subtitle": "Zostaw zapytanie, a wyślemy Ci ofertę handlową w ciągu 24 godzin",
     "quote.name": "Imię i nazwisko *",
@@ -508,7 +507,24 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "quote.success": "Dziękujemy za zapytanie!",
     "quote.success.text": "Skontaktujemy się z Tobą wkrótce.",
     "quote.required": "* Pola wymagane",
-    // Trust block
+    "product.feedback_title": "Uzyskaj konsultację",
+    "product.feedback_desc": "Zostaw swoje dane kontaktowe — nasz menedżer skontaktuje się z Tobą w ciągu 24 godzin",
+    "product.feedback_name": "Imię i nazwisko *",
+    "product.feedback_phone": "Telefon *",
+    "product.feedback_email": "Email",
+    "product.feedback_comment": "Komentarz (model, objętość, moc...)",
+    "product.feedback_send": "Wyślij zapytanie",
+    "product.feedback_success": "Dziękujemy!",
+    "product.feedback_success_text": "Skontaktujemy się z Tobą wkrótce.",
+    "product.feedback_via": "Lub skontaktuj się z nami bezpośrednio:",
+    "product.media_title": "Zdjęcia i filmy z rzeczywistej pracy",
+    "product.media_desc": "Zobacz, jak urządzenia KREI pracują na rzeczywistych halach produkcyjnych",
+    "product.media_request": "Poproś o zdjęcia/filmy",
+    "product.media_request_text": "Chcesz zobaczyć więcej materiałów? Wyślij zapytanie, a my podzielimy się szczegółami.",
+    "product.media_video_title": "Film z pracy",
+    "product.comparison_title": "Porównanie modeli",
+    "home.about_short": "TEON UKRAINE Sp. z o.o. jest oficjalnym przedstawicielem wysokiej jakości europejskiego sprzętu Teon na Ukrainie. Ponad 200 maszyn i 50+ krajów w ciągu 8 lat.",
+    "home.about_link": "Dowiedz się więcej o firmie",
     "trust.quality": "Jakość europejska",
     "trust.global": "Ponad 50 krajów",
     "trust.experience": "8+ lat doświadczenia",

@@ -14,6 +14,8 @@ import {
 import { useLanguage } from "@/context/LanguageContext";
 import { getProductBySlug } from "@/translations/productData";
 import { ProductSlider } from "@/components/ProductSlider";
+import { RealMediaGallery } from "@/components/RealMediaGallery";
+import { ProductFeedbackForm } from "@/components/ProductFeedbackForm";
 
 export default function ProductDetail() {
   const params = useParams<{ slug: string }>();
@@ -329,7 +331,7 @@ export default function ProductDetail() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.4 }}
-          className="mb-8"
+          className="mb-10"
         >
           <div className="flex flex-col gap-5 rounded-2xl border border-[#e0e0e0] bg-white p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6 md:px-8 md:py-7">
             <div className="min-w-0 flex-1">
@@ -356,6 +358,69 @@ export default function ProductDetail() {
             </Link>
           </div>
         </motion.div>
+
+        {/* ===== COMPARISON TABLE ===== */}
+        {product.models.length > 1 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.4 }}
+            className="mb-10 lg:mb-12"
+          >
+            <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-[#1E3A5F]">
+              <span className="h-px w-8 bg-[#1E3A5F]/40" />
+              {t("product.comparison_title")}
+            </h3>
+            <div className="overflow-hidden rounded-xl border border-[#e0e0e0] bg-white shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[500px] border-collapse text-sm sm:min-w-0">
+                  <thead>
+                    <tr className="bg-[#1E3A5F]">
+                      <th className="px-4 py-3.5 text-left text-[11px] font-bold uppercase tracking-wider text-white/80 sm:px-5 sm:text-[12px]">
+                        {lang === "uk" ? "Параметр" : lang === "pl" ? "Parametr" : "Parameter"}
+                      </th>
+                      {product.models.map((model) => (
+                        <th key={model.name} className="px-4 py-3.5 text-center text-[11px] font-bold text-white sm:px-5 sm:text-[12px]">
+                          {model.name}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { label: lang === "uk" ? "Потужність" : lang === "pl" ? "Moc" : "Power", key: "power" as const },
+                      { label: lang === "uk" ? "Об'єм" : lang === "pl" ? "Objętość" : "Volume", key: "volume" as const },
+                    ].map((row, i) => (
+                      <tr
+                        key={row.key}
+                        className={`border-t border-[#eee] transition-colors hover:bg-[#f8f8f8] ${i % 2 === 0 ? "bg-white" : "bg-[#fafafa]"}`}
+                      >
+                        <td className="px-4 py-3 font-semibold text-[#1a1a1a] sm:px-5 text-[13px]">
+                          {row.label}
+                        </td>
+                        {product.models.map((model) => (
+                          <td key={model.name} className="px-4 py-3 text-center text-[#555] sm:px-5 text-[13px]">
+                            {model[row.key]}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* ===== REAL MEDIA GALLERY ===== */}
+        <div className="mb-10 lg:mb-12">
+          <RealMediaGallery productName={product.name} />
+        </div>
+
+        {/* ===== FEEDBACK FORM ===== */}
+        <div className="mb-10 lg:mb-12">
+          <ProductFeedbackForm productName={product.name} />
+        </div>
 
         {/* Back link */}
         <Link

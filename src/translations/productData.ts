@@ -13,6 +13,7 @@ export interface ProductData {
   applications: string[];
   technicalSpecs: { label: string; value: string }[];
   models: { name: string; power: string; volume: string }[];
+  comparisonSpecs?: { label: string; values: string[] }[];
   svgType: string;
   photos: string[];
 }

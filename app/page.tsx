@@ -10,7 +10,6 @@ import { ProductPanel } from "@/components/ProductPanel";
 import { ProcessHighlight } from "@/components/ProcessHighlight";
 import { ProductsShowcase } from "@/components/ProductsShowcase";
 import { WhyTeon } from "@/components/WhyTeon";
-import AboutCompany from "@/components/AboutCompany";
 import Testimonials from "@/components/Testimonials";
 import { CountUpStats } from "@/components/CountUpStats";
 
@@ -47,8 +46,22 @@ export default function Home() {
       {/* ===== PROCESS HIGHLIGHT ===== */}
       <ProcessHighlight />
 
-      {/* ===== ABOUT COMPANY ===== */}
-      <AboutCompany />
+      {/* ===== ABOUT COMPANY (short) ===== */}
+      <section className="w-full bg-gradient-to-r from-[#1E3A5F] to-[#0F1F33] py-12 sm:py-14">
+        <div className="mx-auto max-w-[1200px] px-4 text-center">
+          <h2 className="mb-4 text-2xl font-bold text-white sm:text-3xl">{t("about.title")}</h2>
+          <p className="mx-auto mb-6 max-w-3xl text-sm leading-relaxed text-white/80 sm:text-base">
+            {t("home.about_short")}
+          </p>
+          <Link
+            href="/company"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#E8A838] px-6 py-3 text-sm font-bold text-[#1E3A5F] transition-all hover:bg-[#D4922E] hover:shadow-lg"
+          >
+            {t("home.about_link")}
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+      </section>
 
       {/* ===== QUICK LINKS ===== */}
       <QuickLinksSection />
