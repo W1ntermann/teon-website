@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ChevronRight,
@@ -16,11 +17,13 @@ import { getProductBySlug } from "@/translations/productData";
 import { ProductSlider } from "@/components/ProductSlider";
 import { RealMediaGallery } from "@/components/RealMediaGallery";
 import { ProductFeedbackForm } from "@/components/ProductFeedbackForm";
+import { ConsultationModal } from "@/components/ConsultationModal";
 
 export default function ProductDetail() {
   const params = useParams<{ slug: string }>();
   const { lang, t } = useLanguage();
   const slug = params?.slug || "";
+  const [modalOpen, setModalOpen] = useState(false);
 
   const product = getProductBySlug(slug, lang);
 
@@ -161,13 +164,14 @@ export default function ProductDetail() {
 
             {/* CTA Buttons under slider */}
             <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <Link
-                href="/contact"
-                className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#1E3A5F] px-5 py-3 text-center text-sm font-semibold text-white no-underline shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md"
+              <button
+                type="button"
+                onClick={() => setModalOpen(true)}
+                className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#1E3A5F] px-5 py-3 text-center text-sm font-semibold text-white shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md"
               >
                 <Mail size={16} />
                 {t("product.request")}
-              </Link>
+              </button>
               <button className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-[#1E3A5F] bg-white px-5 py-3 text-center text-sm font-semibold text-[#1E3A5F] transition-all duration-200 hover:bg-[#1E3A5F]/5">
                 <Download size={16} />
                 {t("product.download")}
@@ -311,12 +315,13 @@ export default function ProductDetail() {
                       <td className="px-4 py-3.5 text-[#555] sm:px-6">{model.power}</td>
                       <td className="px-4 py-3.5 text-[#555] sm:px-6">{model.volume}</td>
                       <td className="px-4 py-3.5 text-center sm:px-6">
-                        <Link
-                          href="/contact"
-                          className="inline-block rounded-lg bg-[#1E3A5F] px-4 py-2 text-[11px] font-semibold text-white no-underline shadow-sm transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-5 sm:py-2 sm:text-xs"
+                        <button
+                          type="button"
+                          onClick={() => setModalOpen(true)}
+                          className="inline-block cursor-pointer rounded-lg bg-[#1E3A5F] px-4 py-2 text-[11px] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-5 sm:py-2 sm:text-xs"
                         >
                           {t("product.request")}
-                        </Link>
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -349,13 +354,14 @@ export default function ProductDetail() {
                 </span>
               </div>
             </div>
-            <Link
-              href="/contact"
-              className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#1E3A5F] px-6 py-3 text-center text-sm font-semibold text-white no-underline shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-7"
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-lg bg-[#1E3A5F] px-6 py-3 text-center text-sm font-semibold text-white shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-7"
             >
               {t("product.request")}
               <ChevronRight size={16} />
-            </Link>
+            </button>
           </div>
         </motion.div>
 
@@ -431,6 +437,8 @@ export default function ProductDetail() {
           {t("product.back")}
         </Link>
       </div>
+      {/* Consultation Modal */}
+      <ConsultationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} productName={product.name} />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, ArrowRight, Shield, Award } from "lucide-rea
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/LanguageContext";
+import { ConsultationModal } from "@/components/ConsultationModal";
 import hero1 from "@/assets/hero1.jpg";
 import hero2 from "@/assets/hero2.jpg";
 import hero3 from "@/assets/hero3.jpg";
@@ -18,6 +19,7 @@ const heroSlides = [
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -87,13 +89,14 @@ export function HeroSection() {
             >
               {t("hero.catalog_btn")}
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded border border-white/30 bg-white/5 px-6 py-3 text-[13px] font-semibold text-white/90 backdrop-blur-sm transition-all hover:bg-white/15 hover:text-white hover:-translate-y-0.5 active:translate-y-0"
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="inline-flex cursor-pointer items-center gap-2 rounded border border-white/30 bg-white/5 px-6 py-3 text-[13px] font-semibold text-white/90 backdrop-blur-sm transition-all hover:bg-white/15 hover:text-white hover:-translate-y-0.5 active:translate-y-0"
             >
               {t("hero.consultation_btn")}
               <ArrowRight size={16} />
-            </Link>
+            </button>
           </div>
 
           {/* Trust Badges */}
@@ -165,6 +168,8 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
+      {/* Consultation Modal */}
+      <ConsultationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }
