@@ -18,23 +18,39 @@ export interface ProductData {
   photos: string[];
 }
 
-const photoColors: Record<string, { bg: string; text: string }> = {
-  dissolver: { bg: "2d3235", text: "fff" },
-  basket: { bg: "3d4245", text: "fff" },
-  butterfly: { bg: "2a2f32", text: "fff" },
-  continuous: { bg: "1f2427", text: "fff" },
+const productPhotoSets: Record<string, string[]> = {
+  dissolver: [
+    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&q=80",
+    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+  ],
+  basket: [
+    "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&q=80",
+    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+    "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&q=80",
+  ],
+  butterfly: [
+    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&q=80",
+    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+  ],
+  continuous: [
+    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=800&q=80",
+    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+  ],
 };
 
-function makePhotos(type: string, name: string): string[] {
-  const colors = photoColors[type] || { bg: "4C5154", text: "fff" };
-  const encoded = encodeURIComponent(name);
-  return [
-    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+1&font=montserrat`,
-    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+2&font=montserrat`,
-    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+3&font=montserrat`,
-    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+4&font=montserrat`,
-    `https://placehold.co/800x600/${colors.bg}/${colors.text}?text=${encoded}+5&font=montserrat`,
-  ];
+function makePhotos(type: string, _name: string): string[] {
+  return productPhotoSets[type] || productPhotoSets.dissolver;
 }
 
 const products: Record<Language, ProductData[]> = {

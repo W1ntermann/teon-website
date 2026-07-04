@@ -2,17 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts } from "@/translations/productData";
-import { ProductSlider } from "@/components/ProductSlider";
 import {
   ChevronRight,
   ArrowRight,
-  Check,
   ArrowUpRight,
   SlidersHorizontal,
-  Maximize2,
+  Image as ImageIcon,
+  Check,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import hero1 from "@/assets/hero1.jpg";
@@ -28,17 +27,16 @@ export default function Products() {
     : products;
 
   return (
-    <div className="min-h-screen bg-[#fafafa] font-sans" style={{ fontFamily: "Arial, sans-serif" }}>
+    <div className="min-h-screen bg-[#fafafa] font-sans">
       {/* Hero Header */}
-      <div 
+      <div
         className="relative overflow-hidden bg-gradient-to-br from-[#0F1F33] via-[#152B47] to-[#1E3A5F]"
-        style={{ 
+        style={{
           backgroundImage: `url(${hero1.src})`,
           backgroundSize: "cover",
-          backgroundPosition: "center"
+          backgroundPosition: "center",
         }}
       >
-        {/* Background pattern */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -47,10 +45,8 @@ export default function Products() {
             backgroundSize: "60px 60px, 40px 40px",
           }}
         />
-        {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0F1F33]/85 via-[#152B47]/80 to-[#1E3A5F]/75" />
         <div className="relative mx-auto max-w-[1200px] px-4 py-10 sm:py-14 md:py-16">
-          {/* Breadcrumb */}
           <div className="flex flex-wrap items-center gap-2 text-[13px] text-white/50">
             <Link
               href="/"
@@ -61,8 +57,6 @@ export default function Products() {
             <ChevronRight size={12} />
             <span className="text-white/90">{t("breadcrumb.products")}</span>
           </div>
-
-          {/* Title & Subtitle */}
           <h1 className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl lg:text-[38px]">
             {t("products.page.title")}
           </h1>
@@ -91,7 +85,7 @@ export default function Products() {
           >
             {lang === "uk" ? "Всі" : lang === "pl" ? "Wszystkie" : "All"}
           </button>
-              {categories.map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat === activeCategory ? null : cat)}
@@ -112,73 +106,81 @@ export default function Products() {
       <div className="mx-auto max-w-[1200px] px-4 py-8 sm:py-10 md:py-12">
         {filtered.length === 0 ? (
           <div className="py-20 text-center">
-            <p className="text-[#999] text-sm">
+            <ImageIcon size={48} className="mx-auto mb-4 text-[#ccc]" />
+            <p className="text-sm text-[#999]">
               {t("products.no_products") || "No products found"}
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:gap-8">
-            {filtered.map((product, idx) => (
-              <motion.article
-                key={product.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.08, duration: 0.4 }}
-                className="group relative overflow-hidden rounded-2xl border border-[#e5e5e5] bg-white transition-all duration-300 hover:border-[#1E3A5F]/30 hover:shadow-xl hover:shadow-[#1E3A5F]/5"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,340px)_1fr] xl:grid-cols-[minmax(0,420px)_1fr]">
-                  {/* Image Area */}
-                  <div className="relative overflow-hidden bg-[#e8e8e8] lg:min-h-[340px]">
-                    <ProductSlider
-                      photos={product.photos}
-                      productName={product.name}
-                      className="h-full"
-                      aspectRatio="square"
-                    />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory || "all"}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2 xl:grid-cols-2 xl:gap-8"
+            >
+              {filtered.map((product, idx) => (
+                <motion.article
+                  key={product.id}
+                  layout
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.08, duration: 0.4 }}
+                  className="group relative overflow-hidden rounded-2xl border border-[#e5e5e5] bg-white transition-all duration-300 hover:border-[#1E3A5F]/30 hover:shadow-xl hover:shadow-[#1E3A5F]/5"
+                >
+                  <Link
+                    href={`/products/${product.slug}`}
+                    className="block no-underline"
+                  >
+                    {/* Image Area */}
+                    <div className="relative h-[200px] overflow-hidden bg-[#e8e8e8] sm:h-[220px] md:h-[240px]">
+                      <img
+                        src={product.photos[0]}
+                        alt={product.name}
+                        className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+                      />
 
-                    {/* Brand Badge */}
-                    <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-lg bg-white/90 px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#1E3A5F]">
-                        <span className="text-[7px] font-bold text-white">K</span>
-                      </div>
-                      <span className="text-[10px] font-bold tracking-[2px] text-[#1E3A5F]">
-                        KREI
-                      </span>
-                    </div>
-                    {/* Category tag */}
-                    <div className="absolute right-3 top-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
-                      {product.category}
-                    </div>
-                  </div>
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-                  {/* Content Area */}
-                  <div className="flex flex-col justify-between p-5 sm:p-6 md:p-7">
-                    <div>
-                      {/* Header Row */}
-                      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                        <div>
-                          <span className="mb-1 inline-block text-[10px] font-bold uppercase tracking-[3px] text-[#1E3A5F]/50">
-                            KREI
-                          </span>
-                          <h2 className="text-xl font-bold tracking-tight text-[#1a1a1a] sm:text-[22px] md:text-2xl">
-                            {product.name.replace("KREI ", "")}
-                          </h2>
+                      {/* Brand Badge */}
+                      <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-lg bg-white/90 px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#1E3A5F]">
+                          <span className="text-[7px] font-bold text-white">K</span>
                         </div>
+                        <span className="text-[10px] font-bold tracking-[2px] text-[#1E3A5F]">
+                          KREI
+                        </span>
                       </div>
 
-                      {/* Tagline */}
-                      <p className="mb-3 text-[13px] font-medium italic text-[#1E3A5F]/70">
-                        {product.tagline}
-                      </p>
+                      {/* Category tag */}
+                      <div className="absolute right-3 top-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+                        {product.category}
+                      </div>
 
+                      {/* Product name overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <h2 className="text-lg font-bold text-white drop-shadow-lg sm:text-xl">
+                          {product.name.replace("KREI ", "")}
+                        </h2>
+                        <p className="mt-0.5 text-[12px] font-medium text-white/80 drop-shadow-md sm:text-[13px]">
+                          {product.tagline}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Content Area */}
+                    <div className="p-5 sm:p-6">
                       {/* Description */}
-                      <p className="mb-5 text-sm leading-relaxed text-[#555] sm:text-[14px]">
+                      <p className="mb-4 text-[13px] leading-relaxed text-[#555] sm:text-[14px]">
                         {product.description}
                       </p>
 
-                      {/* Features */}
-                      <div className="mb-6 grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
-                        {product.features.slice(0, 6).map((feature) => (
+                      {/* Features (short list) */}
+                      <div className="mb-5 grid grid-cols-1 gap-x-4 gap-y-1.5 sm:grid-cols-2">
+                        {product.features.slice(0, 4).map((feature) => (
                           <div key={feature} className="flex items-start gap-2">
                             <div className="mt-[3px] flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#1E3A5F]/10">
                               <Check
@@ -187,36 +189,30 @@ export default function Products() {
                                 strokeWidth={3}
                               />
                             </div>
-                            <span className="text-[12px] text-[#666] sm:text-[13px]">
+                            <span className="text-[11px] text-[#666] sm:text-[12px]">
                               {feature}
                             </span>
                           </div>
                         ))}
                       </div>
-                    </div>
 
-                    {/* CTA Buttons */}
-                    <div className="flex flex-wrap items-center gap-3 border-t border-[#eee] pt-4">
-                      <Link
-                        href={`/products/${product.slug}`}
-                        className="inline-flex items-center gap-2 rounded-lg bg-[#1E3A5F] px-5 py-2.5 text-[13px] font-semibold text-white no-underline shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md hover:shadow-[#1E3A5F]/30"
-                      >
-                        {t("products.more")}
-                        <ArrowRight size={14} />
-                      </Link>
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-[#d0d0d0] bg-white px-5 py-2.5 text-[13px] font-semibold text-[#1E3A5F] no-underline transition-all duration-200 hover:border-[#1E3A5F] hover:bg-[#1E3A5F]/5"
-                      >
-                        {t("products.request")}
-                        <ArrowUpRight size={13} />
-                      </Link>
+                      {/* Photo count + CTA */}
+                      <div className="flex items-center justify-between border-t border-[#eee] pt-4">
+                        <div className="flex items-center gap-1.5 text-[11px] text-[#999]">
+                          <ImageIcon size={12} />
+                          <span>{product.photos.length} {lang === "uk" ? "фото" : lang === "pl" ? "zdjęć" : "photos"}</span>
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#1E3A5F] transition-all duration-200 group-hover:gap-2.5 sm:text-[13px]">
+                          {t("products.more")}
+                          <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+                  </Link>
+                </motion.article>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         )}
       </div>
 
