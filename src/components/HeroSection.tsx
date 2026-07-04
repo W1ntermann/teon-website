@@ -75,24 +75,24 @@ export function HeroSection() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+          <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-4">
             <Link
               href="/quote"
-              className="inline-flex items-center gap-2 rounded bg-[#E8A838] px-8 py-3.5 text-[14px] font-bold text-[#1E3A5F] shadow-lg transition-all hover:bg-[#D4922E] hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center gap-2 rounded bg-[#E8A838] px-5 py-2.5 text-[12px] font-bold text-[#1E3A5F] shadow-lg transition-all hover:bg-[#D4922E] hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 sm:px-8 sm:py-3.5 sm:text-[14px]"
             >
               {t("hero.quote_btn")}
               <ArrowRight size={18} />
             </Link>
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 rounded border-2 border-white/50 bg-white/10 px-8 py-3.5 text-[14px] font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center gap-2 rounded border-2 border-white/50 bg-white/10 px-5 py-2.5 text-[12px] font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:-translate-y-0.5 active:translate-y-0 sm:px-8 sm:py-3.5 sm:text-[14px]"
             >
               {t("hero.catalog_btn")}
             </Link>
             <button
               type="button"
               onClick={() => setModalOpen(true)}
-              className="inline-flex cursor-pointer items-center gap-2 rounded border border-white/30 bg-white/5 px-6 py-3 text-[13px] font-semibold text-white/90 backdrop-blur-sm transition-all hover:bg-white/15 hover:text-white hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex cursor-pointer items-center gap-2 rounded border border-white/30 bg-white/5 px-4 py-2 text-[11px] font-semibold text-white/90 backdrop-blur-sm transition-all hover:bg-white/15 hover:text-white hover:-translate-y-0.5 active:translate-y-0 sm:px-6 sm:py-3 sm:text-[13px]"
             >
               {t("hero.consultation_btn")}
               <ArrowRight size={16} />
@@ -100,7 +100,7 @@ export function HeroSection() {
           </div>
 
           {/* Trust Badges */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:gap-5 md:gap-8">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:gap-5 md:gap-8">
             {trustBadges.map((badge) => (
               <div key={badge.label} className="flex items-center gap-1.5">
                 <badge.icon size={12} className="text-[#E8A838] sm:size-14" />
@@ -132,7 +132,7 @@ export function HeroSection() {
       </button>
 
       {/* Slide indicators — unified for all screen sizes */}
-      <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3">
+      <div className="absolute bottom-2 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3 sm:bottom-4">
         <div className="flex items-center gap-1.5">
           {heroSlides.map((_, i) => (
             <button
