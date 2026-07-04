@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
@@ -8,7 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { ChevronRight, ArrowRight, Shield, Zap, CheckCircle, Globe, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function Quote() {
+function QuoteContent() {
   const { t, lang } = useLanguage();
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -257,5 +257,20 @@ export default function Quote() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function Quote() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#fafafa] font-sans flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-[#1E3A5F] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#666]">Loading...</p>
+        </div>
+      </div>
+    }>
+      <QuoteContent />
+    </Suspense>
   );
 }
