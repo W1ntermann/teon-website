@@ -260,7 +260,7 @@ export default function AboutCompany() {
                     : "Join hundreds of companies worldwide who trust Teon"}
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Link href="/contact">
+                <Link href="/quote?source=company&type=quote">
                   <Button className="bg-[#E8A838] text-[#1E3A5F] hover:bg-[#D4922E]">
                     {lang === "uk"
                       ? "Запросити пропозицію"

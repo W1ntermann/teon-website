@@ -15,9 +15,10 @@ interface MediaItem {
 
 interface RealMediaGalleryProps {
   productName: string;
+  source?: string;
 }
 
-export function RealMediaGallery({ productName }: RealMediaGalleryProps) {
+export function RealMediaGallery({ productName, source }: RealMediaGalleryProps) {
   const { t } = useLanguage();
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -151,8 +152,8 @@ export function RealMediaGallery({ productName }: RealMediaGalleryProps) {
               </div>
             </div>
             <Link
-              href="/contact"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-[#1E3A5F] px-4 py-2 text-xs font-semibold text-white transition-all hover:bg-[#152B47]"
+              href={`/quote?source=media&type=consultation&product=${productName.toLowerCase().replace(/\s+/g, "-")}`}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-[#1E3A5F] px-4 py-2 text-xs font-semibold text-white transition-all hover:bg-[#152B47] no-underline"
             >
               {t("product.media_request")}
               <ArrowRight size={14} />

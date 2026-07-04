@@ -7,9 +7,10 @@ import { useLanguage } from "@/context/LanguageContext";
 
 interface ProductFeedbackFormProps {
   productName?: string;
+  source?: string;
 }
 
-export function ProductFeedbackForm({ productName }: ProductFeedbackFormProps) {
+export function ProductFeedbackForm({ productName, source }: ProductFeedbackFormProps) {
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -22,7 +23,8 @@ export function ProductFeedbackForm({ productName }: ProductFeedbackFormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
-    // In a real app, send to API
+    // In a real app, send to API with tracking data
+    console.log("Product feedback form submission:", { ...formData, productName, source });
     setSubmitted(true);
   };
 

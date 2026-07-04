@@ -164,14 +164,13 @@ export default function ProductDetail() {
 
             {/* CTA Buttons under slider */}
             <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <button
-                type="button"
-                onClick={() => setModalOpen(true)}
+              <Link
+                href={`/quote?source=product&type=consultation&product=${slug}`}
                 className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#1E3A5F] px-5 py-3 text-center text-sm font-semibold text-white shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md"
               >
                 <Mail size={16} />
                 {t("product.request")}
-              </button>
+              </Link>
               <button className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-[#1E3A5F] bg-white px-5 py-3 text-center text-sm font-semibold text-[#1E3A5F] transition-all duration-200 hover:bg-[#1E3A5F]/5">
                 <Download size={16} />
                 {t("product.download")}
@@ -315,13 +314,12 @@ export default function ProductDetail() {
                       <td className="px-4 py-3.5 text-[#555] sm:px-6">{model.power}</td>
                       <td className="px-4 py-3.5 text-[#555] sm:px-6">{model.volume}</td>
                       <td className="px-4 py-3.5 text-center sm:px-6">
-                        <button
-                          type="button"
-                          onClick={() => setModalOpen(true)}
-                          className="inline-block cursor-pointer rounded-lg bg-[#1E3A5F] px-4 py-2 text-[11px] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-5 sm:py-2 sm:text-xs"
-                        >
-                          {t("product.request")}
-                        </button>
+                          <Link
+                            href={`/quote?source=product&type=quote&product=${slug}`}
+                            className="inline-block cursor-pointer rounded-lg bg-[#1E3A5F] px-4 py-2 text-[11px] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-5 sm:py-2 sm:text-xs no-underline"
+                          >
+                            {t("product.request")}
+                          </Link>
                       </td>
                     </tr>
                   ))}
@@ -354,14 +352,13 @@ export default function ProductDetail() {
                 </span>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={() => setModalOpen(true)}
-              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-lg bg-[#1E3A5F] px-6 py-3 text-center text-sm font-semibold text-white shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-7"
+            <Link
+              href={`/quote?source=product&type=quote&product=${slug}`}
+              className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-lg bg-[#1E3A5F] px-6 py-3 text-center text-sm font-semibold text-white shadow-sm shadow-[#1E3A5F]/20 transition-all duration-200 hover:bg-[#152B47] hover:shadow-md sm:px-7 no-underline"
             >
               {t("product.request")}
               <ChevronRight size={16} />
-            </button>
+            </Link>
           </div>
         </motion.div>
 
@@ -420,12 +417,12 @@ export default function ProductDetail() {
 
         {/* ===== REAL MEDIA GALLERY ===== */}
         <div className="mb-10 lg:mb-12">
-          <RealMediaGallery productName={product.name} />
+          <RealMediaGallery productName={product.name} source="product" />
         </div>
 
         {/* ===== FEEDBACK FORM ===== */}
         <div className="mb-10 lg:mb-12">
-          <ProductFeedbackForm productName={product.name} />
+          <ProductFeedbackForm productName={product.name} source="product" />
         </div>
 
         {/* Back link */}
@@ -438,7 +435,7 @@ export default function ProductDetail() {
         </Link>
       </div>
       {/* Consultation Modal */}
-      <ConsultationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} productName={product.name} />
+      <ConsultationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} productName={product.name} source="product" />
     </div>
   );
 }

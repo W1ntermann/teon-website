@@ -77,7 +77,7 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-4">
             <Link
-              href="/quote"
+              href="/quote?source=hero&type=quote"
               className="inline-flex items-center gap-2 rounded bg-[#E8A838] px-5 py-2.5 text-[12px] font-bold text-[#1E3A5F] shadow-lg transition-all hover:bg-[#D4922E] hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 sm:px-8 sm:py-3.5 sm:text-[14px]"
             >
               {t("hero.quote_btn")}
@@ -169,7 +169,7 @@ export function HeroSection() {
         </div>
       </div>
       {/* Consultation Modal */}
-      <ConsultationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <ConsultationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} source="hero" />
     </div>
   );
 }

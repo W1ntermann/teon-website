@@ -33,6 +33,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
 const allTranslations: Record<Language, Record<string, string>> = {
   uk: {
+    "nav.info": "Інформація",
     "nav.news": "Новини",
     "nav.exhibitions": "Виставки",
     "nav.contact_person": "Контактна особа",
@@ -201,6 +202,7 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "trust.certified": "Сертифіковано",
   },
   en: {
+    "nav.info": "Information",
     "nav.news": "News",
     "nav.exhibitions": "Exhibitions",
     "nav.contact_person": "Contact Person",
@@ -369,6 +371,7 @@ const allTranslations: Record<Language, Record<string, string>> = {
     "trust.certified": "Certified",
   },
   pl: {
+    "nav.info": "Informacja",
     "nav.news": "Aktualności",
     "nav.exhibitions": "Targi",
     "nav.contact_person": "Osoba kontaktowa",

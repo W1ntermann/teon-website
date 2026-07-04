@@ -77,6 +77,34 @@ export default function Footer() {
               </div>
             </div>
           </div>
+
+          <div>
+            <div className="mb-3.5 border-b-2 border-white/20 pb-2 text-sm font-bold text-white">
+              {t("nav.info") || "Інформація"}
+            </div>
+            <ul className="m-0 list-none p-0">
+              <li className="mb-2">
+                <a href="#" className="text-sm text-white/75 no-underline transition-colors hover:text-white">
+                  {t("nav.news")}
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-sm text-white/75 no-underline transition-colors hover:text-white">
+                  {t("nav.exhibitions")}
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-sm text-white/75 no-underline transition-colors hover:text-white">
+                  {t("nav.contact_person")}
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="text-sm text-white/75 no-underline transition-colors hover:text-white">
+                  {t("nav.worldwide")}
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { ChevronRight, ArrowRight, Shield, Zap, CheckCircle, Globe, Send } from "lucide-react";
@@ -9,8 +10,12 @@ import { Button } from "@/components/ui/button";
 
 export default function Quote() {
   const { t, lang } = useLanguage();
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [source, setSource] = useState("");
+  const [type, setType] = useState("");
+  const [product, setProduct] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,6 +25,32 @@ export default function Quote() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    const sourceParam = searchParams.get("source");
+    const typeParam = searchParams.get("type");
+    const productParam = searchParams.get("product");
+    setSource(sourceParam || "");
+    setType(typeParam || "");
+    setProduct(productParam || "");
+
+    // Pre-fill message based on source
+    if (sourceParam || typeParam || productParam) {
+      let message = "";
+      if (productParam) {
+        const productName = productParam
+          .split("-")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+        message = `Мене цікавить ${productName}`;
+      } else if (typeParam === "consultation") {
+        message = "Потрібна консультація";
+      } else {
+        message = "Запит на комерційну пропозицію";
+      }
+      setFormData((prev) => ({ ...prev, message }));
+    }
+  }, [searchParams]);
 
   return (
     <div className="min-h-screen bg-[#fafafa] font-sans">
@@ -139,6 +170,16 @@ export default function Quote() {
               <h2 className="text-2xl font-bold text-[#1E3A5F]">{t("quote.title")}</h2>
               <p className="text-sm text-[#666] mt-2">{t("quote.subtitle")}</p>
             </div>
+
+            {(source || type || product) && (
+              <div className="mb-6 rounded-lg bg-[#1E3A5F]/5 border border-[#1E3A5F]/10 px-4 py-3 text-xs text-[#666]">
+                <span className="font-semibold text-[#1E3A5F]">Відстеження:</span>{" "}
+                {source === "hero" && "Головна сторінка"}
+                {source === "product" && `Сторінка продукту${product ? `: ${product}` : ""}`}
+                {type === "quote" && " | Запит КП"}
+                {type === "consultation" && " | Консультація"}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div>

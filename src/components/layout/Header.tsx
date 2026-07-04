@@ -38,13 +38,6 @@ export default function Header() {
     { labelKey: "nav.contact", href: "/contact" },
   ];
 
-  const topItems = [
-    { labelKey: "nav.news", href: "#" },
-    { labelKey: "nav.exhibitions", href: "#" },
-    { labelKey: "nav.contact_person", href: "#" },
-    { labelKey: "nav.worldwide", href: "#" },
-  ];
-
   const isNavActive = (href: string) =>
     pathname === href || (href === "/products" && pathname.startsWith("/products"));
 
@@ -55,47 +48,6 @@ export default function Header() {
 
   return (
     <header>
-      <div className="border-b border-[#ccc] bg-[#ffffff]">
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-1.5 px-4 py-1.5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap items-center justify-center gap-1 sm:justify-start">
-            {languages.map((language) => (
-              <button
-                key={language.code}
-                type="button"
-                onClick={() => setLang(language.code)}
-                title={language.label}
-                aria-label={language.label}
-                aria-pressed={lang === language.code}
-                className={cn(
-                  "inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1",
-                  lang === language.code
-                    ? "bg-[#1E3A5F] text-white border border-[#1E3A5F]"
-                    : "bg-transparent text-[#000] border border-transparent hover:bg-[#f0f5fa] hover:text-[#1E3A5F]"
-                )}
-              >
-                <span className={cn("text-xs tracking-wide", lang === language.code && "font-semibold")}>{language.code === "uk" ? "UA" : language.code.toUpperCase()}</span>
-              </button>
-            ))}
-          </div>
-
-          <nav className="flex flex-wrap items-center justify-center gap-y-0.5 sm:justify-end">
-            {topItems.map((item, idx) => (
-              <span key={item.labelKey} className="flex items-center">
-                <a
-                  href={item.href}
-                  className="px-1.5 py-1 text-[11px] text-[#000] no-underline transition-colors hover:text-[#1E3A5F] sm:px-2 sm:text-xs"
-                >
-                  {t(item.labelKey)}
-                </a>
-                {idx < topItems.length - 1 && (
-                  <span className="hidden text-[#999] text-xs sm:inline">|</span>
-                )}
-              </span>
-            ))}
-          </nav>
-        </div>
-      </div>
-
       <div className="sticky top-0 z-40 border-b-2 border-[#152B47] bg-[#1E3A5F] shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
         <div className="mx-auto flex min-h-[72px] max-w-[1200px] items-center justify-between gap-2 px-4 py-2 md:py-0">
           <Link href="/" className="flex min-w-0 shrink items-center no-underline">
@@ -124,38 +76,61 @@ export default function Header() {
                 </Link>
               );
             })}
+          </nav>
+
+          <div className="flex shrink-0 items-center gap-1">
+            <div className="flex items-center gap-0.5 border-r border-white/20 pr-2">
+              {languages.map((language) => (
+                <button
+                  key={language.code}
+                  type="button"
+                  onClick={() => setLang(language.code)}
+                  title={language.label}
+                  aria-label={language.label}
+                  aria-pressed={lang === language.code}
+                  className={cn(
+                    "inline-flex items-center justify-center rounded px-2 py-1.5 text-xs font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50",
+                    lang === language.code
+                      ? "bg-white text-[#1E3A5F] shadow-sm"
+                      : "text-white/80 hover:bg-white/10 hover:text-white"
+                  )}
+                >
+                  <span className={cn("text-[11px] tracking-wide", lang === language.code && "font-bold")}>{language.code === "uk" ? "UA" : language.code.toUpperCase()}</span>
+                </button>
+              ))}
+            </div>
 
             <button
               type="button"
               onClick={() => setSearchOpen((o) => !o)}
-              className="flex min-h-11 min-w-11 items-center justify-center border-0 bg-transparent px-3 text-white/80 hover:text-white"
+              className="hidden min-h-11 min-w-11 items-center justify-center rounded border-0 bg-transparent text-white/80 hover:text-white md:flex"
               aria-expanded={searchOpen}
               aria-label={searchOpen ? t("search.close") : t("search.open")}
             >
               {searchOpen ? <X size={20} /> : <Search size={20} />}
             </button>
-          </nav>
 
-          <div className="flex shrink-0 items-center gap-0.5 md:gap-1">
-            <button
-              type="button"
-              onClick={() => setSearchOpen((o) => !o)}
-              className="flex min-h-11 min-w-11 items-center justify-center rounded border-0 bg-transparent text-white/80 hover:text-white md:hidden"
-              aria-expanded={searchOpen}
-              aria-label={searchOpen ? t("search.close") : t("search.open")}
-            >
-              {searchOpen ? <X size={22} /> : <Search size={22} />}
-            </button>
-            <button
-              type="button"
-              className="flex min-h-11 min-w-11 items-center justify-center rounded border-0 bg-transparent text-white/80 hover:bg-white/10 md:hidden"
-              onClick={() => setMenuOpen(true)}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-navigation"
-              aria-label={t("nav.menu")}
-            >
-              <Menu size={26} strokeWidth={2} />
-            </button>
+            <div className="flex items-center md:hidden">
+              <button
+                type="button"
+                onClick={() => setSearchOpen((o) => !o)}
+                className="flex min-h-11 min-w-11 items-center justify-center rounded border-0 bg-transparent text-white/80 hover:text-white"
+                aria-expanded={searchOpen}
+                aria-label={searchOpen ? t("search.close") : t("search.open")}
+              >
+                {searchOpen ? <X size={22} /> : <Search size={22} />}
+              </button>
+              <button
+                type="button"
+                className="flex min-h-11 min-w-11 items-center justify-center rounded border-0 bg-transparent text-white/80 hover:bg-white/10"
+                onClick={() => setMenuOpen(true)}
+                aria-expanded={menuOpen}
+                aria-controls="mobile-navigation"
+                aria-label={t("nav.menu")}
+              >
+                <Menu size={26} strokeWidth={2} />
+              </button>
+            </div>
           </div>
         </div>
 

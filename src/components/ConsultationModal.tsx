@@ -9,9 +9,10 @@ interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
   productName?: string;
+  source?: string;
 }
 
-export function ConsultationModal({ isOpen, onClose, productName }: ConsultationModalProps) {
+export function ConsultationModal({ isOpen, onClose, productName, source }: ConsultationModalProps) {
   const { t } = useLanguage();
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -35,6 +36,9 @@ export function ConsultationModal({ isOpen, onClose, productName }: Consultation
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!phone.trim()) return;
+    // Here you would typically send data to your backend
+    // including the source parameter for tracking
+    console.log("Consultation request:", { phone, productName, source });
     setSubmitted(true);
   };
 
