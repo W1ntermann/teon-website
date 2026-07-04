@@ -15,16 +15,14 @@ export default function Footer() {
               {t("nav.company")}
             </div>
             <ul className="m-0 list-none p-0">
-              {[t("company.about"), t("company.history"), t("company.certificates")].map((item) => (
-                <li key={item} className="mb-2">
-                  <a
-                    href="#"
-                    className="text-sm text-white/75 no-underline transition-colors hover:text-white"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li className="mb-2">
+                <Link
+                  href="/company"
+                  className="text-sm text-white/75 no-underline transition-colors hover:text-white"
+                >
+                  {t("company.about")}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -51,16 +49,14 @@ export default function Footer() {
               {t("nav.service")}
             </div>
             <ul className="m-0 list-none p-0">
-              {["Монтаж", "Технічне обслуговування", "Ремонт", "Запчастини"].map((item) => (
-                <li key={item} className="mb-2">
-                  <a
-                    href="#"
-                    className="text-sm text-white/75 no-underline transition-colors hover:text-white"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li className="mb-2">
+                <Link
+                  href="/service"
+                  className="text-sm text-white/75 no-underline transition-colors hover:text-white"
+                >
+                  {t("service.our")}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -80,23 +76,6 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-[#152B47] px-4 py-3">
-        <div className="mx-auto flex max-w-[1200px] flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-center text-xs text-white/65 sm:text-left">{t("footer.rights")}</div>
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-end">
-            {["Impressum", "Datenschutz", "Sitemap"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="text-xs text-white/65 no-underline transition-colors hover:text-white"
-              >
-                {item}
-              </a>
-            ))}
           </div>
         </div>
       </div>
