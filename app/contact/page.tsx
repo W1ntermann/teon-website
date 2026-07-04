@@ -158,7 +158,7 @@ export default function Contact() {
             {/* OpenStreetMap */}
             <div className="relative mt-8 overflow-hidden rounded-xl h-[220px] sm:h-[250px]">
               <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=30.7228%2C46.4743%2C30.7428%2C46.4943&layer=mapnik&marker=46.4843%2C30.7328"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=30.6498%2C46.4698%2C30.6798%2C46.4998&layer=mapnik&marker=46.4848255%2C30.6648015"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -169,7 +169,7 @@ export default function Contact() {
                 className="absolute inset-0"
               />
               <a
-                href="https://www.openstreetmap.org/?mlat=46.4843&mlon=30.7328&zoom=15&layers=M"
+                href="https://www.openstreetmap.org/?mlat=46.4848255&mlon=30.6648015&zoom=15&layers=M"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute bottom-2 left-2 rounded-md bg-[#1E3A5F]/90 px-2.5 py-1.5 text-[11px] text-white shadow-sm backdrop-blur-sm transition-colors hover:bg-[#1E3A5F]"
