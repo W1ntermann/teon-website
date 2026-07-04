@@ -4,20 +4,21 @@ import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { ChevronLeft, ChevronRight, X, Maximize2, Play, Camera, Image as ImageIcon, FileCheck } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Maximize2, Play, Camera, Image as ImageIcon, FileCheck, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Category = "all" | "production" | "installation" | "certificates" | "videos";
 
 interface GalleryItem {
   id: string;
-  type: "photo" | "video";
+  type: "photo" | "video" | "certificate";
   category: Exclude<Category, "all" | "videos"> | "certificates";
-  src: string;
-  thumb: string;
+  src?: string;
+  thumb?: string;
   title: string;
   description?: string;
   span?: "wide" | "tall" | "large";
+  pdfUrl?: string;
 }
 
 const placeholderItems: GalleryItem[] = [
@@ -70,23 +71,36 @@ const placeholderItems: GalleryItem[] = [
     description: "Фінальний контроль якості",
   },
   {
-    id: "6",
-    type: "photo",
+    id: "cert-1",
+    type: "certificate",
     category: "certificates",
-    src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
-    thumb: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=60",
-    title: "Сертифікація ISO",
-    description: "Міжнародні сертифікати якості",
-    span: "tall",
+    title: "ISO 9001:2015 (EN)",
+    description: "Міжнародний сертифікат якості",
+    pdfUrl: "/certificates/iso-9001-en-1.pdf",
   },
   {
-    id: "7",
-    type: "photo",
-    category: "production",
-    src: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=1200&q=80",
-    thumb: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=600&q=60",
-    title: "Лабораторія",
-    description: "Тестування зразків у власній лабораторії",
+    id: "cert-2",
+    type: "certificate",
+    category: "certificates",
+    title: "ISO 9001:2015 (UA)",
+    description: "Сертифікат якості українською",
+    pdfUrl: "/certificates/iso-9001-ua.pdf",
+  },
+  {
+    id: "cert-3",
+    type: "certificate",
+    category: "certificates",
+    title: "ISO 45001 (EN)",
+    description: "Сертифікат системи управління охороною праці",
+    pdfUrl: "/certificates/iso-45001-en.pdf",
+  },
+  {
+    id: "cert-4",
+    type: "certificate",
+    category: "certificates",
+    title: "ISO 45001 (UA)",
+    description: "Сертифікат системи управління охороною праці (укр)",
+    pdfUrl: "/certificates/iso-45001-ua.pdf",
   },
   {
     id: "8",
@@ -97,15 +111,6 @@ const placeholderItems: GalleryItem[] = [
     title: "Відео монтажу",
     description: "Процес монтажу диссольвера KREI",
     span: "wide",
-  },
-  {
-    id: "9",
-    type: "photo",
-    category: "certificates",
-    src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
-    thumb: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=60",
-    title: "Сертифікат ATEX",
-    description: "Вибухозахищене обладнання",
   },
 ];
 
@@ -247,6 +252,40 @@ export default function Gallery() {
                       ? "row-span-2"
                       : "";
 
+              if (item.type === "certificate") {
+                return (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: idx * 0.03 }}
+                    className={cn("group relative cursor-pointer overflow-hidden rounded-xl bg-gradient-to-br from-[#1E3A5F] to-[#0F1F33]", spanClass)}
+                    onClick={() => item.pdfUrl && window.open(item.pdfUrl, "_blank")}
+                  >
+                    <div className="flex h-full min-h-[160px] flex-col items-center justify-center gap-3 p-4 text-center sm:min-h-[200px]">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-white/30">
+                        <FileText size={28} className="text-white" />
+                      </div>
+                      <div>
+                        <span className="block text-[12px] font-semibold text-white">{item.title}</span>
+                        {item.description && (
+                          <span className="mt-1 block text-[10px] text-white/70">{item.description}</span>
+                        )}
+                      </div>
+                      <div className="rounded-full bg-white/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+                        PDF
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/20">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                        <Maximize2 size={16} className="text-[#1E3A5F]" />
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              }
+
               if (item.type === "video") {
                 return (
                   <motion.div
@@ -256,7 +295,7 @@ export default function Gallery() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.03 }}
                     className={cn("group relative cursor-pointer overflow-hidden rounded-xl bg-gradient-to-br from-[#1E3A5F] to-[#0F1F33]", spanClass)}
-                    onClick={() => setVideoOpen(videoOpen === item.src ? null : item.src)}
+                    onClick={() => item.src && setVideoOpen(videoOpen === item.src ? null : item.src)}
                   >
                     <div className="flex h-full min-h-[160px] items-center justify-center sm:min-h-[200px]">
                       <div className="flex flex-col items-center gap-2">
