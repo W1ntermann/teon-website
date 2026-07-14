@@ -3,6 +3,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import heroFactory from "@/assets/hero-factory.jpg";
 
 const newsData: Record<string, { date: string; title: string; text: string }[]> = {
   uk: [
@@ -38,7 +39,7 @@ export default function NewsPage() {
       <div
         className="relative flex min-h-[200px] items-center px-4 py-10 sm:min-h-[240px] sm:py-12 md:min-h-[260px] md:py-14"
         style={{
-          backgroundImage: `url(/hero-factory.jpg)`,
+          backgroundImage: `url(${heroFactory.src})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
