@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts, type ProductData } from "@/translations/productData";
 import { ProductSlider } from "@/components/ProductSlider";
+import { TeonBadge } from "@/components/TeonBadge";
 import { ChevronRight, ArrowRight, Search, ArrowUpRight } from "lucide-react";
 
 export default function SearchClient() {
@@ -104,14 +105,7 @@ export default function SearchClient() {
                       productName={product.name}
                       className="h-full"
                     />
-                    <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-lg bg-white/90 px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#4C5154]">
-                        <span className="text-[7px] font-bold text-white">K</span>
-                      </div>
-                      <span className="text-[10px] font-bold tracking-[2px] text-[#4C5154]">
-                        KREI
-                      </span>
-                    </div>
+                    <TeonBadge tone="slate" className="absolute left-4 top-4 z-10" />
                     <div className="absolute right-3 top-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
                       {product.category}
                     </div>
@@ -127,7 +121,7 @@ export default function SearchClient() {
                       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                         <div>
                           <span className="mb-1 inline-block text-[10px] font-bold uppercase tracking-[3px] text-[#4C5154]/50">
-                            KREI
+                            TEON
                           </span>
                           <h2 className="text-xl font-bold tracking-tight text-[#1a1a1a] sm:text-[22px] md:text-2xl">
                             {product.name.replace("KREI ", "")}

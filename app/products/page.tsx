@@ -14,6 +14,7 @@ import {
   Check,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { TeonBadge } from "@/components/TeonBadge";
 import hero1 from "@/assets/hero1.jpg";
 
 export default function Products() {
@@ -146,14 +147,7 @@ export default function Products() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
                       {/* Brand Badge */}
-                      <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-lg bg-white/90 px-2.5 py-1.5 shadow-sm backdrop-blur-sm">
-                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#1E3A5F]">
-                          <span className="text-[7px] font-bold text-white">K</span>
-                        </div>
-                        <span className="text-[10px] font-bold tracking-[2px] text-[#1E3A5F]">
-                          KREI
-                        </span>
-                      </div>
+                      <TeonBadge className="absolute left-4 top-4 z-10" />
 
                       {/* Category tag */}
                       <div className="absolute right-3 top-3 z-10 rounded-md bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">

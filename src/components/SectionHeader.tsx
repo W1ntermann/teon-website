@@ -13,7 +13,7 @@ interface SectionHeaderProps {
 
 /**
  * Unified section header used across the site.
- * Renders an optional "K" badge flanked by divider lines, an uppercase
+ * Renders an optional "T" badge flanked by divider lines, an uppercase
  * eyebrow label, a bold title and an optional subtitle. Supports light
  * (on white) and dark (on navy) variants so every section shares one motif.
  */
@@ -50,7 +50,7 @@ export function SectionHeader({
             )}
           >
             <span className={cn("text-[9px] font-extrabold tracking-[2px]", badgeText)}>
-              K
+              T
             </span>
           </div>
           <div className={cn("h-px w-8", lineColor)} />

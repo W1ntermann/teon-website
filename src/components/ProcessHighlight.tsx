@@ -96,7 +96,7 @@ export function ProcessHighlight() {
         {/* Section Header */}
         <div className="mb-10 md:mb-14">
           <SectionHeader
-            eyebrow="KREI"
+            eyebrow="TEON"
             title={t("hero.tagline1")}
             subtitle={t("hero.tagline2")}
             subtitleClassName="font-medium tracking-[1px] text-[#000]"
@@ -147,7 +147,7 @@ export function ProcessHighlight() {
         <div className="mx-auto mt-12 flex max-w-[600px] items-center gap-4 md:mt-16">
           <div className="h-px flex-1 bg-[#d0d0d0]" />
           <div className="flex h-6 w-6 items-center justify-center rounded-full border border-[#d0d0d0] bg-white">
-            <span className="text-[8px] font-bold text-[#1E3A5F]">K</span>
+            <span className="text-[8px] font-bold text-[#1E3A5F]">T</span>
           </div>
           <div className="h-px flex-1 bg-[#d0d0d0]" />
         </div>

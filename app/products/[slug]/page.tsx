@@ -107,7 +107,7 @@ export default function ProductDetail() {
           <div className="flex flex-wrap items-start gap-4 sm:flex-nowrap sm:gap-5">
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-white/30 bg-white/10">
               <span className="text-[9px] font-extrabold text-white tracking-[2px]">
-                K
+                T
               </span>
             </div>
             <div>

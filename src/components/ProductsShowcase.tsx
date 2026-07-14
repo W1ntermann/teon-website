@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts } from "@/translations/productData";
 import { SectionHeader } from "@/components/SectionHeader";
+import { TeonBadge } from "@/components/TeonBadge";
 
 function DissolverIllustration() {
   return (
@@ -214,7 +215,7 @@ export function ProductsShowcase() {
           className="mb-10 md:mb-14"
         >
           <SectionHeader
-            eyebrow="KREI"
+            eyebrow="TEON"
             title={t("products.title")}
             subtitle={
               lang === "uk"
@@ -259,13 +260,8 @@ export function ProductsShowcase() {
                     {/* Bottom gradient overlay */}
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#e5e5e5] to-transparent" />
 
-                    {/* KREI Badge */}
-                    <div className="absolute left-3 top-3 z-10 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-sm backdrop-blur-sm">
-                      <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#1E3A5F]">
-                        <span className="text-[7px] font-bold text-white">K</span>
-                      </div>
-                      <span className="text-[9px] font-bold tracking-[2px] text-[#1E3A5F]">KREI</span>
-                    </div>
+                    {/* TEON Badge */}
+                    <TeonBadge className="absolute left-3 top-3 z-10" />
                   </div>
 
                   {/* Content Area */}
