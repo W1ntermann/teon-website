@@ -103,7 +103,7 @@ export function HeroSection() {
           <div className="mt-4 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:gap-5 md:gap-8">
             {trustBadges.map((badge) => (
               <div key={badge.label} className="flex items-center gap-1.5">
-                <badge.icon size={12} className="text-[#E8A838] sm:size-14" />
+                <badge.icon className="size-12 text-[#E8A838] sm:size-14" />
                 <span className="text-[11px] font-semibold text-white/80 sm:text-[12px] md:text-[13px]">
                   {badge.label}
                 </span>

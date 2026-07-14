@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { SectionHeader } from "@/components/SectionHeader";
 
 function HeritageIcon() {
   return (
@@ -168,7 +169,7 @@ export function WhyTeon() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#0F1F33] via-[#152B47] to-[#1E3A5F] py-14 sm:py-18 md:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#0F1F33] via-[#152B47] to-[#1E3A5F] py-14 sm:py-16 md:py-20">
       {/* Pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
@@ -189,27 +190,19 @@ export function WhyTeon() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-10 text-center md:mb-14"
+          className="mb-10 md:mb-14"
         >
-          <div className="mb-4 flex items-center justify-center gap-3">
-            <div className="h-px w-8 bg-white/20" />
-            <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/20 bg-white/5">
-              <span className="text-[9px] font-extrabold tracking-[2px] text-white">
-                K
-              </span>
-            </div>
-            <div className="h-px w-8 bg-white/20" />
-          </div>
-          <h2 className="text-xl font-bold tracking-[2px] text-white sm:text-2xl md:text-[26px]">
-            {t("why.title")}
-          </h2>
-          <p className="mx-auto mt-3 max-w-lg text-[13px] leading-relaxed text-white/50 sm:text-sm">
-            {lang === "uk"
-              ? "8+ років досвіду на ринку України. Високоякісне обладнання та повний сервіс для вашої промисловості."
-              : lang === "pl"
-                ? "8+ lat doświadczenia na rynku ukraińskim. Wysokiej jakości sprzęt i pełen serwis dla Twojej branży."
-                : "8+ years of experience in the Ukrainian market. High-quality equipment and full service for your industry."}
-          </p>
+          <SectionHeader
+            variant="dark"
+            title={t("why.title")}
+            subtitle={
+              lang === "uk"
+                ? "8+ років досвіду на ринку України. Високоякісне обладнання та повний сервіс для вашої промисловості."
+                : lang === "pl"
+                  ? "8+ lat doświadczenia na rynku ukraińskim. Wysokiej jakości sprzęt i pełen serwis dla Twojej branży."
+                  : "8+ years of experience in the Ukrainian market. High-quality equipment and full service for your industry."
+            }
+          />
         </motion.div>
 
         {/* Cards Grid */}

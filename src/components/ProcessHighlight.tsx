@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { SectionHeader } from "@/components/SectionHeader";
 
 function DispersingIcon() {
   return (
@@ -81,7 +82,7 @@ export function ProcessHighlight() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative overflow-hidden bg-white py-14 sm:py-18 md:py-20">
+    <section className="relative overflow-hidden bg-white py-14 sm:py-16 md:py-20">
       {/* Subtle background grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
@@ -93,16 +94,13 @@ export function ProcessHighlight() {
 
       <div className="relative mx-auto max-w-[1200px] px-4">
         {/* Section Header */}
-        <div className="mb-10 text-center md:mb-14">
-          <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[4px] text-[#1E3A5F]/50">
-            KREI
-          </span>
-          <h2 className="text-xl font-bold tracking-[3px] text-[#1E3A5F] sm:text-2xl md:text-[26px]">
-            {t("hero.tagline1")}
-          </h2>
-          <p className="mx-auto mt-3 max-w-lg text-sm font-medium tracking-[1px] text-[#000] sm:text-[15px]">
-            {t("hero.tagline2")}
-          </p>
+        <div className="mb-10 md:mb-14">
+          <SectionHeader
+            eyebrow="KREI"
+            title={t("hero.tagline1")}
+            subtitle={t("hero.tagline2")}
+            subtitleClassName="font-medium tracking-[1px] text-[#000]"
+          />
         </div>
 
         {/* Three Process Cards */}

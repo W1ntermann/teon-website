@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProducts } from "@/translations/productData";
+import { SectionHeader } from "@/components/SectionHeader";
 
 function DissolverIllustration() {
   return (
@@ -193,7 +194,7 @@ export function ProductsShowcase() {
   const products = getProducts(lang);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#f8f8f8] via-white to-[#f5f5f5] py-14 sm:py-18 md:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#f8f8f8] via-white to-[#f5f5f5] py-14 sm:py-16 md:py-20">
       {/* Subtle pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.018]"
@@ -210,28 +211,19 @@ export function ProductsShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-10 text-center md:mb-14"
+          className="mb-10 md:mb-14"
         >
-          <div className="mb-4 flex items-center justify-center gap-3">
-            <div className="h-px w-8 bg-[#1E3A5F]/25" />
-            <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#1E3A5F]/25 bg-white">
-              <span className="text-[9px] font-extrabold tracking-[2px] text-[#1E3A5F]">K</span>
-            </div>
-            <div className="h-px w-8 bg-[#1E3A5F]/25" />
-          </div>
-          <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[4px] text-[#1E3A5F]/50">
-            KREI
-          </span>
-          <h2 className="text-xl font-bold tracking-[2px] text-[#0F1F33] sm:text-2xl md:text-[26px]">
-            {t("products.title")}
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-[13px] leading-relaxed text-[#666] sm:text-sm">
-            {lang === "uk"
-              ? "Промислове дисперсійне обладнання для лакофарбової, хімічної та харчової промисловості."
-              : lang === "pl"
-                ? "Przemysłowe urządzenia dyspergujące dla przemysłu lakierniczego, chemicznego i spożywczego."
-                : "Industrial dispersing equipment for the paint, chemical and food industries."}
-          </p>
+          <SectionHeader
+            eyebrow="KREI"
+            title={t("products.title")}
+            subtitle={
+              lang === "uk"
+                ? "Промислове дисперсійне обладнання для лакофарбової, хімічної та харчової промисловості."
+                : lang === "pl"
+                  ? "Przemysłowe urządzenia dyspergujące dla przemysłu lakierniczego, chemicznego i spożywczego."
+                  : "Industrial dispersing equipment for the paint, chemical and food industries."
+            }
+          />
         </motion.div>
 
         {/* Products Grid */}

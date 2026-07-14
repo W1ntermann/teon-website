@@ -82,6 +82,16 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--app-font-heading);
   }
+
+  /* Consistent keyboard focus ring across interactive elements */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    @apply outline-none ring-2 ring-[#E8A838] ring-offset-2 ring-offset-white;
+  }
 }
 
 .theon-blue {

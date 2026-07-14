@@ -152,7 +152,7 @@ export default function Footer() {
             </div>
             <div className="text-sm leading-relaxed text-white/85 space-y-4">
               <div className="font-semibold text-white">
-                ТОВ «ТЕОН УКРАЇНА»
+                {t("footer.company_name")}
               </div>
               
               <div className="flex items-start gap-3">

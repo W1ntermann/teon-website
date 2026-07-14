@@ -33,7 +33,7 @@ export default function Testimonials({ subtitle }: TestimonialsProps) {
   ];
 
   return (
-    <section ref={sectionRef} className="border-b border-[#e5e5e5] bg-white py-14 sm:py-16 md:py-18">
+    <section ref={sectionRef} className="border-b border-[#e5e5e5] bg-white py-14 sm:py-16 md:py-20">
       <div className="mx-auto max-w-[1200px] px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

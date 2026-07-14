@@ -83,11 +83,11 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-[22px]">
           {news.map((item) => (
-            <div
-              key={item.title}
-              className="group cursor-pointer border border-[#d0d0d0] p-5 pt-[20px] transition-all hover:shadow-[0_4px_16px_rgba(0,0,0,0.09)]"
-              style={{ borderTop: "3px solid #1E3A5F" }}
-            >
+              <div
+                key={item.title}
+                className="group cursor-pointer rounded-lg border border-border bg-white p-5 pt-[20px] shadow-sm transition-all hover:shadow-[0_4px_16px_rgba(0,0,0,0.09)]"
+                style={{ borderTop: "3px solid #1E3A5F" }}
+              >
               <div className="mb-2 text-[12px] text-[#666]">{item.date}</div>
               <h3 className="mb-2.5 text-[14px] font-bold leading-[1.4] text-[#1E3A5F]">{item.title}</h3>
               <p className="mb-3.5 text-[13px] leading-[1.6] text-[#000]">{item.text}</p>
@@ -105,7 +105,7 @@ export default function Home() {
           <h2 className="mb-5 text-lg font-bold tracking-wide text-[#1E3A5F] sm:text-xl md:mb-[22px] md:text-[22px]">{t("exhibitions.title")}</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shows.map((show) => (
-              <div key={show.name} className="border border-[#d0d0d0] bg-white p-4">
+              <div key={show.name} className="rounded-lg border border-border bg-white p-4 shadow-sm">
                 <div className="mb-1.5 text-[12px] font-bold text-[#1E3A5F]">{show.date}</div>
                 <div className="mb-1 text-[14px] font-bold text-[#1E3A5F]">{show.name}</div>
                 <div className="text-[12px] text-[#000]">{show.city}</div>
