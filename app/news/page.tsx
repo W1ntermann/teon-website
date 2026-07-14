@@ -71,10 +71,18 @@ export default function NewsPage() {
         </div>
       </div>
 
-      {/* News Grid with Subtle Background */}
-      <div className="relative bg-gradient-to-b from-gray-50 via-white to-gray-50 py-12 sm:py-16 md:py-20">
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNjY2NjY2MiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-50" />
+      {/* News Grid with Background Image */}
+      <div
+        className="relative py-12 sm:py-16 md:py-20"
+        style={{
+          backgroundImage: `url(/service.jpg)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        {/* Dark overlay for better card visibility */}
+        <div className="absolute inset-0 bg-[rgba(15,31,51,0.75)]" />
 
         <div className="relative mx-auto max-w-[1200px] px-4">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
