@@ -56,12 +56,6 @@ export default function NewsPage() {
 
       {/* News Section */}
       <div className="mx-auto max-w-[1200px] px-4 py-10 sm:py-12 md:py-[50px]">
-        <div className="mb-8 sm:mb-10">
-          <h2 className="text-xl font-bold tracking-[2px] text-[#0F1F33] sm:text-2xl md:text-[26px]">
-            {t("news.title")}
-          </h2>
-        </div>
-
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-[22px]">
           {news.map((item, index) => {
             return (
