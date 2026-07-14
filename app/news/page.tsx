@@ -51,44 +51,23 @@ export default function NewsPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Breadcrumbs */}
-      <div className="border-b border-gray-200 bg-white">
-        <div className="mx-auto max-w-[1200px] px-4 py-3">
-          <nav className="flex items-center gap-2 text-sm">
-            <Link href="/" className="flex items-center gap-1 text-gray-600 no-underline transition-colors hover:text-[#1E3A5F]">
-              <Home size={14} />
-              <span>{lang === "uk" ? "Головна" : lang === "en" ? "Home" : "Strona główna"}</span>
-            </Link>
-            <ArrowRight size={14} className="text-gray-400" />
-            <span className="font-semibold text-[#1E3A5F]">{t("news.title")}</span>
-          </nav>
-        </div>
-      </div>
-
       {/* Hero Section with Background Image */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#1E3A5F] to-[#0F1F33] py-16 sm:py-20 md:py-24">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero-factory.jpg"
-            alt=""
-            fill
-            className="object-cover opacity-20"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1E3A5F]/90 to-[#0F1F33]/90" />
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 mx-auto max-w-[1200px] px-4">
-          <h1 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+      <div
+        className="relative flex min-h-[200px] items-center px-4 py-10 sm:min-h-[240px] sm:py-12 md:min-h-[260px] md:py-14"
+        style={{
+          backgroundImage: `url(/hero-factory.jpg)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-[rgba(15,31,51,0.7)]" />
+        <div className="relative z-10 mx-auto w-full max-w-[1200px]">
+          <h1 className="text-[24px] font-bold tracking-wide text-white sm:text-[28px] md:text-[32px]">
             {t("news.title")}
           </h1>
-          <p className="max-w-2xl text-base text-white/80 sm:text-lg">
-            {lang === "uk" && "Слідкуйте за останніми новинами компанії Теон — нові проєкти, сертифікації та розширення можливостей"}
-            {lang === "en" && "Follow the latest Teon company news — new projects, certifications, and expanded capabilities"}
-            {lang === "pl" && "Śledź najnowsze wiadomości firmy Teon — nowe projekty, certyfikaty i rozszerzone możliwości"}
-          </p>
+          <div className="mt-2 text-[13px] text-white/60">
+            {lang === "uk" ? "Головна" : lang === "en" ? "Home" : "Strona główna"} / {t("news.title")}
+          </div>
         </div>
       </div>
 
