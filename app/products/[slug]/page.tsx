@@ -59,10 +59,10 @@ export default function ProductDetail() {
     "krei-continuous-mill",
   ];
   const names = [
-    "KREI DISSOLVER",
-    "KREI BASKET-MILL",
-    "KREI DISSOLVER-BUTTERFLY",
-    "KREI CONTINUOUS-MILL",
+    "TEON DISSOLVER",
+    "TEON BASKET-MILL",
+    "TEON DISSOLVER-BUTTERFLY",
+    "TEON CONTINUOUS-MILL",
   ];
   const currentIndex = allProducts.indexOf(slug);
 
@@ -186,7 +186,7 @@ export default function ProductDetail() {
                 {product.category}
               </span>
               <h2 className="mb-3 text-[22px] font-bold tracking-tight text-[#1a1a1a] sm:text-[24px]">
-                {product.name.replace("KREI ", "")}
+                {product.name.replace("TEON ", "")}
               </h2>
               <p className="text-[14px] leading-[1.8] text-[#444] sm:text-[15px]">
                 {product.fullDescription}

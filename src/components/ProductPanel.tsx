@@ -29,7 +29,7 @@ export function ProductPanel({ products }: ProductPanelProps) {
                   {product.category}
                 </div>
                 <div className="font-bold leading-tight text-white text-[13px] line-clamp-2">
-                  {product.name.replace("KREI ", "")}
+                  {product.name.replace("TEON ", "")}
                 </div>
               </div>
               {/* Product photo — full product visible */}
@@ -61,7 +61,7 @@ export function ProductPanel({ products }: ProductPanelProps) {
                     {product.category}
                   </div>
                   <div className="font-bold leading-tight text-white text-[13px] line-clamp-2">
-                    {product.name.replace("KREI ", "")}
+                    {product.name.replace("TEON ", "")}
                   </div>
                 </div>
                 {/* Product photo — full product visible */}

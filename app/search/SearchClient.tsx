@@ -124,7 +124,7 @@ export default function SearchClient() {
                             TEON
                           </span>
                           <h2 className="text-xl font-bold tracking-tight text-[#1a1a1a] sm:text-[22px] md:text-2xl">
-                            {product.name.replace("KREI ", "")}
+                            {product.name.replace("TEON ", "")}
                           </h2>
                         </div>
                       </div>

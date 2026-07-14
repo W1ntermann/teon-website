@@ -273,7 +273,7 @@ export function ProductsShowcase() {
 
                     {/* Product name */}
                     <h3 className="mb-2 text-[15px] font-bold leading-tight tracking-tight text-[#1a1a1a] sm:text-base">
-                      {product.name.replace("KREI ", "")}
+                      {product.name.replace("TEON ", "")}
                     </h3>
 
                     {/* Tagline */}

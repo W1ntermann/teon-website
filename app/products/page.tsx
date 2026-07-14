@@ -157,7 +157,7 @@ export default function Products() {
                       {/* Product name overlay */}
                       <div className="absolute bottom-0 left-0 right-0 p-4">
                         <h2 className="text-lg font-bold text-white drop-shadow-lg sm:text-xl">
-                          {product.name.replace("KREI ", "")}
+                          {product.name.replace("TEON ", "")}
                         </h2>
                         <p className="mt-0.5 text-[12px] font-medium text-white/80 drop-shadow-md sm:text-[13px]">
                           {product.tagline}

@@ -84,13 +84,18 @@ export default function Footer() {
                 {t("nav.products")}
               </div>
               <ul className="m-0 list-none p-0 space-y-3">
-                {["KREI DISSOLVER", "KREI BASKET-MILL", "KREI DISSOLVER-BUTTERFLY", "KREI CONTINUOUS-MILL"].map((item) => (
-                  <li key={item}>
+                {[
+                  { name: "TEON DISSOLVER", slug: "krei-dissolver" },
+                  { name: "TEON BASKET-MILL", slug: "krei-basket-mill" },
+                  { name: "TEON DISSOLVER-BUTTERFLY", slug: "krei-dissolver-butterfly" },
+                  { name: "TEON CONTINUOUS-MILL", slug: "krei-continuous-mill" },
+                ].map((item) => (
+                  <li key={item.slug}>
                     <Link
-                      href={`/products/krei-${item.toLowerCase().replace("krei ", "").replace(/ /g, "-")}`}
+                      href={`/products/${item.slug}`}
                       className="text-sm text-white/75 no-underline transition-all duration-200 hover:text-white hover:translate-x-1 inline-block"
                     >
-                      {item}
+                      {item.name}
                     </Link>
                   </li>
                 ))}
